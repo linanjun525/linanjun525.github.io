@@ -1,265 +1,268 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
   <title>Archives | Rve</title>
-  <meta name="description" content="" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="/css/component.css" />
-  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-  <meta name="generator" content="Rve">
-  <script src="http://static.duoshuo.com/embed.js"></script>
+  <meta name="author" content="李南均">
   
   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Rve"/>
+
+  
+    <meta property="og:image" content="undefined"/>
   
 
   
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
-<body>
-<div class="container">
-    <div class="mp-pusher" id="mp-pusher">
-        <i id="scroll-up" class="fa fa-angle-up"></i>
-        <nav id="mp-menu" class="mp-menu">
-            <div class="mp-level">
-                <a data-pjax class="back-home" style="font-size: 20px" href="/"><h2 ><i class="fa fa-home"></i>
-                        Home</h2></a>
-                <ul class="first-level">
-                    <li>
-                        <a class="fa fa-archive" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;归档</a>
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-archive"></i>
-                                归档</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-archive" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2016/11/23/我的第一篇博客/">我的第一篇博客</a>
-                                </li>
-                                
-                                <li class="search-archive-li mp-pjax">
-                                    <a href="/2016/11/23/hello-world/">Hello World</a>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;分类</a>
 
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-copy"></i>
-                                分类</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-category" placeholder="Search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
-                            </i>&nbsp;&nbsp;标签</a>
-                        <div class="mp-level page-list">
-                            <h2 ><i class="fa fa-tags"></i>
-                                标签</h2>
-                            <a class="mp-back" href="#">back</a>
-                            <form id="search-form" action="">
-                                <input type="text" class="search search-tag" placeholder="search.."/>
-                            </form>
-                            <ul>
-                                <div class="mp-scroll">
-                                
-                                <li class="search-tag-li mp-pjax">
-                                    <a href="/tags/周鹏/">&nbsp;&nbsp;&nbsp;周鹏</a>
-                                    <small>1</small>
-                                </li>
-                                
-                                </div>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                    <li class="mp-pjax"><a class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;关于我</a></li>
-                    <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;QQ空间</a></li>
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Rve</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>关于我
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
 
-                </ul>
+  <div class="container">
+  	<div class="content">
+    	 
 
-            </div>
-        </nav>
-        <div id="pjax">
-            <div class="pjax-hidden" style="display: none">
-                
-                    <a  data-pjax href="/2016/11/23/我的第一篇博客/">我的第一篇博客</a>
-                
-                    <a  data-pjax href="/2016/11/23/hello-world/">Hello World</a>
-                
-                
-                
-                    <a data-pjax href="/tags/周鹏/">&nbsp;&nbsp;周鹏</a>
-                
-                <a data-pjax class="fa fa-user" href="/about">&nbsp;&nbsp;&nbsp;About me</a>
-            </div>
-            <nav class="nexus">
-                <li  style="border-left: 1px solid #c6d0da;">
-                    <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
-                </li>
-                <li ><a id="nexus-back" data-pjax href="/">Rve</a></li>
-                
-                <div id="nav-container">
-                    <div class="post-navbar" style="line-height: 63px;display:none">
-                        <li id="navbar-title"><a href="#">undefined</a></li>
-                        <li id="navbar-toc" style="border-left: none">
-                            <a style="padding-right: 15px">
-                                <span id="toc-content" >Introduction</span><i class="fa fa-chevron-down" ></i>
-                            </a>
-                            <div class="hidden-box">
-                                <ul id="toc"></ul>
-                            </div>
-                        </li>
-                    </div>
-                </div>
-                
-            </nav>
+<!-- title -->
+<div class="page-header">
+  <h1 class="archive-title"><i class="fa fa-archive"></i> Archives</h1>
+</div>
 
-            <div class="scroller">
-            <div class="scroller-inner">
-
-
-<!-- -->
-<!--<body class="home-template">-->
-<!---->
+<div class="row page">
+  <!-- cols -->
   
-<main class="content" role="main">
+  <div class="col-md-9">
+	
 
+	  <div id="top_search"></div>
+
+	  <div class="archive">
+		
+		
+		
+			
+			
+			<h4 class="archive-ul" data-toggle="collapse" data-target="#2016">2016<b class="caret"></b></h4>
+			<ul id="2016" class="collapse in">
+			
+		
+		<li class="listing-item">
+		<span class="date_class"> 2016-11-23 </span> &raquo;
+		
+		   <span class="title"><a href="/2016/11/23/我的第一篇博客/" >我的第一篇博客</a></span>
+		
+		</li>			
+		
+		
+		
+		<li class="listing-item">
+		<span class="date_class"> 2016-11-23 </span> &raquo;
+		
+		   <span class="title"><a href="/2016/11/23/hello-world/" >Hello World</a></span>
+		
+		</li>			
+		
+		</ul>
+		</div>
+
+</div> <!-- col-md-9/col-md-12 -->
+
+
+<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+  <div id="site_search">
+   <div class="form-group">
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+   </div>  
+  <div id="local-search-result"></div>
+  </div>
+
+
+		
+			
+	<div class="widget">
+		<h4>Categories</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/zhoupeng/">zhoupeng<span>1</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>Tag Cloud</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/周鹏/">周鹏<span>1</span></a></li>
+		
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>Recent Posts</h4>
+  <ul class="entry list-unstyled">
     
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                
-                <a data-pjax href='/tags/周鹏/'>周鹏</a>
-                
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2016/11/23/我的第一篇博客/">我的第一篇博客</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2016-11-23T13:24:48.000Z"
-                      itemprop="datePublished">2016-11-23</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                贵州的周鹏 考北京邮电考上了信安霸哥美名传熟背java核心卷还会搞前端逆向misc啥都懂pwn也能玩转
-离家的周鹏 热爱着锻炼进入了国家队 挥洒血和汗练成了麒麟臂 12秒搞完抽纸都用完了 我还没爽翻
-打小前啊打大前 一次次上演碾压式上篮不是我酷炫狂拽屌炸天日完了地板我还能日天
-离家的周鹏 流浪在外边没有美图也没Photoshop好端端地打个拳被做成Gif脸上淌着泪 心里乐翻天
-离家的周鹏 夜里又难眠操起了他的鼠标和键盘老子的寒冰就不能赢
-                
-            </p>
-            
-        </section>
-    </article>
+      <li>
+        <a href="/2016/11/23/我的第一篇博客/" ><i class="fa fa-file-o"></i>我的第一篇博客</a>
+      </li>
     
-    <article class="post">
-
-        <header class="post-header">
-            <div class="tag-tile">
-                
-                <span class="fa fa-bookmark" style="float:right;color:#f39c12"></span>
-            </div>
-            <h1 class="post-title"><a data-pjax href="/2016/11/23/hello-world/">Hello World</a>
-            </h1>
-
-            <div class="post-meta">
-                Post on<span class="fa fa-clock-o"></span>
-                <time datetime="2016-11-23T07:48:21.177Z"
-                      itemprop="datePublished">2016-11-23</time>
-            </div>
-        </header>
-        <section class="post-excerpt">
-            <p>
-                
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new p
-                
-            </p>
-            
-        </section>
-    </article>
+      <li>
+        <a href="/2016/11/23/hello-world/" ><i class="fa fa-file-o"></i>Hello World</a>
+      </li>
     
-    <nav class="pagination" role="pagination">
-        
-        <span class="page-number">Page 1 of 1</span>
-        
-    </nav>
-</main>
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>Links</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="" title="Freemind's Github repository." target="_blank"]);">Freemind</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="" title="BOOTSTRA.386's Github repository." target="_blank"]);">BOOTSTRA.386</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="" title="Freemind.386's Github repository." target="_blank"]);">Freemind.386</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2016 李南均
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
 
 
   
-<footer class="site-footer">
-    
-    <div class="inner">
-        <section class="copyright"><a href="/"></a> &copy; Rve 2014</section>
-        <section class="poweredby">Published with <a target="_blank" href="http://hexo.io/">Hexo   </a> and Theme by <a target="_blank" href="https://github.com/yuche/hexo-theme-kael">Kael</a></section>
-    </div>
-</footer>
-</div>
-</div><!-- /scroller -->
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
 
-</div><!-- /pusher -->
-</div><!-- /container -->
-</div>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
 
-<!-- Easter eggs -->
 
-<div class="egg animated">
-    <a id="close-button" href="#">X</a>
-    <div class="block">
-        <div class="loading">
-            <span class="ball1"></span>
-            <span class="ball2"></span>
-        </div>
-    </div>
-</div>
-  
-<script src="//cdn.staticfile.org/jquery/1.11.0/jquery.min.js"></script>
-<script>
-    if (!window.jQuery) {
-        var script = document.createElement('script');
-        script.src = "/js/jquery.min.js";
-        document.body.appendChild(script);
-    }
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
 </script>
-<script type="text/javascript" src="/js/lib.js"></script>
-<script type="text/javascript" src="/js/main.js"></script>
-
-
-
-
 
 
 
 </body>
-</html>
+   </html>
