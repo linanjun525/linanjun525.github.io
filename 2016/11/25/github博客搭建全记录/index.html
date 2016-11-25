@@ -170,12 +170,10 @@ var _hmt = _hmt || [];
 <p>然后使用hexo d命令就可以把博客上传到github上，此过程会要求输入用户名密码，访问username.github.io就可以看到搭上去的博客了，开心吗:haha:</p>
 <p>注：在使用命令<em>hexo d</em>时可能遇到两个问题：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error:Deployer not found:git</div></pre></td></tr></table></figure>
-<p>解决方法是：<em>npm install hexo-deployer-git —save</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal:empty ident name(for&lt;null&gt;)not allowed</div></pre></td></tr></table></figure>
 <p>解决方法是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config ---global user.email &quot;xxxx@home.com&quot;</div><div class="line">git config ---global user.name &quot;xxx&quot;</div></pre></td></tr></table></figure>
-<h3 id="三、新建文章"><a href="#三、新建文章" class="headerlink" title="三、新建文章"></a>三、新建文章</h3><p>文章都使用markdown格式进行书写，推荐使用typora或者网易云笔记也可以写markdown文件，新建一篇文章通过命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo n tittle</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>install hexo-deployer-git ---save```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">*fatal:empty ident name(for&lt;null&gt;)not allowed* 解决方法是：</div></pre></td></tr></table></figure>
+<p>git config —global user.email “xxxx@home.com”<br>git config —global user.name “xxx”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">### 三、新建文章</div><div class="line"></div><div class="line">文章都使用markdown格式进行书写，推荐使用typora或者网易云笔记也可以写markdown文件，新建一篇文章通过命令：</div></pre></td></tr></table></figure></p>
+<p>$ hexo n tittle<br>```</p>
 <p>会在source/_post目录下生成文章，然后对该文章进行编辑即可，编辑完成后<em>hexo g</em>新生成，然后<em>hexo d</em>上传即可 </p>
 <p>可以在网上找了一些markdown的语法，也可以在typora中右键自动生成。</p>
 	  
@@ -194,7 +192,7 @@ var _hmt = _hmt || [];
 	<!-- comment -->
 	
 <section id="comment">
-    <h2 class="title">Comments</h2>
+    <h2 class="title">留言</h2>
 
     
 </section>
