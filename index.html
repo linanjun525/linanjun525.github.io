@@ -183,6 +183,11 @@ var _hmt = _hmt || [];
 <p>最后一步修改config.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Deployment</div><div class="line">## Docs: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/linanjun525/linanjun525.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
 <p>然后使用hexo d命令就可以把博客上传到github上，此过程会要求输入用户名密码，访问username.github.io就可以看到搭上去的博客了，开心吗:haha:</p>
+<p>注：在使用命令<figure class="highlight plain"><figcaption><span>d```时可能遇到两个问题：</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>Error:Deployer not found:git<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">解决方法是：```npm install hexo-deployer-git ---save</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal:empty ident name(for&lt;null&gt;)not allowed</div></pre></td></tr></table></figure>
+<p>解决方法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config ---global user.email &quot;xxxx@home.com&quot;</div><div class="line">git config ---global user.name &quot;xxx&quot;</div></pre></td></tr></table></figure>
 <h3 id="三、新建文章"><a href="#三、新建文章" class="headerlink" title="三、新建文章"></a>三、新建文章</h3><p>文章都使用markdown格式进行书写，推荐使用typora或者网易云笔记也可以写markdown文件，新建一篇文章通过命令：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo n tittle</div></pre></td></tr></table></figure>
 <p>会在source/_post目录下生成文章，然后对该文章进行编辑即可，编辑完成后<em>hexo g</em>新生成，然后<em>hexo d</em>上传即可 </p>
@@ -190,7 +195,7 @@ var _hmt = _hmt || [];
 
 	
 	</div>
-  <a type="button" href="/2016/11/25/github博客搭建全记录/#more" class="btn btn-default more">Leia Mais</a>
+  <a type="button" href="/2016/11/25/github博客搭建全记录/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -219,7 +224,7 @@ var _hmt = _hmt || [];
 			
   <div id="site_search">
    <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="Busca" class="st-search-input st-default-search-input form-control"/>
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
    </div>  
   <div id="local-search-result"></div>
   </div>
@@ -243,7 +248,7 @@ var _hmt = _hmt || [];
 		
 			
 <div class="widget">
-  <h4>Posts recentes</h4>
+  <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
     
       <li>
