@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>震惊了！！msc2安卓题全记录，不看马上就删了！！！ | Rve</title>
+  <meta name="author" content="李南均">
+  
+  <meta name="description" content="前言第二届阿里移动安全赛第二题，花了很多时间来彻底理清楚逻辑，做完这道题感觉自己在动态调试、arm汇编代码技巧上都有不少收获，所以首先我大概总结一下这道题的解题过程，题中几个难点如下：
+
+反调试：题中出现多次反调试，但是套路都相同，都可以用相同的方法绕过
+动态恢复：程序在执行的过程中不断通过mmap">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="震惊了！！msc2安卓题全记录，不看马上就删了！！！"/>
+  <meta property="og:site_name" content="Rve"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Rve</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>关于我
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 震惊了！！msc2安卓题全记录，不看马上就删了！！！</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>第二届阿里移动安全赛第二题，花了很多时间来彻底理清楚逻辑，做完这道题感觉自己在动态调试、arm汇编代码技巧上都有不少收获，所以首先我大概总结一下这道题的解题过程，题中几个难点如下：</p>
+<ol>
+<li><strong>反调试</strong>：题中出现多次反调试，但是套路都相同，都可以用相同的方法绕过</li>
+<li><strong>动态恢复</strong>：程序在执行的过程中不断通过mmap申请一块内存 ，mprotect修改内存为可执行 ，动态构造执行代码 。在执行完后又将代码加密回去，继续执行下一段代码。</li>
+<li><strong>AES加密</strong>：由于在函数中并不是直接调用AES库，而是直接用AES源码进行处理，所以考验我们的是要把AES源码识别出来并用AES进行解密</li>
+</ol>
+<p>由于程序分析过程太长了，长得都要忘了我们是要看输入怎么处理的，所以我把对输入进行处理的方式放在最前边，有个大体印象才不致忘记</p>
+<ol>
+<li><p>首先是将输入补全，对后边的补上0到15的数</p>
+<p><img src="\20161204\1.png" alt="1"></p>
+</li>
+<li><p>进行加操作</p>
+</li>
+</ol>
+<p><img src="F:\Blog\source\_posts\20161204\2.png" alt="2"></p>
+<ol>
+<li>与数组相加</li>
+</ol>
+<p><img src="F:\Blog\source\_posts\20161204\3.png" alt="3"></p>
+<ol>
+<li>进行AES加密，密钥为6BCDC67A6B2B7C9D8DA459B1AB9D0680，最后与固定字符串进行比对，求逆的过程非常简单</li>
+</ol>
+<p>所以求逆的过程并不复杂，只需要整理出处理流程逆回去即可</p>
+<h2 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h2><p>由于java端代码并不复杂，所以直接加载程序进入动态调试，直接程序崩溃，找到init_array段，看到了原因，一共有两个函数用来反调试，第一个和最后一个，这里我们直接修改so库来绕过反调试</p>
+<p><img src="F:\Blog\source\_posts\20161204\4.png" alt="4"></p>
+<p>绕过第一个的方法只用简单改一下程序逻辑</p>
+<p>![<img src="file:///F:/Blog/source/_posts/20161204/5.png" alt="img"></p>
+<p><img src="F:\Blog\source\_posts\20161204\6.png" alt="6"></p>
+<p>以上为两种修改方法，总之只要让他直接返回而不去执行下面的kill函数即可，用ASShell找到arm的汇编代码，直接用winHex修改so文件</p>
+<p><img src="F:\Blog\source\_posts\20161204\7.png" alt="7"></p>
+<p>第二个反调试我们直接将汇编代码改为返回，即直接把最后一句指令改到函数执行的顶部，则函数直接返回，这种方法也适用于第一个反调试</p>
+<p><img src="F:\Blog\source\_posts\20161204\8.png" alt="8"></p>
+<p>接下来就可以直接进入主函数进行调试了，找到ch函数</p>
+<p><img src="F:\Blog\source\_posts\20161204\9.png" alt="9"></p>
+<p>进行输入的第一次处理，补全输入，将输入覆盖到0到15的前几个值</p>
+<p><img src="F:\Blog\source\_posts\20161204\11.png" alt="11"></p>
+<p>然后是一段代码反调试，这个程序所有的反调试都是这一个套路就是读取TracerPid看他的值是不是为0</p>
+<p><img src="F:\Blog\source\_posts\20161204\12.png" alt="12"></p>
+<p><img src="F:\Blog\source\_posts\20161204\13.png" alt="13"></p>
+<p>有两种方法，一个是下断点到该地址，然后修改寄存器r0的值不断地改来通过这段反调试代码，一种方法是直接在内存中找到读取tracerpid时的数据修改掉它的值就可以直接跳过，所以第二种方法较为简单，特别是在应付如此多反调试的程序中，毫无疑问是最省事的。我们知道我们读取的是r6的值，所以我们希望直接修改这个数据段的tracerpid的值来直接跳过。</p>
+<p><img src="F:\Blog\source\_posts\20161204\14.png" alt="14"></p>
+<p>随后进行的一段代码就是动态解密函数段，解密的函数段为loc_24c8做的操作是异或，此时我们直接下断点到调用函数处，然后该跟进函数即可，点入该函数，ida中按p重新分析，f5生成伪码，在关键函数处下断，分析完了，我们可以进行动态调试了</p>
+<p><img src="F:\Blog\source\_posts\20161204\15.png" alt="15"></p>
+<p>进入函数后，程序先将前一段代码又加密回去，然后对输入进行第二步处理</p>
+<p><img src="F:\Blog\source\_posts\20161204\16.png" alt="16"></p>
+<p>接着又是一个反调试，同样的方法绕过，继续解密代码段，并且执行</p>
+<p>进入到第三层，又要绕过一个反调试，我们直接定位输入到处理函数</p>
+<p><img src="F:\Blog\source\_posts\20161204\17.png" alt="17"></p>
+<p>汇编代码可知，将r0加r5的值赋给r3，r8加r5的值赋给r2，再将r2与r3相加，其中r8为我们前边处理过后的输入部分，再将加后的结果给r1加r5，r5从0取到16</p>
+<p><img src="F:\Blog\source\_posts\20161204\18.png" alt="18"></p>
+<p>处理过后的值</p>
+<p><img src="F:\Blog\source\_posts\20161204\19.png" alt="19"></p>
+<p>与前边方法一样，终于进入最后一个代码段了，这一部分代码为手写AES加密</p>
+<p>这之前先简单的分析一下AES加密算法吧</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2016/11/25/github博客搭建全记录/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-12-04 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/安全技术/">安全技术<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/移动安全/">移动安全<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2016 李南均
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
