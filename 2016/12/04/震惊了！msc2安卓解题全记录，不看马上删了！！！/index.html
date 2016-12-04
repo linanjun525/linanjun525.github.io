@@ -141,49 +141,49 @@ var _hmt = _hmt || [];
 <p>由于程序分析过程太长了，长得都要忘了我们是要看输入怎么处理的，所以我把对输入进行处理的方式放在最前边，有个大体印象才不致忘记</p>
 <ol>
 <li><p>首先是将输入补全，对后边的补上0到15的数</p>
-<p><img src="pic\20161204\1.png" alt="1"></p>
+<p><img src="https://linanjun525.github.io/pic/20161204/1.png" alt="1"></p>
 </li>
 <li><p>进行加操作</p>
 </li>
 </ol>
-<p><img src="pic\20161204\2.png" alt="2"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\2.png" alt="2"></p>
 <ol>
 <li>与数组相加</li>
 </ol>
-<p><img src="pic\20161204\3.png" alt="3"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\3.png" alt="3"></p>
 <ol>
 <li>进行AES加密，密钥为6BCDC67A6B2B7C9D8DA459B1AB9D0680，最后与固定字符串进行比对，求逆的过程非常简单</li>
 </ol>
 <p>所以求逆的过程并不复杂，只需要整理出处理流程逆回去即可</p>
 <h2 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h2><p>由于java端代码并不复杂，所以直接加载程序进入动态调试，直接程序崩溃，找到init_array段，看到了原因，一共有两个函数用来反调试，第一个和最后一个，这里我们直接修改so库来绕过反调试</p>
-<p><img src="pic\20161204\4.png" alt="4"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\4.png" alt="4"></p>
 <p>绕过第一个的方法只用简单改一下程序逻辑</p>
-<p>![<img src="pic/20161204/5.png" alt="img"></p>
-<p><img src="F:\Blog\source\_posts\20161204\6.png" alt="6"></p>
+<p>![<img src="https://linanjun525.github.io/pic\20161204\5.png" alt="img"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\6.png" alt="6"></p>
 <p>以上为两种修改方法，总之只要让他直接返回而不去执行下面的kill函数即可，用ASShell找到arm的汇编代码，直接用winHex修改so文件</p>
-<p><img src="pic\20161204\7.png" alt="7"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\7.png" alt="7"></p>
 <p>第二个反调试我们直接将汇编代码改为返回，即直接把最后一句指令改到函数执行的顶部，则函数直接返回，这种方法也适用于第一个反调试</p>
-<p><img src="pic\20161204\8.png" alt="8"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\8.png" alt="8"></p>
 <p>接下来就可以直接进入主函数进行调试了，找到ch函数</p>
-<p><img src="pic\20161204\9.png" alt="9"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\9.png" alt="9"></p>
 <p>进行输入的第一次处理，补全输入，将输入覆盖到0到15的前几个值</p>
-<p><img src="pic\20161204\11.png" alt="11"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\11.png" alt="11"></p>
 <p>然后是一段代码反调试，这个程序所有的反调试都是这一个套路就是读取TracerPid看他的值是不是为0</p>
-<p><img src="pic\20161204\12.png" alt="12"></p>
-<p><img src="pic\20161204\13.png" alt="13"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\12.png" alt="12"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\13.png" alt="13"></p>
 <p>有两种方法，一个是下断点到该地址，然后修改寄存器r0的值不断地改来通过这段反调试代码，一种方法是直接在内存中找到读取tracerpid时的数据修改掉它的值就可以直接跳过，所以第二种方法较为简单，特别是在应付如此多反调试的程序中，毫无疑问是最省事的。我们知道我们读取的是r6的值，所以我们希望直接修改这个数据段的tracerpid的值来直接跳过。</p>
-<p><img src="pic\20161204\14.png" alt="14"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\14.png" alt="14"></p>
 <p>随后进行的一段代码就是动态解密函数段，解密的函数段为loc_24c8做的操作是异或，此时我们直接下断点到调用函数处，然后该跟进函数即可，点入该函数，ida中按p重新分析，f5生成伪码，在关键函数处下断，分析完了，我们可以进行动态调试了</p>
-<p><img src="pic\20161204\15.png" alt="15"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\15.png" alt="15"></p>
 <p>进入函数后，程序先将前一段代码又加密回去，然后对输入进行第二步处理</p>
-<p><img src="pic\20161204\16.png" alt="16"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\16.png" alt="16"></p>
 <p>接着又是一个反调试，同样的方法绕过，继续解密代码段，并且执行</p>
 <p>进入到第三层，又要绕过一个反调试，我们直接定位输入到处理函数</p>
-<p><img src="pic\20161204\17.png" alt="17"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\17.png" alt="17"></p>
 <p>汇编代码可知，将r0加r5的值赋给r3，r8加r5的值赋给r2，再将r2与r3相加，其中r8为我们前边处理过后的输入部分，再将加后的结果给r1加r5，r5从0取到16</p>
-<p><img src="pic\20161204\18.png" alt="18"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\18.png" alt="18"></p>
 <p>处理过后的值</p>
-<p><img src="pic\20161204\19.png" alt="19"></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\19.png" alt="19"></p>
 <p>与前边方法一样，终于进入最后一个代码段了，这一部分代码为手写AES加密</p>
 <p>这之前先简单的分析一下AES加密算法吧</p>
 	  
@@ -195,12 +195,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Anterior</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2016/11/25/github博客搭建全记录/" type="button" class="btn btn-default ">Next<i
+    <a href="/2016/11/25/github博客搭建全记录/" type="button" class="btn btn-default ">Próximo<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -213,7 +213,7 @@ var _hmt = _hmt || [];
 	<!-- comment -->
 	
 <section id="comment">
-    <h2 class="title">Comments</h2>
+    <h2 class="title">Comentários</h2>
 
     
 </section>
