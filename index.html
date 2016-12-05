@@ -197,11 +197,60 @@ var _hmt = _hmt || [];
 <p>处理过后的值</p>
 <p><img src="https://linanjun525.github.io/pic\20161204\19.png" alt="19"></p>
 <p>与前边方法一样，终于进入最后一个代码段了，这一部分代码为手写AES加密</p>
-<p>这之前先简单的分析一下AES加密算法吧</p>
+<p>这之前先简单的分析一下AES加密算法</p>
+<p>AES加密算法一共有十轮，每一轮都要经过s盒代换，行移位和列混淆、轮密钥加的操作</p>
+<p><strong>s盒代换</strong></p>
+<p>s盒代换是一个查表的过程，是AES算法中唯一一步非线性的过程，所以关键就是S盒，s盒的构造方法如下：</p>
+<p>1）初始化S盒，按行升序排列的字节初始化。行x列y的字节是xy，行号和列号从0开始计数。</p>
+<p>2）求出每一个元素在GF(2^8)中的逆。00被映射为它自身。</p>
+<p>3）仿射变换。对上一步中的每一个字节的每一位作如下变换</p>
+<p>yi=xi + x(i+4)mod8 + x(i+5)mod8 + x(i+6)mod8 + x(i+7)mod8 + ci</p>
+<p>s盒：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">unsignedchar sBox[] =</div><div class="line"></div><div class="line">&#123;/*  0    1     2     3    4     5    6     7    8    9     a     b    c    d    e    f */</div><div class="line"></div><div class="line">    0x63,0x7c,0x77,0x7b,0xf2,0x6b,0x6f,0xc5,0x30,0x01,0x67,0x2b,0xfe,0xd7,0xab,0x76,/*0*/ </div><div class="line"></div><div class="line">    0xca,0x82,0xc9,0x7d,0xfa,0x59,0x47,0xf0,0xad,0xd4,0xa2,0xaf,0x9c,0xa4,0x72,0xc0,/*1*/</div><div class="line"></div><div class="line">    0xb7,0xfd,0x93,0x26,0x36,0x3f,0xf7,0xcc,0x34,0xa5,0xe5,0xf1,0x71,0xd8,0x31,0x15,/*2*/</div><div class="line"></div><div class="line">    0x04,0xc7,0x23,0xc3,0x18,0x96,0x05,0x9a,0x07,0x12,0x80,0xe2,0xeb,0x27,0xb2,0x75,/*3*/</div><div class="line"></div><div class="line">    0x09,0x83,0x2c,0x1a,0x1b,0x6e,0x5a,0xa0,0x52,0x3b,0xd6,0xb3,0x29,0xe3,0x2f,0x84,/*4*/</div><div class="line"></div><div class="line">    0x53,0xd1,0x00,0xed,0x20,0xfc,0xb1,0x5b,0x6a,0xcb,0xbe,0x39,0x4a,0x4c,0x58,0xcf,/*5*/</div><div class="line"></div><div class="line">    0xd0,0xef,0xaa,0xfb,0x43,0x4d,0x33,0x85,0x45,0xf9,0x02,0x7f,0x50,0x3c,0x9f,0xa8,/*6*/ </div><div class="line"></div><div class="line">    0x51,0xa3,0x40,0x8f,0x92,0x9d,0x38,0xf5,0xbc,0xb6,0xda,0x21,0x10,0xff,0xf3,0xd2,/*7*/</div><div class="line"></div><div class="line">    0xcd,0x0c,0x13,0xec,0x5f,0x97,0x44,0x17,0xc4,0xa7,0x7e,0x3d,0x64,0x5d,0x19,0x73,/*8*/</div><div class="line"></div><div class="line">    0x60,0x81,0x4f,0xdc,0x22,0x2a,0x90,0x88,0x46,0xee,0xb8,0x14,0xde,0x5e,0x0b,0xdb,/*9*/</div><div class="line"></div><div class="line">    0xe0,0x32,0x3a,0x0a,0x49,0x06,0x24,0x5c,0xc2,0xd3,0xac,0x62,0x91,0x95,0xe4,0x79,/*a*/</div><div class="line"></div><div class="line">    0xe7,0xc8,0x37,0x6d,0x8d,0xd5,0x4e,0xa9,0x6c,0x56,0xf4,0xea,0x65,0x7a,0xae,0x08,/*b*/</div><div class="line"></div><div class="line">    0xba,0x78,0x25,0x2e,0x1c,0xa6,0xb4,0xc6,0xe8,0xdd,0x74,0x1f,0x4b,0xbd,0x8b,0x8a,/*c*/</div><div class="line"></div><div class="line">    0x70,0x3e,0xb5,0x66,0x48,0x03,0xf6,0x0e,0x61,0x35,0x57,0xb9,0x86,0xc1,0x1d,0x9e,/*d*/</div><div class="line"></div><div class="line">    0xe1,0xf8,0x98,0x11,0x69,0xd9,0x8e,0x94,0x9b,0x1e,0x87,0xe9,0xce,0x55,0x28,0xdf,/*e*/</div><div class="line"></div><div class="line">    0x8c,0xa1,0x89,0x0d,0xbf,0xe6,0x42,0x68,0x41,0x99,0x2d,0x0f,0xb0,0x54,0xbb,0x16 /*f*/</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>输入 6A ，查找S盒x=6, y=a =&gt; 02。反过来，输入02， 查找逆S盒x=0, y=2 =&gt; 6a</p>
+<p><strong>行移位</strong></p>
+<p>第一行不变，第二行循环左移1字节，第三行循环左移2字节，第三行循环左移3字节。</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\20.png" alt="20"></p>
+<p><strong>列混淆</strong></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\21.png" alt="21"></p>
+<p><strong>轮密钥加</strong></p>
+<p><img src="https://linanjun525.github.io/pic\20161204\22.png" alt="22"></p>
+<p>我在网上找了一点AES代码进行大概分析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">// 字节代换, 行移位, 列混淆，轮密钥加操作  </div><div class="line"> </div><div class="line">       // sm_te 变换包括了字节代换，行移位，列混淆操作  </div><div class="line"> </div><div class="line">       t1 = (sm_te1[w1 &gt;&gt; 24] ^ sm_te2[(w2 &gt;&gt; 16) &amp; 0xFF] ^  </div><div class="line"> </div><div class="line">             sm_te3[(w3 &gt;&gt; 8) &amp; 0xFF] ^ sm_te4[w4 &amp; 0xFF]  </div><div class="line"> </div><div class="line">            ) ^ m_ke[i][0];  </div><div class="line"> </div><div class="line">       t2 = (sm_te1[w2 &gt;&gt; 24] ^ sm_te2[(w3 &gt;&gt; 16) &amp; 0xFF] ^  </div><div class="line"> </div><div class="line">             sm_te3[(w4 &gt;&gt; 8) &amp; 0xFF] ^ sm_te4[w1 &amp; 0xFF]  </div><div class="line"> </div><div class="line">            ) ^ m_ke[i][1];  </div><div class="line"> </div><div class="line">       t3 = (sm_te1[w3 &gt;&gt; 24] ^ sm_te2[(w4 &gt;&gt; 16) &amp; 0xFF] ^  </div><div class="line"> </div><div class="line">             sm_te3[(w1 &gt;&gt; 8) &amp; 0xFF] ^ sm_te4[w2 &amp; 0xFF]  </div><div class="line"> </div><div class="line">            ) ^ m_ke[i][2];  </div><div class="line"> </div><div class="line">       t4 = (sm_te1[w4 &gt;&gt; 24] ^ sm_te2[(w1 &gt;&gt; 16) &amp; 0xFF] ^  </div><div class="line"> </div><div class="line">             sm_te3[(w2 &gt;&gt; 8) &amp; 0xFF] ^ sm_te4[w3 &amp; 0xFF]  </div><div class="line"> </div><div class="line">            ) ^ m_ke[i][3];</div></pre></td></tr></table></figure>
+<p>sm_te数组生成过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">void getTE(u32_t te1[], u32_t te2[], u32_t te3[], u32_t te4[], unsigned char sbox[], size_t num)  </div><div class="line">  </div><div class="line">&#123;  </div><div class="line">  </div><div class="line">    for (size_t i = 0; i &lt; num; ++i) &#123;  </div><div class="line">        te1[i] = (u32_t(mul(sbox[i], 2)) &lt;&lt; 24) | (u32_t(sbox[i]) &lt;&lt; 16)</div><div class="line">        					| (u32_t(sbox[i]) &lt;&lt; 8) | u32_t(mul(sbox[i], 3));    </div><div class="line">        te2[i] = (u32_t(mul(sbox[i], 3)) &lt;&lt; 24) | (u32_t(mul(sbox[i], 2)) &lt;&lt; 16)</div><div class="line">        					| (u32_t(sbox[i]) &lt;&lt; 8) | u32_t(sbox[i]);    </div><div class="line">        te3[i] = (u32_t(sbox[i]) &lt;&lt; 24) | (u32_t(mul(sbox[i], 3)) &lt;&lt; 16)</div><div class="line">       						| (u32_t(mul(sbox[i], 2)) &lt;&lt; 8) | u32_t(sbox[i]);    </div><div class="line">        te4[i] = (u32_t(sbox[i]) &lt;&lt; 24) | (u32_t(sbox[i]) &lt;&lt; 16)</div><div class="line">        					| (u32_t(mul(sbox[i], 3)) &lt;&lt; 8) | u32_t(mul(sbox[i], 2));    </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>首先看t1的生成过程，是分别将w1&gt;&gt;24,w2&gt;&gt;16,w3&gt;&gt;8,w4&gt;&gt;4分别对应的就是D0，D5，D10，D15，其中w代表一个字也就是4个字节，AES处理都是一个字一个字地读入</p>
+<p>然后我们就找sm_te数组的生成过程，拿te1举例，就是将sbox的相应位置代入，也就是sbox[i]进行了s盒变换，然后列混淆并拼成一个字，t1整个生成过程转换成数学公式就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">te1=2*s[D0]|s[D0]|s[D0]|3*s[D0]</div><div class="line">te2=3*s[D5]|2*s[D5]|s[D5]|s[D5]</div><div class="line">te3=s[D10]|3*s[D10]|2*s[D10]|s[D10]</div><div class="line">te4=s[D15]|s[D15]|3*s[D15]|2*s[D15]</div><div class="line">t1=te1^te2^te3^te4</div></pre></td></tr></table></figure>
+<p>所以不难看出生成的每个t1就是竖行排列的字，再与轮密钥异或，第一段代码是行移位和轮密钥加的混合，第二段则是列混淆和s盒代换的混合。</p>
+<p>AES算法差不多就介绍完了，至于其他的密钥扩展就不再深究了。现在来分析反汇编中的AES算法部分</p>
+<p>轮密钥加的过程</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\23.png" alt="23"></p>
+<p>每个数值取出来的是字，DWORD也就是四个字节，AES是分组密码这个是第一步，密钥我们可以通过查看到为6BCDC67A6B2B7C9D8DA459B1AB9D0680</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\24.png" alt="24"></p>
+<p>v18为输入的第一个字的地址</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\25.png" alt="25"></p>
+<p>查看v25的值可以看到这是一个s盒，每隔一个字节为s盒</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\26.png" alt="26"></p>
+<p>然后我们进入十轮循环，首先是字节代换的操作</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\27.png" alt="27"></p>
+<p>行移位过程，生成的第二个字的顺序D5|D6|D7|D1</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\28.png" alt="28"></p>
+<p>看到这里我们已经大概看出来了这是一个AES加密过程，好吧，是我分析不下去了。手动分析AES的过程实在是太艰辛，而且又是反汇编的看都看不懂，所以我们就根据这个题的特征来看，这个题表现为AES的特征主要有两点，第一是十轮加密，第二是AES盒，第三是数据之间相互组合的过程都符合AES的三轮数据处理，本来加密算法我们知道也不是你随便编一个就行了，所以现存的最保险的就只有AES加密了，而且再怎么自己编写个算法也不可能进行十轮迭代，有这个水平的只有AES了吧！为了证明他是AES，我们可在后边找到结果进行验证，现在我们让程序继续执行下去，执行到最后加密结果处。</p>
+<p>整理一下加密之前的数据为：</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\29.png" alt="29"></p>
+<p>加密过后的结果</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\30.png" alt="30"></p>
+<p>将加密后的结果与下面的数组作比较</p>
+<p><img src="https://linanjun525.github.io/pic\20161204\31.png" alt="31"></p>
+<p>好了，现在整个程序的分析就到这了，只需逆向解密就行了</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>没有绝对的安全，只有相对的攻防。这个题整个解题过程不算很难，但是调试的过程需要耐心，最难的应该是最后对AES源代码的分析吧，这个分析不出来前边做的所有工作都废了，之前的反调试和动态解密过程都是一个套路。里边用到的很多加固技巧也对以后做题有很大的启示。终于把一道困扰我大半年的安卓题给分析完了！加油！</p>
+<hr>
+<p>最伟大的思想和行动往往需要最微不足道的开始</p>
 
 	
 	</div>
-  <a type="button" href="/2016/12/04/震惊了！msc2安卓解题全记录，不看马上删了！！！/#more" class="btn btn-default more">Leia Mais</a>
+  <a type="button" href="/2016/12/04/震惊了！msc2安卓解题全记录，不看马上删了！！！/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -277,7 +326,7 @@ var _hmt = _hmt || [];
 
 	
 	</div>
-  <a type="button" href="/2016/11/25/github博客搭建全记录/#more" class="btn btn-default more">Leia Mais</a>
+  <a type="button" href="/2016/11/25/github博客搭建全记录/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -306,7 +355,7 @@ var _hmt = _hmt || [];
 			
   <div id="site_search">
    <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="Busca" class="st-search-input st-default-search-input form-control"/>
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
    </div>  
   <div id="local-search-result"></div>
   </div>
@@ -315,7 +364,7 @@ var _hmt = _hmt || [];
 		
 			
 	<div class="widget">
-		<h4>Categorias</h4>
+		<h4>Categories</h4>
 		<ul class="tag_box inline list-unstyled">
 		
 			<li><a href="/categories/安全技术/">安全技术<span>1</span></a></li>
@@ -341,7 +390,7 @@ var _hmt = _hmt || [];
 		
 			
 <div class="widget">
-  <h4>Posts recentes</h4>
+  <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
     
       <li>
