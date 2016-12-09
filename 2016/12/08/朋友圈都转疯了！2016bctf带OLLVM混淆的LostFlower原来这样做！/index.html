@@ -131,27 +131,27 @@ var _hmt = _hmt || [];
 
 	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>第一次分析so层混淆的程序，ollvm真的是个神器。最先我还天真地看了半天汇编，ollvm可以让你分析时间翻几十倍。我并没有找到任何方法来抵抗这种混淆的方法，所以要分析只有硬刚。我先整理了一下网上关于ollvm的描述，然后根据我自己分析过程给出一些自己的理解。最后写了一下2016bctf的LostFlower的题解。</p>
 <h2 id="ollvm简介"><a href="#ollvm简介" class="headerlink" title="ollvm简介"></a>ollvm简介</h2><p>ollvm是对于so层函数，c语言函数混淆的方法。之前在java层遇到过诸如proguard的一些混淆，但是大家对于他们的评价都是这种混淆只是混乱了一下逻辑，并没有什么作用，让分析时间增多，也只是略微增多一点。但是我想说ollvm是让人绝望地增多，当然也可能是我第一次接触这个东西。原本好好的代码经过ollvm处理后的结果就是这样的</p>
-<p><img src="F:\Blog\public\pic\20161208\1.png" alt="1"></p>
+<p><img src="F:\Blog\source\_posts\朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！\1.png" alt="1"></p>
 <p>具体原理（网上找的）：正常的求和代码</p>
-<p><img src="F:\Blog\public\pic\20161208\2.png" alt="2"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\2.png" alt="2"></p>
 <p>复杂一点的表达方式：</p>
-<p><img src="F:\Blog\public\pic\20161208\3.png" alt="3"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\3.png" alt="3"></p>
 <p>再复杂一点的表达方式：</p>
-<p><img src="F:\Blog\public\pic\20161208\4.png" alt="4"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\4.png" alt="4"></p>
 <p>​    可以看到，函数执行的流程不再是由上到下的顺序流了，而是根据pc的值，动态得选择if块中的语句执行，同时把下一个if块的地址赋予pc指针，这个就是OLLVM大概的思路。</p>
 <p>​    在做bctf这道题时，总结出ollvm的套路：定义一个变量，并不断使用这个变量，对他赋值对他大小进行比较、跳转。然后在这中间加入我们程序中真正有用的逻辑。我们在进行分析的时候需要不断地跟踪这个变量，一般来说这个变量是不会改变的。然后在中间找到代码真正的逻辑，由于代码不停的上下跳转也很难定到一个地方让他执行到这一步。所以我们需要特别仔细，特别关注if语句中判断是否相等条件下进行的处理。</p>
 <h2 id="LostFlower"><a href="#LostFlower" class="headerlink" title="LostFlower"></a>LostFlower</h2><p>打开这道题还是第一步扔到jeb中查看</p>
-<p><img src="F:\Blog\public\pic\20161208\5.png" alt="5"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\5.png" alt="5"></p>
 <p>逻辑很简单，将输入变为double类型，然后将这个值使用so中的stringFromJNI进行处理，返回结果如果等于6，那么就可以直接处理过后生成flag。ida打开so文件，由于没有什么反调试的措施，所以我们直接上动态调试。</p>
 <p>跳过一堆判断函数后，找到了处理的关键check1函数，参数是我们输入数字的整数部分，我想吐槽，正常人会输小数？进入该函数后，又是一大堆烦人的跳转，我们从返回值逆向回去，也可以一步一步地走来看。其实在进行了几步后我们就可以看到他的规律，程序通过v2这个变量也就是我们寄存器r0的值，不断用它进行大于小于、等于不等于的比较，跳转到不同逻辑，有一些逻辑不涉及到改变v2的值，所以不会影响整个程序的流程，重点关注对v2进行赋值的代码。下面通过一整个循环大家就清楚了</p>
-<p><img src="F:\Blog\public\pic\20161208\6.png" alt="6"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\6.png" alt="6"></p>
 <p>判断v2是否等于4A2AC114，等于赋值FE0D772E给他</p>
-<p><img src="F:\Blog\public\pic\20161208\7.png" alt="7"></p>
-<p><img src="F:\Blog\public\pic\20161208\8.png" alt="8"></p>
-<p><img src="F:\Blog\public\pic\20161208\9.png" alt="9"></p>
-<p><img src="F:\Blog\public\pic\20161208\10.png" alt="10"></p>
-<p><img src="F:\Blog\public\pic\20161208\11.png" alt="11"></p>
-<p><img src="F:\Blog\public\pic\20161208\12.png" alt="12"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\7.png" alt="7"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\8.png" alt="8"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\9.png" alt="9"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\10.png" alt="10"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\11.png" alt="11"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\12.png" alt="12"></p>
 <p>关键代码如上，就跟我们分析的一样关键是看v2的值的跳转，我们理清里边包含的逻辑，就是每一轮对v3进行加1，一共加到10，每一次循环都执行第一张图的处理，我们来分析这段代码的处理：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">v5 = j_j___aeabi_i2d(v3);</div><div class="line">v7 = j_j_pow_0(0, 1076101120, v5, v6);</div><div class="line">v9 = j_j___aeabi_d2iz(v7, v8);</div><div class="line">v10 = j_j___aeabi_idiv(v17, v9);</div><div class="line">v11 = j_j___modsi3(v10, 10);</div><div class="line">v12 = my_pow(v11);</div><div class="line">v18 = -(-v18 - v12);</div><div class="line">v2 = (void *)142850058;</div></pre></td></tr></table></figure>
 <p>这里几个函数都是一些除法、求余的操作。经过几轮动态调试，事实上，这个for循环的前五行代码就是逆向取出一个10位整数的每一位。举个例子，输入为1234567890，每一轮得到的依次为0，9，8，7，6，5，4，3，2，1。</p>
@@ -159,14 +159,14 @@ var _hmt = _hmt || [];
 <p>用C代码重现下这个for循环：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">int i;</div><div class="line">int integer; // 用户输入的整数部分</div><div class="line">int out;    // 即v12</div><div class="line"></div><div class="line">out = 0;</div><div class="line">for (i = 0; i &lt; 10; ++i) &#123;</div><div class="line">    int x;</div><div class="line">    </div><div class="line">    x = integer / pow(10, i) % 10;</div><div class="line">    out += pwo(x, 10);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>继续执行：</p>
-<p><img src="F:\Blog\public\pic\20161208\13.png" alt="13"></p>
-<p><img src="F:\Blog\public\pic\20161208\14.png" alt="14"></p>
-<p><img src="F:\Blog\public\pic\20161208\15.png" alt="15"></p>
-<p><img src="F:\Blog\public\pic\20161208\16.png" alt="16"></p>
-<p><img src="F:\Blog\public\pic\20161208\17.png" alt="17"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\13.png" alt="13"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\14.png" alt="14"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\15.png" alt="15"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\16.png" alt="16"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\17.png" alt="17"></p>
 <p>sub_7A965AA4，计算括号内的值，为负补之返回，不为负则直接返回</p>
-<p><img src="F:\Blog\public\pic\20161208\18.png" alt="18"></p>
-<p>继续看主函数，需要返回负值，并且输入大于1000000000，则输出为6。由于逻辑太复杂，所以简单点的方法是直接修改返回值，可以看到这两个就是最终的判断条件，其他地方再没有任何有用的判断代码了。<img src="F:\Blog\public\pic\20161208\19.png" alt="19"></p>
+<p><img src="https://linanjun525.github.io\pic\20161208\18.png" alt="18"></p>
+<p>继续看主函数，需要返回负值，并且输入大于1000000000，则输出为6。由于逻辑太复杂，所以简单点的方法是直接修改返回值，可以看到这两个就是最终的判断条件，其他地方再没有任何有用的判断代码了。<img src="https://linanjun525.github.io\pic\20161208\19.png" alt="19"></p>
 <p>所以关键在于我们要让之前的sub_7A965AA4返回负值。通过对sub_1AA4的汇编代码的分析，发现了溢出点：NEGS R1, R1。其中 <code>NEGS</code> 的作用是这样的：将目的操作数的所有数据位取反加1。当参数为0x80000000（负的2^31，最小的负数）时，所有数据位取反后为0x8fffffff，再加1后发生溢出，最后值为0x80000000。</p>
 <p>解密代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int pow_table[] = &#123;0, 1, 0x400, 0xe6a9, 0x100000, 0x9502f9, 0x39aa400, 0x10d63af1, 0x40000000, 0xcfd41b91&#125;;</div><div class="line">	int i;</div><div class="line"></div><div class="line">	for (i = 1000000000; i &lt;= 0x80000000; ++i) &#123;</div><div class="line">		int a0 = i % 10;</div><div class="line">		int a1 = (i % 100) / 10;</div><div class="line">		int a2 = (i % 1000) / 100;</div><div class="line">		int a3 = (i % 10000) / 1000;</div><div class="line">		int a4 = (i % 100000) / 10000;</div><div class="line">		int a5 = (i % 1000000) / 100000;</div><div class="line">		int a6 = (i % 10000000) / 1000000;</div><div class="line">		int a7 = (i % 100000000) / 10000000;</div><div class="line">		int a8 = (i % 1000000000) / 100000000;</div><div class="line">		int a9 = i / 1000000000;</div><div class="line">		</div><div class="line">		int sum = pow_table[a0] + pow_table[a1] + pow_table[a2] + pow_table[a3] + pow_table[a4] + pow_table[a5] + pow_table[a6] + pow_table[a7] + pow_table[a8] + pow_table[a9];</div><div class="line">		if (((i - sum) &amp; 0xffffffff) == 0x80000000) </div><div class="line">		&#123;</div><div class="line">			printf(&quot;ok, %d\n&quot;, i);</div><div class="line">			break;</div><div class="line">		&#125;</div><div class="line">		if(i % 1000000 == 0)</div><div class="line">		&#123;</div><div class="line">			printf(&quot;%d\n&quot;,i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -180,12 +180,12 @@ var _hmt = _hmt || [];
 
     
     
-    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a>
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Anterior</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2016/12/05/机器学习实战（一）k-邻近算法/" type="button" class="btn btn-default ">下一頁<i
+    <a href="/2016/12/05/机器学习实战（一）k-邻近算法/" type="button" class="btn btn-default ">Próximo<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -198,7 +198,7 @@ var _hmt = _hmt || [];
 	<!-- comment -->
 	
 <section id="comment">
-    <h2 class="title">留言</h2>
+    <h2 class="title">Comentários</h2>
 
     
 </section>
