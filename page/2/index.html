@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>Page 2 | Rve</title>
+  <title>Página 2 | Rve</title>
   <meta name="author" content="李南均">
   
   
@@ -130,11 +130,11 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2016/12/04/震惊了！msc2安卓解题全记录，不看马上删了！！！/" >震惊了！！msc2安卓题全记录，不看马上就删了！！！</a>
+			<a href="/2016/12/05/机器学习实战（一）k-邻近算法/" >机器学习实战（一）k-邻近算法</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
-		<div class="date">post @ 2016-12-04  </div>
+		<div class="date">post @ 2016-12-05  </div>
 		</div>
 	</div>
 	
@@ -144,190 +144,59 @@ var _hmt = _hmt || [];
   <div class="row">
 	
 	
-		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>第二届阿里移动安全赛第二题，花了很多时间来彻底理清楚逻辑，做完这道题感觉自己在动态调试、arm汇编代码技巧上都有不少收获，所以首先我大概总结一下这道题的解题过程，题中几个难点如下：</p>
+		<h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x6700;&#x8FD1;&#x5F00;&#x59CB;&#x770B;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x5B9E;&#x6218;&#x8FD9;&#x672C;&#x4E66;&#xFF0C;&#x6240;&#x4EE5;&#x4E13;&#x95E8;&#x5B9A;&#x671F;&#x5199;&#x4E00;&#x70B9;&#x81EA;&#x5DF1;&#x7684;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;&#x4EE5;&#x53CA;&#x5206;&#x6790;&#x4E0A;&#x6765;</p>
+<p>&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7684;&#x5E94;&#x7528;&#xFF1A;</p>
+<p>&#x201C;&#x73B0;&#x4ECA;&#xFF0C;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x5DF2;&#x7ECF;&#x7528;&#x4E8E;&#x591A;&#x4E2A;&#x9886;&#x57DF;&#xFF0C;&#x8FDC;&#x8D85;&#x51FA;&#x5927;&#x591A;&#x6570;&#x4EBA;&#x7684;&#x60F3;&#x8C61;&#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x662F;&#x5047;&#x60F3;&#x7684;&#x4E00;&#x65E5;&#xFF0C;&#x5176;&#x4E2D;&#x5F88;&#x591A;&#x573A;&#x666F;&#x90FD;&#x4F1A;&#x78B0;&#x5230;&#x673A;&#x5668;&#x5B66;&#x4E60;&#xFF1A;&#x5047;&#x8BBE;&#x4F60;&#x60F3;&#x8D77;&#x4ECA;&#x5929;&#x662F;&#x67D0;&#x4F4D;&#x670B;&#x53CB;&#x7684;&#x751F;&#x65E5;&#xFF0C;&#x6253;&#x7B97;&#x901A;&#x8FC7;&#x90AE;&#x5C40;&#x7ED9;&#x5979;&#x5BC4;&#x4E00;&#x5F20;&#x751F;&#x65E5;&#x8D3A;&#x5361;&#x3002;&#x4F60;&#x6253;&#x5F00;&#x6D4F;&#x89C8;&#x5668;&#x641C;&#x7D22;&#x8DA3;&#x5473;&#x5361;&#x7247;&#xFF0C;&#x641C;&#x7D22;&#x5F15;&#x64CE;&#x5C06;&#x8BB0;&#x5F55;&#x8FD9;&#x6B21;&#x70B9;&#x51FB;&#xFF0C;&#x5E76;&#x4ECE;&#x4E2D;&#x5B66;&#x4E60;&#x4EE5;&#x4F18;&#x5316;&#x4E0B;&#x6B21;&#x641C;&#x7D22;&#x7ED3;&#x679C;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x4F60;&#x68C0;&#x67E5;&#x7535;&#x5B50;&#x90AE;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x6B64;&#x65F6;&#x5783;&#x573E;&#x90AE;&#x4EF6;&#x8FC7;&#x6EE4;&#x5668;&#x5DF2;&#x7ECF;&#x5728;&#x540E;&#x53F0;&#x81EA;&#x52A8;&#x8FC7;&#x6EE4;&#x5783;&#x573E;&#x5E7F;&#x544A;&#x90AE;&#x4EF6;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x653E;&#x5728;&#x5783;&#x573E;&#x7BB1;&#x5185;&#x3002;&#x63A5;&#x7740;&#x4F60;&#x53BB;&#x8D2D;&#x4E70;&#x8FD9;&#x5F20;&#x751F;&#x65E5;&#x5361;&#x7247;&#xFF0C;&#x5E76;&#x7ED9;&#x4F60;&#x670B;&#x53CB;&#x7684;&#x5B69;&#x5B50;&#x6311;&#x9009;&#x4E86;&#x4E00;&#x4E9B;&#x5C3F;&#x5E03;&#x3002;&#x7ED3;&#x8D26;&#x65F6;&#xFF0C;&#x6536;&#x94F6;&#x5458;&#x7ED9;&#x4E86;&#x4F60;&#x4E00;&#x5F20;1&#x7F8E;&#x5143;&#x7684;&#x4F18;&#x60E0;&#x5238;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x4E8E;&#x8D2D;&#x4E70;6&#x7F50;&#x88C5;&#x5564;&#x9152;&#x3002;&#x4E4B;&#x6240;&#x4EE5;&#x4F60;&#x4F1A;&#x5F97;&#x5230;&#x8FD9;&#x5F20;&#x4F18;&#x60E0;&#x5238;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x6B3E;&#x53F0;&#x6536;&#x8D39;&#x8F6F;&#x4EF6;&#x57FA;&#x4E8E;&#x4E4B;&#x524D;&#x7684;&#x7EDF;&#x8BA1;&#x77E5;&#x8BC6;&#xFF0C;&#x8BA4;&#x4E3A;&#x4E70;&#x5C3F;&#x5E03;&#x7684;&#x4EBA;&#x5F80;&#x5F80;&#x4E5F;&#x4F1A;&#x4E70;&#x5564;&#x9152;&#x3002;&#x7136;&#x540E;&#x4F60;&#x53BB;&#x90AE;&#x5C40;&#x90AE;&#x9012;&#x8FD9;&#x5F20;&#x8D3A;&#x5361;&#xFF0C;&#x624B;&#x5199;&#x8BC6;&#x522B;&#x8F6F;&#x4EF6;&#x8BC6;&#x522B;&#x51FA;&#x90AE;&#x5BC4;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x5C06;&#x8D3A;&#x5361;&#x53D1;&#x9001;&#x7ED9;&#x6B63;&#x786E;&#x7684;&#x90AE;&#x8F66;&#x3002;&#x5F53;&#x5929;&#x4F60;&#x8FD8;&#x53BB;&#x4E86;&#x8D37;&#x6B3E;&#x7533;&#x8BF7;&#x673A;&#x6784;&#xFF0C;&#x67E5;&#x770B;&#x81EA;&#x5DF1;&#x662F;&#x5426;&#x80FD;&#x591F;&#x7533;&#x8BF7;&#x8D37;&#x6B3E;&#xFF0C;&#x529E;&#x4E8B;&#x5458;&#x5E76;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x7ED9;&#x51FA;&#x7ED3;&#x679C;&#xFF0C;&#x800C;&#x662F;&#x5C06;&#x4F60;&#x6700;&#x8FD1;&#x7684;&#x91D1;&#x878D;&#x6D3B;&#x52A8;&#x4FE1;&#x606F;&#x8F93;&#x5165;&#x8BA1;&#x7B97;&#x673A;&#xFF0C;&#x6709;&#x8F6F;&#x4EF6;&#x6765;&#x5224;&#x65AD;&#x4F60;&#x662F;&#x5426;&#x5408;&#x683C;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x4F60;&#x8FD8;&#x53BB;&#x8D4C;&#x573A;&#x627E;&#x4E9B;&#x4E50;&#x5B50;&#xFF0C;&#x5F53;&#x4F60;&#x4E0D;&#x5982;&#x524D;&#x95E8;&#x65F6;&#xFF0C;&#x5C3E;&#x968F;&#x4F60;&#x8FDB;&#x6765;&#x7684;&#x4E00;&#x4E2A;&#x5BB6;&#x4F19;&#x88AB;&#x7A81;&#x7136;&#x51FA;&#x73B0;&#x7684;&#x4FDD;&#x5B89;&#x7ED9;&#x62E6;&#x4E86;&#x4E0B;&#x6765;&#x3002;&#x201C;&#x5BF9;&#x4E0D;&#x8D77;&#xFF0C;&#x7D22;&#x666E;&#x5148;&#x751F;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x5F97;&#x4E0D;&#x8BF7;&#x4F60;&#x79BB;&#x5F00;&#x3002;&#x6211;&#x4EEC;&#x4E0D;&#x6B22;&#x8FCE;&#x8001;&#x5343;&#x201D;&#x3002;&#x201C;</p>
+<h2 id="k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;"><a href="#k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;" class="headerlink" title="k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;"></a>k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;</h2><p><strong>k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;&#x6982;&#x8FF0;</strong></p>
+<p>&#x4F18;&#x70B9;&#xFF1A;&#x7CBE;&#x5EA6;&#x9AD8;&#x3001;&#x5BF9;&#x5F02;&#x5E38;&#x503C;&#x4E0D;&#x654F;&#x611F;&#x3001;&#x65E0;&#x6570;&#x636E;&#x8F93;&#x5165;&#x5047;&#x5B9A;</p>
+<p>&#x7F3A;&#x70B9;&#xFF1A;&#x8BA1;&#x7B97;&#x590D;&#x6742;&#x5EA6;&#x9AD8;&#x3001;&#x7A7A;&#x95F4;&#x590D;&#x6742;&#x5EA6;&#x9AD8;</p>
+<p>&#x9002;&#x7528;&#x6570;&#x636E;&#x8303;&#x56F4;&#xFF1A;&#x6570;&#x503C;&#x578B;&#x548C;&#x6807;&#x79F0;&#x578B;</p>
+<p>&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1A;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x6837;&#x672C;&#x6570;&#x636E;&#x96C6;&#x5408;&#xFF0C;&#x4E5F;&#x79F0;&#x4F5C;&#x8BAD;&#x7EC3;&#x6837;&#x672C;&#x96C6;&#xFF0C;&#x5E76;&#x4E14;&#x6837;&#x672C;&#x96C6;&#x4E2D;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x5B58;&#x5728;&#x6807;&#x7B7E;&#xFF0C;&#x5373;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x6837;&#x672C;&#x96C6;&#x4E2D;&#x6BCF;&#x4E00;&#x6570;&#x636E;&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x4E0E;&#x6240;&#x5C5E;&#x5206;&#x7C7B;&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x3002;&#x8F93;&#x5165;&#x6CA1;&#x6709;&#x6807;&#x7B7E;&#x7684;&#x65B0;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x5C06;&#x65B0;&#x6570;&#x636E;&#x7684;&#x6BCF;&#x4E2A;&#x7279;&#x5F81;&#x4E0E;&#x6837;&#x672C;&#x96C6;&#x4E2D;&#x6570;&#x636E;&#x5BF9;&#x5E94;&#x7684;&#x7279;&#x5F81;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x7136;&#x540E;&#x7B97;&#x6CD5;&#x63D0;&#x53D6;&#x6837;&#x672C;&#x96C6;&#x4E2D;&#x7279;&#x5F81;&#x6700;&#x76F8;&#x4F3C;&#x6570;&#x636E;&#x7684;&#x5206;&#x7C7B;&#x6807;&#x7B7E;&#xFF0C;&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x6211;&#x4EEC;&#x53EA;&#x9009;&#x62E9;&#x6837;&#x672C;&#x96C6;&#x4E2D;&#x524D;k&#x4E2A;&#x6700;&#x76F8;&#x4F3C;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;&#x4E2D;k&#x7684;&#x51FA;&#x5904;&#xFF0C;&#x901A;&#x5E38;k&#x662F;&#x4E0D;&#x5927;&#x4E8E;20&#x7684;&#x6574;&#x6570;&#x3002;&#x6700;&#x540E;&#x9009;&#x62E9;k&#x4E2A;&#x6700;&#x76F8;&#x4F3C;&#x6570;&#x636E;&#x4E2D;&#x51FA;&#x73B0;&#x6B21;&#x6570;&#x6700;&#x591A;&#x7684;&#x5206;&#x7C7B;&#xFF0C;&#x4F5C;&#x4E3A;&#x65B0;&#x6570;&#x636E;&#x7684;&#x5206;&#x7C7B;&#x3002;</p>
+<p><strong>k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;&#x4E00;&#x822C;&#x6D41;&#x7A0B;</strong></p>
 <ol>
-<li><strong>反调试</strong>：题中出现多次反调试，但是套路都相同，都可以用相同的方法绕过</li>
-<li><strong>动态恢复</strong>：程序在执行的过程中不断通过mmap申请一块内存 ，mprotect修改内存为可执行 ，动态构造执行代码 。在执行完后又将代码加密回去，继续执行下一段代码。</li>
-<li><strong>AES加密</strong>：由于在函数中并不是直接调用AES库，而是直接用AES源码进行处理，所以考验我们的是要把AES源码识别出来并用AES进行解密</li>
+<li>&#x6536;&#x96C6;&#x6570;&#x636E;&#xFF1A;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;</li>
+<li>&#x51C6;&#x5907;&#x6570;&#x636E;&#xFF1A;&#x8DDD;&#x79BB;&#x8BA1;&#x7B97;&#x6240;&#x9700;&#x8981;&#x7684;&#x6570;&#x503C;&#xFF0C;&#x6700;&#x597D;&#x662F;&#x7ED3;&#x6784;&#x5316;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;</li>
+<li>&#x5206;&#x6790;&#x6570;&#x636E;&#xFF1A;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x65B9;&#x6CD5;</li>
+<li>&#x8BAD;&#x7EC3;&#x7B97;&#x6CD5;&#xFF1A;&#x6B64;&#x6B65;&#x9AA4;&#x4E0D;&#x9002;&#x7528;&#x4E8E;k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;</li>
+<li>&#x6D4B;&#x8BD5;&#x7B97;&#x6CD5;&#xFF1A;&#x8BA1;&#x7B97;&#x9519;&#x8BEF;&#x7387;</li>
+<li>&#x5B9E;&#x7528;&#x7B97;&#x6CD5;&#xFF1A;&#x9996;&#x5148;&#x9700;&#x8981;&#x8F93;&#x5165;&#x6837;&#x672C;&#x6570;&#x636E;&#x548C;&#x7ED3;&#x6784;&#x5316;&#x7684;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;&#x5224;&#x5B9A;&#x8F93;&#x5165;&#x6570;&#x636E;&#x5206;&#x522B;&#x5C5E;&#x4E8E;&#x54EA;&#x4E2A;&#x5206;&#x7C7B;&#xFF0C;&#x6700;&#x540E;&#x5E94;&#x7528;&#x5BF9;&#x8BA1;&#x7B97;&#x51FA;&#x7684;&#x5206;&#x7C7B;&#x6267;&#x884C;&#x540E;&#x7EED;&#x7684;&#x5904;&#x7406;</li>
 </ol>
-<p>题目链接：</p>
-<p>由于程序分析过程太长了，长得都要忘了我们是要看输入怎么处理的，所以我把对输入进行处理的方式放在最前边，有个大体印象才不致忘记</p>
-<ol>
-<li><p>首先是将输入补全，对后边的补上0到15的数</p>
-<p><img src="https://linanjun525.github.io/pic/20161204/1.png" alt="1"></p>
-</li>
-<li><p>进行加操作</p>
-</li>
-</ol>
-<p><img src="https://linanjun525.github.io/pic\20161204\2.png" alt="2"></p>
-<ol>
-<li>与数组相加</li>
-</ol>
-<p><img src="https://linanjun525.github.io/pic\20161204\3.png" alt="3"></p>
-<ol>
-<li>进行AES加密，密钥为6BCDC67A6B2B7C9D8DA459B1AB9D0680，最后与固定字符串进行比对，求逆的过程非常简单</li>
-</ol>
-<p>所以求逆的过程并不复杂，只需要整理出处理流程逆回去即可</p>
-<h2 id="动态调试"><a href="#动态调试" class="headerlink" title="动态调试"></a>动态调试</h2><p>由于java端代码并不复杂，所以直接加载程序进入动态调试，直接程序崩溃，找到init_array段，看到了原因，一共有两个函数用来反调试，第一个和最后一个，这里我们直接修改so库来绕过反调试</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\4.png" alt="4"></p>
-<p>绕过第一个的方法只用简单改一下程序逻辑</p>
-<p>![<img src="https://linanjun525.github.io/pic\20161204\5.png" alt="img"></p>
-<p><img src="https://linanjun525.github.io/pic\20161204\6.png" alt="6"></p>
-<p>以上为两种修改方法，总之只要让他直接返回而不去执行下面的kill函数即可，用ASShell找到arm的汇编代码，直接用winHex修改so文件</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\7.png" alt="7"></p>
-<p>第二个反调试我们直接将汇编代码改为返回，即直接把最后一句指令改到函数执行的顶部，则函数直接返回，这种方法也适用于第一个反调试</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\8.png" alt="8"></p>
-<p>接下来就可以直接进入主函数进行调试了，找到ch函数</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\9.png" alt="9"></p>
-<p>进行输入的第一次处理，补全输入，将输入覆盖到0到15的前几个值</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\11.png" alt="11"></p>
-<p>然后是一段代码反调试，这个程序所有的反调试都是这一个套路就是读取TracerPid看他的值是不是为0</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\12.png" alt="12"></p>
-<p><img src="https://linanjun525.github.io/pic\20161204\13.png" alt="13"></p>
-<p>有两种方法，一个是下断点到该地址，然后修改寄存器r0的值不断地改来通过这段反调试代码，一种方法是直接在内存中找到读取tracerpid时的数据修改掉它的值就可以直接跳过，所以第二种方法较为简单，特别是在应付如此多反调试的程序中，毫无疑问是最省事的。我们知道我们读取的是r6的值，所以我们希望直接修改这个数据段的tracerpid的值来直接跳过。</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\14.png" alt="14"></p>
-<p>随后进行的一段代码就是动态解密函数段，解密的函数段为loc_24c8做的操作是异或，此时我们直接下断点到调用函数处，然后该跟进函数即可，点入该函数，ida中按p重新分析，f5生成伪码，在关键函数处下断，分析完了，我们可以进行动态调试了</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\15.png" alt="15"></p>
-<p>进入函数后，程序先将前一段代码又加密回去，然后对输入进行第二步处理</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\16.png" alt="16"></p>
-<p>接着又是一个反调试，同样的方法绕过，继续解密代码段，并且执行</p>
-<p>进入到第三层，又要绕过一个反调试，我们直接定位输入到处理函数</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\17.png" alt="17"></p>
-<p>汇编代码可知，将r0加r5的值赋给r3，r8加r5的值赋给r2，再将r2与r3相加，其中r8为我们前边处理过后的输入部分，再将加后的结果给r1加r5，r5从0取到16</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\18.png" alt="18"></p>
-<p>处理过后的值</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\19.png" alt="19"></p>
-<p>与前边方法一样，终于进入最后一个代码段了，这一部分代码为手写AES加密</p>
-<p>这之前先简单的分析一下AES加密算法</p>
-<p>AES加密算法一共有十轮，每一轮都要经过s盒代换，行移位和列混淆、轮密钥加的操作</p>
-<p><strong>s盒代换</strong></p>
-<p>s盒代换是一个查表的过程，是AES算法中唯一一步非线性的过程，所以关键就是S盒，s盒的构造方法如下：</p>
-<p>1）初始化S盒，按行升序排列的字节初始化。行x列y的字节是xy，行号和列号从0开始计数。</p>
-<p>2）求出每一个元素在GF(2^8)中的逆。00被映射为它自身。</p>
-<p>3）仿射变换。对上一步中的每一个字节的每一位作如下变换</p>
-<p>yi=xi + x(i+4)mod8 + x(i+5)mod8 + x(i+6)mod8 + x(i+7)mod8 + ci</p>
-<p>s盒：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">unsignedchar sBox[] =</div><div class="line"></div><div class="line">&#123;/*  0    1     2     3    4     5    6     7    8    9     a     b    c    d    e    f */</div><div class="line"></div><div class="line">    0x63,0x7c,0x77,0x7b,0xf2,0x6b,0x6f,0xc5,0x30,0x01,0x67,0x2b,0xfe,0xd7,0xab,0x76,/*0*/ </div><div class="line"></div><div class="line">    0xca,0x82,0xc9,0x7d,0xfa,0x59,0x47,0xf0,0xad,0xd4,0xa2,0xaf,0x9c,0xa4,0x72,0xc0,/*1*/</div><div class="line"></div><div class="line">    0xb7,0xfd,0x93,0x26,0x36,0x3f,0xf7,0xcc,0x34,0xa5,0xe5,0xf1,0x71,0xd8,0x31,0x15,/*2*/</div><div class="line"></div><div class="line">    0x04,0xc7,0x23,0xc3,0x18,0x96,0x05,0x9a,0x07,0x12,0x80,0xe2,0xeb,0x27,0xb2,0x75,/*3*/</div><div class="line"></div><div class="line">    0x09,0x83,0x2c,0x1a,0x1b,0x6e,0x5a,0xa0,0x52,0x3b,0xd6,0xb3,0x29,0xe3,0x2f,0x84,/*4*/</div><div class="line"></div><div class="line">    0x53,0xd1,0x00,0xed,0x20,0xfc,0xb1,0x5b,0x6a,0xcb,0xbe,0x39,0x4a,0x4c,0x58,0xcf,/*5*/</div><div class="line"></div><div class="line">    0xd0,0xef,0xaa,0xfb,0x43,0x4d,0x33,0x85,0x45,0xf9,0x02,0x7f,0x50,0x3c,0x9f,0xa8,/*6*/ </div><div class="line"></div><div class="line">    0x51,0xa3,0x40,0x8f,0x92,0x9d,0x38,0xf5,0xbc,0xb6,0xda,0x21,0x10,0xff,0xf3,0xd2,/*7*/</div><div class="line"></div><div class="line">    0xcd,0x0c,0x13,0xec,0x5f,0x97,0x44,0x17,0xc4,0xa7,0x7e,0x3d,0x64,0x5d,0x19,0x73,/*8*/</div><div class="line"></div><div class="line">    0x60,0x81,0x4f,0xdc,0x22,0x2a,0x90,0x88,0x46,0xee,0xb8,0x14,0xde,0x5e,0x0b,0xdb,/*9*/</div><div class="line"></div><div class="line">    0xe0,0x32,0x3a,0x0a,0x49,0x06,0x24,0x5c,0xc2,0xd3,0xac,0x62,0x91,0x95,0xe4,0x79,/*a*/</div><div class="line"></div><div class="line">    0xe7,0xc8,0x37,0x6d,0x8d,0xd5,0x4e,0xa9,0x6c,0x56,0xf4,0xea,0x65,0x7a,0xae,0x08,/*b*/</div><div class="line"></div><div class="line">    0xba,0x78,0x25,0x2e,0x1c,0xa6,0xb4,0xc6,0xe8,0xdd,0x74,0x1f,0x4b,0xbd,0x8b,0x8a,/*c*/</div><div class="line"></div><div class="line">    0x70,0x3e,0xb5,0x66,0x48,0x03,0xf6,0x0e,0x61,0x35,0x57,0xb9,0x86,0xc1,0x1d,0x9e,/*d*/</div><div class="line"></div><div class="line">    0xe1,0xf8,0x98,0x11,0x69,0xd9,0x8e,0x94,0x9b,0x1e,0x87,0xe9,0xce,0x55,0x28,0xdf,/*e*/</div><div class="line"></div><div class="line">    0x8c,0xa1,0x89,0x0d,0xbf,0xe6,0x42,0x68,0x41,0x99,0x2d,0x0f,0xb0,0x54,0xbb,0x16 /*f*/</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<p>输入 6A ，查找S盒x=6, y=a =&gt; 02。反过来，输入02， 查找逆S盒x=0, y=2 =&gt; 6a</p>
-<p><strong>行移位</strong></p>
-<p>第一行不变，第二行循环左移1字节，第三行循环左移2字节，第三行循环左移3字节。</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\20.png" alt="20"></p>
-<p><strong>列混淆</strong></p>
-<p><img src="https://linanjun525.github.io/pic\20161204\21.png" alt="21"></p>
-<p><strong>轮密钥加</strong></p>
-<p><img src="https://linanjun525.github.io/pic\20161204\22.png" alt="22"></p>
-<p>我在网上找了一点AES代码进行大概分析</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">// 字节代换, 行移位, 列混淆，轮密钥加操作  </div><div class="line"> </div><div class="line">       // sm_te 变换包括了字节代换，行移位，列混淆操作  </div><div class="line"> </div><div class="line">       t1 = (sm_te1[w1 &gt;&gt; 24] ^ sm_te2[(w2 &gt;&gt; 16) &amp; 0xFF] ^  </div><div class="line"> </div><div class="line">             sm_te3[(w3 &gt;&gt; 8) &amp; 0xFF] ^ sm_te4[w4 &amp; 0xFF]  </div><div class="line"> </div><div class="line">            ) ^ m_ke[i][0];  </div><div class="line"> </div><div class="line">       t2 = (sm_te1[w2 &gt;&gt; 24] ^ sm_te2[(w3 &gt;&gt; 16) &amp; 0xFF] ^  </div><div class="line"> </div><div class="line">             sm_te3[(w4 &gt;&gt; 8) &amp; 0xFF] ^ sm_te4[w1 &amp; 0xFF]  </div><div class="line"> </div><div class="line">            ) ^ m_ke[i][1];  </div><div class="line"> </div><div class="line">       t3 = (sm_te1[w3 &gt;&gt; 24] ^ sm_te2[(w4 &gt;&gt; 16) &amp; 0xFF] ^  </div><div class="line"> </div><div class="line">             sm_te3[(w1 &gt;&gt; 8) &amp; 0xFF] ^ sm_te4[w2 &amp; 0xFF]  </div><div class="line"> </div><div class="line">            ) ^ m_ke[i][2];  </div><div class="line"> </div><div class="line">       t4 = (sm_te1[w4 &gt;&gt; 24] ^ sm_te2[(w1 &gt;&gt; 16) &amp; 0xFF] ^  </div><div class="line"> </div><div class="line">             sm_te3[(w2 &gt;&gt; 8) &amp; 0xFF] ^ sm_te4[w3 &amp; 0xFF]  </div><div class="line"> </div><div class="line">            ) ^ m_ke[i][3];</div></pre></td></tr></table></figure>
-<p>sm_te数组生成过程</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">void getTE(u32_t te1[], u32_t te2[], u32_t te3[], u32_t te4[], unsigned char sbox[], size_t num)  </div><div class="line">  </div><div class="line">&#123;  </div><div class="line">  </div><div class="line">    for (size_t i = 0; i &lt; num; ++i) &#123;  </div><div class="line">        te1[i] = (u32_t(mul(sbox[i], 2)) &lt;&lt; 24) | (u32_t(sbox[i]) &lt;&lt; 16)</div><div class="line">        					| (u32_t(sbox[i]) &lt;&lt; 8) | u32_t(mul(sbox[i], 3));    </div><div class="line">        te2[i] = (u32_t(mul(sbox[i], 3)) &lt;&lt; 24) | (u32_t(mul(sbox[i], 2)) &lt;&lt; 16)</div><div class="line">        					| (u32_t(sbox[i]) &lt;&lt; 8) | u32_t(sbox[i]);    </div><div class="line">        te3[i] = (u32_t(sbox[i]) &lt;&lt; 24) | (u32_t(mul(sbox[i], 3)) &lt;&lt; 16)</div><div class="line">       						| (u32_t(mul(sbox[i], 2)) &lt;&lt; 8) | u32_t(sbox[i]);    </div><div class="line">        te4[i] = (u32_t(sbox[i]) &lt;&lt; 24) | (u32_t(sbox[i]) &lt;&lt; 16)</div><div class="line">        					| (u32_t(mul(sbox[i], 3)) &lt;&lt; 8) | u32_t(mul(sbox[i], 2));    </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>首先看t1的生成过程，是分别将w1&gt;&gt;24,w2&gt;&gt;16,w3&gt;&gt;8,w4&gt;&gt;4分别对应的就是D0，D5，D10，D15，其中w代表一个字也就是4个字节，AES处理都是一个字一个字地读入</p>
-<p>然后我们就找sm_te数组的生成过程，拿te1举例，就是将sbox的相应位置代入，也就是sbox[i]进行了s盒变换，然后列混淆并拼成一个字，t1整个生成过程转换成数学公式就是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">te1=2*s[D0]|s[D0]|s[D0]|3*s[D0]</div><div class="line">te2=3*s[D5]|2*s[D5]|s[D5]|s[D5]</div><div class="line">te3=s[D10]|3*s[D10]|2*s[D10]|s[D10]</div><div class="line">te4=s[D15]|s[D15]|3*s[D15]|2*s[D15]</div><div class="line">t1=te1^te2^te3^te4</div></pre></td></tr></table></figure>
-<p>所以不难看出生成的每个t1就是竖行排列的字，再与轮密钥异或，第一段代码是行移位和轮密钥加的混合，第二段则是列混淆和s盒代换的混合。</p>
-<p>AES算法差不多就介绍完了，至于其他的密钥扩展就不再深究了。现在来分析反汇编中的AES算法部分</p>
-<p>轮密钥加的过程</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\23.png" alt="23"></p>
-<p>每个数值取出来的是字，DWORD也就是四个字节，AES是分组密码这个是第一步，密钥我们可以通过查看到为6BCDC67A6B2B7C9D8DA459B1AB9D0680</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\24.png" alt="24"></p>
-<p>v18为输入的第一个字的地址</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\25.png" alt="25"></p>
-<p>查看v25的值可以看到这是一个s盒，每隔一个字节为s盒</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\26.png" alt="26"></p>
-<p>然后我们进入十轮循环，首先是字节代换的操作</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\27.png" alt="27"></p>
-<p>行移位过程，生成的第二个字的顺序D5|D6|D7|D1</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\28.png" alt="28"></p>
-<p>看到这里我们已经大概看出来了这是一个AES加密过程，好吧，是我分析不下去了。手动分析AES的过程实在是太艰辛，而且又是反汇编的看都看不懂，所以我们就根据这个题的特征来看，这个题表现为AES的特征主要有两点，第一是十轮加密，第二是AES盒，第三是数据之间相互组合的过程都符合AES的三轮数据处理，本来加密算法我们知道也不是你随便编一个就行了，所以现存的最保险的就只有AES加密了，而且再怎么自己编写个算法也不可能进行十轮迭代，有这个水平的只有AES了吧！为了证明他是AES，我们可在后边找到结果进行验证，现在我们让程序继续执行下去，执行到最后加密结果处。</p>
-<p>整理一下加密之前的数据为：</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\29.png" alt="29"></p>
-<p>加密过后的结果</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\30.png" alt="30"></p>
-<p>将加密后的结果与下面的数组作比较</p>
-<p><img src="https://linanjun525.github.io/pic\20161204\31.png" alt="31"></p>
-<p>好了，现在整个程序的分析就到这了，只需逆向解密就行了</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>没有绝对的安全，只有相对的攻防。这个题整个解题过程不算很难，但是调试的过程需要耐心，最难的应该是最后对AES源代码的分析吧，这个分析不出来前边做的所有工作都废了，之前的反调试和动态解密过程都是一个套路。里边用到的很多加固技巧也对以后做题有很大的启示。终于把一道困扰我大半年的安卓题给分析完了！加油！</p>
-<hr>
-<p>最伟大的思想和行动往往需要最微不足道的开始</p>
+<p>knn&#x5206;&#x7C7B;&#xFF0C;&#x4F20;&#x5165;&#x5F85;&#x5206;&#x7C7B;&#x5411;&#x91CF;&#x3001;&#x8BAD;&#x7EC3;&#x96C6;&#x3001;&#x6807;&#x7B7E;&#x3001;k&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def classify0(inX,dataSet,labels,k):</div><div class="line">    dataSetSize=dataSet.shape[0]</div><div class="line">    diffMat=tile(inX,(dataSetSize,1))-dataSet #tile&#x51FD;&#x6570;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5217;&#x4E3A;dataSetSize&#x884C;&#x4E3A;1&#x7684;&#x77E9;&#x9635;&#x5E76;&#x4E14;&#x51CF;&#x53BB;dataSet&#xFF0C;&#x7528;&#x4E8E;&#x8BA1;&#x7B97;&#x8DDD;&#x79BB;</div><div class="line">    print diffMat</div><div class="line">    sqDiffMat=diffMat**2             #&#x8BA1;&#x7B97;&#x8DDD;&#x79BB;</div><div class="line">    sqDistances=sqDiffMat.sum(axis=1)#&#x5BF9;&#x5217;&#x503C;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</div><div class="line">    distances=sqDistances**0.5</div><div class="line">    sortedDistIndicies=distances.argsort()</div><div class="line">    classCount={}#&#x521B;&#x5EFA;&#x5B57;&#x5178;</div><div class="line">    for i in range(k):</div><div class="line">        voteIlabel=labels[sortedDistIndicies[i]]</div><div class="line">        classCount[voteIlabel]=classCount.get(voteIlabel,0)+1#&#x83B7;&#x53D6;&#x5B57;&#x5178;&#x4E2D;&#x4E0B;&#x6807;&#x7B2C;0&#x4E2A;&#x503C;&#x5E76;&#x5C06;&#x8BE5;&#x503C;&#x52A0;1</div><div class="line">    sortedClassCount=sorted(classCount.iteritems(),</div><div class="line">                            key=operator.itemgetter(1),reverse=True)</div><div class="line">    return sortedClassCount[0][0]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diffMat=tile(inX,(dataSetSize,1))-dataSet</div></pre></td></tr></table></figure>
+<p>tile&#x51FD;&#x6570;&#x4F4D;&#x4E8E;python&#x6A21;&#x5757; numpy.lib.shape_base&#x4E2D;&#xFF0C;&#x4ED6;&#x7684;&#x529F;&#x80FD;&#x662F;&#x91CD;&#x590D;&#x67D0;&#x4E2A;&#x6570;&#x7EC4;&#x3002;&#x6BD4;&#x5982;tile(A,n)&#xFF0C;&#x529F;&#x80FD;&#x662F;&#x5C06;&#x6570;&#x7EC4;A&#x91CD;&#x590D;n&#x6B21;&#xFF0C;&#x6784;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6570;&#x7EC4;</p>
+<p>&#x51FD;&#x6570;&#x683C;&#x5F0F;tile(A,reps)</p>
+<p>A&#x548C;reps&#x90FD;&#x662F;array_like</p>
+<p>A&#x7684;&#x7C7B;&#x578B;&#x4F17;&#x591A;&#xFF0C;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7C7B;&#x578B;&#x90FD;&#x53EF;&#x4EE5;&#xFF1A;array, list, tuple, dict, matrix&#x4EE5;&#x53CA;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;int, string, float&#x4EE5;&#x53CA;bool&#x7C7B;&#x578B;&#x3002;</p>
+<p>reps&#x7684;&#x7C7B;&#x578B;&#x4E5F;&#x5F88;&#x591A;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;tuple&#xFF0C;list, dict, array, int, bool.&#x4F46;&#x4E0D;&#x53EF;&#x4EE5;&#x662F;float, string, matrix&#x7C7B;&#x578B;&#x3002;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a=[[1,2,3],[5,4]]</div><div class="line">&gt;&gt;&gt; tile(a,[2,3])</div><div class="line">array([[[1, 2, 3], [5, 4], [1, 2, 3], [5, 4], [1, 2, 3], [5, 4]],</div><div class="line">       [[1, 2, 3], [5, 4], [1, 2, 3], [5, 4], [1, 2, 3], [5, 4]]])</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sqDistances=sqDiffMat.sum(axis=1)</div></pre></td></tr></table></figure>
+<p>&#x770B;&#x8D77;&#x6765;&#x633A;&#x7B80;&#x5355;&#x7684;&#x6837;&#x5B50;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x7ED9;sum&#x51FD;&#x6570;&#x4E2D;&#x52A0;&#x5165;&#x53C2;&#x6570;&#x3002;sum&#xFF08;a&#xFF0C;axis=0&#xFF09;&#x6216;&#x8005;&#x662F;.sum(axis=1) &#x5C31;&#x6709;&#x70B9;&#x4E0D;&#x89E3;&#x4E86;</p>
+<p>&#x5728;&#x6211;&#x5B9E;&#x9A8C;&#x4EE5;&#x540E;&#x53D1;&#x73B0; &#x6211;&#x4EEC;&#x5E73;&#x65F6;&#x7528;&#x7684;sum&#x5E94;&#x8BE5;&#x662F;&#x9ED8;&#x8BA4;&#x7684;axis=0 &#x5C31;&#x662F;&#x666E;&#x901A;&#x7684;&#x76F8;&#x52A0; </p>
+<p>&#x800C;&#x5F53;&#x52A0;&#x5165;axis=1&#x4EE5;&#x540E;&#x5C31;&#x662F;&#x5C06;&#x4E00;&#x4E2A;&#x77E9;&#x9635;&#x7684;&#x6BCF;&#x4E00;&#x884C;&#x5411;&#x91CF;&#x76F8;&#x52A0;</p>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<p>import numpy as np</p>
+<p>np.sum([[0,1,2],[2,1,3],axis=1)</p>
+<p>&#x7ED3;&#x679C;&#x5C31;&#x662F;&#xFF1A;array&#xFF08;[3,6]&#xFF09;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sortedDistIndicies=distances.argsort()</div></pre></td></tr></table></figure>
+<p>argsort&#x51FD;&#x6570;</p>
+<p>argsort&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6570;&#x7EC4;&#x503C;&#x4ECE;&#x5C0F;&#x5230;&#x5927;&#x7684;&#x7D22;&#x5F15;&#x503C;</p>
+<p>Examples&#xFF1A;</p>
+<p>-&#x2014;&#x2014;-</p>
+<p>One dimensional array:&#x4E00;&#x7EF4;&#x6570;&#x7EC4;</p>
+<p>&gt;&gt;&gt; x = np.array([3, 1, 2])</p>
+<p>&gt;&gt;&gt; np.argsort(x)</p>
+<p>array([1, 2, 0])</p>
+<p>&#x51C6;&#x5907;&#x6570;&#x636E;&#xFF1A;&#x4ECE;&#x6587;&#x672C;&#x4E2D;&#x89E3;&#x6790;&#x6570;&#x636E;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def file2matrix(filename):</div><div class="line">    fr=open(filename)</div><div class="line">    arrayOLines=fr.readlines()</div><div class="line">    numberOfLines=len(arrayOLines)</div><div class="line">    returnMat=zeros((numberOfLines,3))#&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x4E09;&#x7EF4;&#x6570;&#x7EC4;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x7279;&#x5F81;</div><div class="line">    classLabelVector=[]</div><div class="line">    index=0</div><div class="line">    for line in arrayOLines:</div><div class="line">        line=line.strip()</div><div class="line">        listFromLine=line.split(&apos;\t&apos;)</div><div class="line">        returnMat[index,:]=listFromLine[0:3]#&#x8BFB;&#x53D6;&#x6BCF;&#x4E00;&#x884C;&#x7684;&#x524D;&#x4E09;&#x4E2A;&#x7279;&#x5F81;</div><div class="line">        classLabelVector.append(int(listFromLine[-1]))#&#x8BFB;&#x53D6;&#x6700;&#x540E;&#x4E00;&#x884C;&#x4E3A;&#x8BE5;&#x6570;&#x636E;&#x7684;&#x7C7B;&#x578B;</div><div class="line">        index+=1</div><div class="line">    return  returnMat,classLabelVector</div></pre></td></tr></table></figure>
+<p>&#x51C6;&#x5907;&#x6570;&#x636E;&#xFF1A;&#x5F52;&#x4E00;&#x5316;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def autoNorm(dataSet):</div><div class="line">    minVals=dataSet.min(0)#min(0)&#x4E3A;&#x8BFB;&#x53D6;&#x6BCF;&#x4E00;&#x5217;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF08;&#x5426;&#x5219;&#x4F1A;&#x8BFB;&#x53D6;&#x6BCF;&#x4E00;&#x884C;&#x7684;&#x6700;&#x5C0F;&#x503C;&#xFF0C;minVals&#x4E3A;&#x4E00;&#x4E2A;&#x4E00;&#x7EF4;&#x6570;&#x7EC4;&#xFF0C;&#x6BCF;&#x4E2A;&#x503C;&#x4E3A;&#x8BE5;&#x5217;&#x7684;&#x6700;&#x5C0F;&#x503C;</div><div class="line">    maxVals=dataSet.max(0)#&#x540C;&#x4E0A;</div><div class="line">    ranges=maxVals-minVals</div><div class="line">    normDataSet=zeros(shape(dataSet))#shape&#x5C06;&#x4F1A;&#x8FD4;&#x56DE;&#x8BE5;&#x77E9;&#x9635;&#x884C;&#x6570;&#x548C;&#x5217;&#x6570;</div><div class="line">    m=dataSet.shape[0]#shape[0]&#x8FD4;&#x56DE;&#x5217;&#x6570;</div><div class="line">    normDataSet=dataSet-tile(minVals,(m,1))</div><div class="line">    normDataSet=normDataSet/tile(ranges,(m,1))</div><div class="line">    return normDataSet,ranges,minVals</div></pre></td></tr></table></figure>
+<p>&#x6D4B;&#x8BD5;&#x548C;&#x4F7F;&#x7528;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def datingClassTest():</div><div class="line">    hoRatio=0.10</div><div class="line">    datingDataMat,datingLabels=file2matrix(&apos;datingTestSet2.txt&apos;)</div><div class="line">    normMat,ranges,minVals=autoNorm(datingDataMat)#&#x8FD4;&#x56DE;&#x6B63;&#x89C4;&#x7684;&#x77E9;&#x9635;&#xFF0C;&#x8868;&#x793A;&#x7279;&#x5F81;&#x8303;&#x56F4;&#x7684;&#x77E9;&#x9635;&#xFF0C;&#x6BCF;&#x4E2A;&#x7279;&#x5F81;&#x6700;&#x5C0F;&#x503C;&#x7684;&#x77E9;&#x9635;</div><div class="line">    m=normMat.shape[0]</div><div class="line">    print m</div><div class="line">    numTestVecs=10</div><div class="line">    errorCount=0.0</div><div class="line">    for i in range(numTestVecs):</div><div class="line">        classifierResult=classify0(normMat[i,:],normMat[numTestVecs:m,:],\</div><div class="line">                                   datingLabels[numTestVecs:m],3)</div><div class="line">        print &quot;the classifier came back with:%d the real answer is %d&quot;\</div><div class="line">        %(classifierResult,datingLabels[i])</div><div class="line">        if(classifierResult!=datingLabels[i]):errorCount+=1.0</div><div class="line">    print &quot;the total error rate is :%f&quot;%(errorCount/float(numTestVecs))</div></pre></td></tr></table></figure>
 
 	
 	</div>
-  <a type="button" href="/2016/12/04/震惊了！msc2安卓解题全记录，不看马上删了！！！/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2016/11/25/github博客搭建全记录/" >hexo+github博客搭建全记录</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2016-11-25  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p><img src="\pic\1-2.jpg" alt="1-2"></p>
-<h2 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h2><p>Hexo是一个简单地、轻量地、基于Node的一个静态博客框架，可以方便的生成静态网页托管在github上，因为我也是第一次听说hexo这个东西，所以就在网上找了一段描述.总结起来就是这个博客是静态的，所有管理都要在本地生成，然后再同步到网上去，没有数据库或者后台管理界面。所以使用这个框架虽然在开始搭建时有点略麻烦，但是它很安全啊:smile:。</p>
-<h2 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a><strong>博客搭建</strong></h2><ul>
-<li><strong>hexo博客搭建</strong>：包括安装node.js框架，hexo博客框架，更换主题，生成文章，本地查看</li>
-<li><strong>上传到github</strong>：包括github仓库的生成，密钥生成，上传博客</li>
-</ul>
-<h3 id="一、-hexo博客搭建"><a href="#一、-hexo博客搭建" class="headerlink" title="一、 hexo博客搭建"></a>一、 hexo博客搭建</h3><p>可以在windows也可以在linux上操作，我之前在linux上边也搞过，但是还是windows 方便点，所以我这里只介绍windows上的搭建过程，首先是安装node.js，下载网址如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://nodejs.org/en/#download</div></pre></td></tr></table></figure>
-<p>下载后需要配置环境变量（但是他好像自动就配置好了）。此时需要下载git，直接百度下载安装即可，git bash是一个简化的linux环境，接下来安装npm：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/npm/npm</div></pre></td></tr></table></figure>
-<p>在npm文件夹下使用如下命令安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node cli.js install npm -gf</div></pre></td></tr></table></figure>
-<p>安装hexo：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo -g</div></pre></td></tr></table></figure>
-<p>此时hexo已经安装好，创建一个以后写博客的文件夹，并且该文件夹下使用如下命令初始化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
-<p>网上找一个主题放在themes文件夹下，然后就是修改_config.yml文件，对整个博客进行配置，打开改配置文件</p>
-<p>首先改最前边的author，tittle等，选的主题会读取这些值放在主页上：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Site</div><div class="line">title: Rve</div><div class="line">subtitle:</div><div class="line">description:</div><div class="line">author: </div><div class="line">language:</div><div class="line">timezone:</div></pre></td></tr></table></figure>
-<p>然后是修改主题，找到下面这个地方，把themes值改成你要用的主题的文件夹，中间记住要空格隔开</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: freemind</div></pre></td></tr></table></figure>
-<p>此时本地博客已经搭建完成，可以直接在本地先看看效果，在博客文件夹路径下，先生成整个博客：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate</div><div class="line">#等同于hexo g</div></pre></td></tr></table></figure>
-<p>本地查看：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo server</div><div class="line">#等同于hexo s</div></pre></td></tr></table></figure>
-<p>此时打开浏览器访问localhost:4000，就可以看到你搭建的整个blog，由于我们可能要涉及自定义博客，所以需要对博客进行一些修改，主要的文件是下载到的主题文件夹下的config.yml文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  - title: 归档</div><div class="line">    url: archives</div><div class="line">    intro: &quot;All the articles.&quot;</div><div class="line">    icon: &quot;fa fa-archive&quot;</div><div class="line">  - title: 分类</div><div class="line">    url: categories</div><div class="line">    intro: &quot;All the categories.&quot;</div><div class="line">    icon: &quot;fa fa-folder&quot;</div><div class="line">  - title: 标签</div><div class="line">    url: tags</div><div class="line">    intro: &quot;All the tags.&quot;</div><div class="line">    icon: &quot;fa fa-tags&quot;</div><div class="line">  - title: 关于我</div><div class="line">    url: about</div><div class="line">    intro: &quot;About me.&quot;</div><div class="line">    icon: &quot;fa fa-user&quot;</div></pre></td></tr></table></figure>
-<p>以上是我使用的主题的配置文件，可以修改这些title和url值来自定义一些内容，我把title本来是英文的改成了中文:department_store:，然后各个主题不同可能遇到不一样的问题，有一个比较常见的问题就是页面没有categories，tags这些页面，网上查了查，这些页面需要自己生成。在博客目录下的source文件夹下创建categories、tags等文件夹，然后再添加一个index文件，内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: Categories</div><div class="line">layout: categories</div><div class="line">---</div></pre></td></tr></table></figure>
-<p>到此为止，本地的搭建工作就完成了，剩下的工作就是把这个博客传到github上去了。</p>
-<h3 id="二、上传到github"><a href="#二、上传到github" class="headerlink" title="二、上传到github"></a>二、上传到github</h3><p>注册一个github账号，并且新建一个仓库，注意仓库名称一定要跟github用户名相同。</p>
-<p>在博客根目录下初始化git：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git init</div></pre></td></tr></table></figure>
-<p>生成一个ssh key：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;(你的邮箱地址)&quot;</div></pre></td></tr></table></figure>
-<p>找到这个生成的key，将id_rsa.pub里边的内容复制到github的设置中，选择github的setting，选择ssh and gpg key，新建一个ssh key将刚才的内容复制到这里边即可。</p>
-<p>最后一步修改config.yml</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Deployment</div><div class="line">## Docs: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/linanjun525/linanjun525.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
-<p>然后使用hexo d命令就可以把博客上传到github上，此过程会要求输入用户名密码，访问username.github.io就可以看到搭上去的博客了，开心吗:haha:</p>
-<p>注：在使用命令<em>hexo d</em>时可能遇到两个问题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error:Deployer not found:git</div></pre></td></tr></table></figure>
-<p>解决方法是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git ---save</div></pre></td></tr></table></figure>
-<p>fatal:empty ident name(for<null>)not allowed   解决方法是：</null></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config ---global user.email &quot;xxxx@home.com&quot;</div><div class="line">git config ---global user.name &quot;xxx&quot;</div></pre></td></tr></table></figure>
-<h3 id="三、新建文章"><a href="#三、新建文章" class="headerlink" title="三、新建文章"></a>三、新建文章</h3><p>文章都使用markdown格式进行书写，推荐使用typora或者网易云笔记也可以写markdown文件，新建一篇文章通过命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo n tittle</div></pre></td></tr></table></figure>
-<p>会在source/_post目录下生成文章，然后对该文章进行编辑即可，编辑完成后<em>hexo g</em>新生成，然后<em>hexo d</em>上传即可 </p>
-<p>可以在网上找了一些markdown的语法，也可以在typora中右键自动生成。</p>
-
-	
-	</div>
-  <a type="button" href="/2016/11/25/github博客搭建全记录/#more" class="btn btn-default more">Read More</a>
+  <a type="button" href="/2016/12/05/机器学习实战（一）k-邻近算法/#more" class="btn btn-default more">Leia Mais</a>
 </div>
 
 		
@@ -341,12 +210,12 @@ var _hmt = _hmt || [];
 
    
     
-     <a href="/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
+     <a href="/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Anterior</a>
       
 
         <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
  
-          <a type="button" class="btn btn-default disabled">Next<i class="fa fa-arrow-circle-o-right"></i></a>
+       <a href="/page/3/" type="button" class="btn btn-default ">Próximo<i class="fa fa-arrow-circle-o-right"></i></a>     
         
 
   
@@ -366,7 +235,7 @@ var _hmt = _hmt || [];
 			
   <div id="site_search">
    <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="Busca" class="st-search-input st-default-search-input form-control"/>
    </div>  
   <div id="local-search-result"></div>
   </div>
@@ -375,7 +244,7 @@ var _hmt = _hmt || [];
 		
 			
 	<div class="widget">
-		<h4>Categories</h4>
+		<h4>Categorias</h4>
 		<ul class="tag_box inline list-unstyled">
 		
 			<li><a href="/categories/安全技术/">安全技术<span>2</span></a></li>
@@ -405,7 +274,7 @@ var _hmt = _hmt || [];
 		
 			
 <div class="widget">
-  <h4>Recent Posts</h4>
+  <h4>Posts recentes</h4>
   <ul class="entry list-unstyled">
     
       <li>
