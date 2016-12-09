@@ -10,8 +10,8 @@
   <meta name="author" content="李南均">
   
   <meta name="description" content="前言最近开始看机器学习实战这本书，所以专门定期写一点自己的学习笔记以及分析上来
-机器学习的用途，我从书上找了一段话描述的很生动：
-“现今，机器学习已经用于多个领域，远超出大多数人的想象，下面就是假想的一日，其中很多场景都会碰到机器学习：假设你想起今天是某位朋友的生日，打算通过邮局给她寄一张生日贺卡。">
+机器学习的应用：
+“现今，机器学习已经用于多个领域，远超出大多数人的想象，下面就是假想的一日，其中很多场景都会碰到机器学习：假设你想起今天是某位朋友的生日，打算通过邮局给她寄一张生日贺卡。你打开浏览器搜索趣味卡片，搜索引">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -132,9 +132,55 @@ var _hmt = _hmt || [];
 	  		
 
 	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近开始看机器学习实战这本书，所以专门定期写一点自己的学习笔记以及分析上来</p>
-<p>机器学习的用途，我从书上找了一段话描述的很生动：</p>
+<p>机器学习的应用：</p>
 <p>“现今，机器学习已经用于多个领域，远超出大多数人的想象，下面就是假想的一日，其中很多场景都会碰到机器学习：假设你想起今天是某位朋友的生日，打算通过邮局给她寄一张生日贺卡。你打开浏览器搜索趣味卡片，搜索引擎将记录这次点击，并从中学习以优化下次搜索结果。然后，你检查电子邮件系统，此时垃圾邮件过滤器已经在后台自动过滤垃圾广告邮件，并将其放在垃圾箱内。接着你去购买这张生日卡片，并给你朋友的孩子挑选了一些尿布。结账时，收银员给了你一张1美元的优惠券，可以用于购买6罐装啤酒。之所以你会得到这张优惠券，是因为款台收费软件基于之前的统计知识，认为买尿布的人往往也会买啤酒。然后你去邮局邮递这张贺卡，手写识别软件识别出邮寄地址，并将贺卡发送给正确的邮车。当天你还去了贷款申请机构，查看自己是否能够申请贷款，办事员并不是直接给出结果，而是将你最近的金融活动信息输入计算机，有软件来判断你是否合格。最后，你还去赌场找些乐子，当你不如前门时，尾随你进来的一个家伙被突然出现的保安给拦了下来。“对不起，索普先生，我们不得不请你离开。我们不欢迎老千”。“</p>
-<h2 id="k-近邻算法"><a href="#k-近邻算法" class="headerlink" title="k-近邻算法"></a>k-近邻算法</h2>	  
+<h2 id="k-邻近算法"><a href="#k-邻近算法" class="headerlink" title="k-邻近算法"></a>k-邻近算法</h2><p><strong>k-邻近算法概述</strong></p>
+<p>优点：精度高、对异常值不敏感、无数据输入假定</p>
+<p>缺点：计算复杂度高、空间复杂度高</p>
+<p>适用数据范围：数值型和标称型</p>
+<p>工作原理：存在一个样本数据集合，也称作训练样本集，并且样本集中每个数据存在标签，即我们知道样本集中每一数据对应的特征与所属分类的对应关系。输入没有标签的新数据后，将新数据的每个特征与样本集中数据对应的特征进行比较，然后算法提取样本集中特征最相似数据的分类标签，一般来说我们只选择样本集中前k个最相似的数据，这就是k-邻近算法中k的出处，通常k是不大于20的整数。最后选择k个最相似数据中出现次数最多的分类，作为新数据的分类。</p>
+<p><strong>k-邻近算法一般流程</strong></p>
+<ol>
+<li>收集数据：可以使用任何方法</li>
+<li>准备数据：距离计算所需要的数值，最好是结构化的数据格式</li>
+<li>分析数据：可以使用任何方法</li>
+<li>训练算法：此步骤不适用于k-邻近算法</li>
+<li>测试算法：计算错误率</li>
+<li>实用算法：首先需要输入样本数据和结构化的输出结果，然后运行k-邻近算法判定输入数据分别属于哪个分类，最后应用对计算出的分类执行后续的处理</li>
+</ol>
+<p>knn分类，传入待分类向量、训练集、标签、k值作为参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def classify0(inX,dataSet,labels,k):</div><div class="line">    dataSetSize=dataSet.shape[0]</div><div class="line">    diffMat=tile(inX,(dataSetSize,1))-dataSet #tile函数生成一个列为dataSetSize行为1的矩阵并且减去dataSet，用于计算距离</div><div class="line">    print diffMat</div><div class="line">    sqDiffMat=diffMat**2             #计算距离</div><div class="line">    sqDistances=sqDiffMat.sum(axis=1)#对列值进行排序</div><div class="line">    distances=sqDistances**0.5</div><div class="line">    sortedDistIndicies=distances.argsort()</div><div class="line">    classCount=&#123;&#125;#创建字典</div><div class="line">    for i in range(k):</div><div class="line">        voteIlabel=labels[sortedDistIndicies[i]]</div><div class="line">        classCount[voteIlabel]=classCount.get(voteIlabel,0)+1#获取字典中下标第0个值并将该值加1</div><div class="line">    sortedClassCount=sorted(classCount.iteritems(),</div><div class="line">                            key=operator.itemgetter(1),reverse=True)</div><div class="line">    return sortedClassCount[0][0]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">diffMat=tile(inX,(dataSetSize,1))-dataSet</div></pre></td></tr></table></figure>
+<p>tile函数位于python模块 numpy.lib.shape_base中，他的功能是重复某个数组。比如tile(A,n)，功能是将数组A重复n次，构成一个新的数组</p>
+<p>函数格式tile(A,reps)</p>
+<p>A和reps都是array_like</p>
+<p>A的类型众多，几乎所有类型都可以：array, list, tuple, dict, matrix以及基本数据类型int, string, float以及bool类型。</p>
+<p>reps的类型也很多，可以是tuple，list, dict, array, int, bool.但不可以是float, string, matrix类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a=[[1,2,3],[5,4]]</div><div class="line">&gt;&gt;&gt; tile(a,[2,3])</div><div class="line">array([[[1, 2, 3], [5, 4], [1, 2, 3], [5, 4], [1, 2, 3], [5, 4]],</div><div class="line">       [[1, 2, 3], [5, 4], [1, 2, 3], [5, 4], [1, 2, 3], [5, 4]]])</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sqDistances=sqDiffMat.sum(axis=1)</div></pre></td></tr></table></figure>
+<p>看起来挺简单的样子，但是在给sum函数中加入参数。sum（a，axis=0）或者是.sum(axis=1) 就有点不解了</p>
+<p>在我实验以后发现 我们平时用的sum应该是默认的axis=0 就是普通的相加 </p>
+<p>而当加入axis=1以后就是将一个矩阵的每一行向量相加</p>
+<p>例如：</p>
+<p>import numpy as np</p>
+<p>np.sum([[0,1,2],[2,1,3],axis=1)</p>
+<p>结果就是：array（[3,6]）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sortedDistIndicies=distances.argsort()</div></pre></td></tr></table></figure>
+<p>argsort函数</p>
+<p>argsort函数返回的是数组值从小到大的索引值</p>
+<p>Examples：</p>
+<p>-——-</p>
+<p>One dimensional array:一维数组</p>
+<p>>&gt;&gt; x = np.array([3, 1, 2])</p>
+<p>>&gt;&gt; np.argsort(x)</p>
+<p>array([1, 2, 0])</p>
+<p>准备数据：从文本中解析数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">def file2matrix(filename):</div><div class="line">    fr=open(filename)</div><div class="line">    arrayOLines=fr.readlines()</div><div class="line">    numberOfLines=len(arrayOLines)</div><div class="line">    returnMat=zeros((numberOfLines,3))#初始化一个三维数组用于存储特征</div><div class="line">    classLabelVector=[]</div><div class="line">    index=0</div><div class="line">    for line in arrayOLines:</div><div class="line">        line=line.strip()</div><div class="line">        listFromLine=line.split(&apos;\t&apos;)</div><div class="line">        returnMat[index,:]=listFromLine[0:3]#读取每一行的前三个特征</div><div class="line">        classLabelVector.append(int(listFromLine[-1]))#读取最后一行为该数据的类型</div><div class="line">        index+=1</div><div class="line">    return  returnMat,classLabelVector</div></pre></td></tr></table></figure>
+<p>准备数据：归一化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">def autoNorm(dataSet):</div><div class="line">    minVals=dataSet.min(0)#min(0)为读取每一列的最小值（否则会读取每一行的最小值，minVals为一个一维数组，每个值为该列的最小值</div><div class="line">    maxVals=dataSet.max(0)#同上</div><div class="line">    ranges=maxVals-minVals</div><div class="line">    normDataSet=zeros(shape(dataSet))#shape将会返回该矩阵行数和列数</div><div class="line">    m=dataSet.shape[0]#shape[0]返回列数</div><div class="line">    normDataSet=dataSet-tile(minVals,(m,1))</div><div class="line">    normDataSet=normDataSet/tile(ranges,(m,1))</div><div class="line">    return normDataSet,ranges,minVals</div></pre></td></tr></table></figure>
+<p>测试和使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def datingClassTest():</div><div class="line">    hoRatio=0.10</div><div class="line">    datingDataMat,datingLabels=file2matrix(&apos;datingTestSet2.txt&apos;)</div><div class="line">    normMat,ranges,minVals=autoNorm(datingDataMat)#返回正规的矩阵，表示特征范围的矩阵，每个特征最小值的矩阵</div><div class="line">    m=normMat.shape[0]</div><div class="line">    print m</div><div class="line">    numTestVecs=10</div><div class="line">    errorCount=0.0</div><div class="line">    for i in range(numTestVecs):</div><div class="line">        classifierResult=classify0(normMat[i,:],normMat[numTestVecs:m,:],\</div><div class="line">                                   datingLabels[numTestVecs:m],3)</div><div class="line">        print &quot;the classifier came back with:%d the real answer is %d&quot;\</div><div class="line">        %(classifierResult,datingLabels[i])</div><div class="line">        if(classifierResult!=datingLabels[i]):errorCount+=1.0</div><div class="line">    print &quot;the total error rate is :%f&quot;%(errorCount/float(numTestVecs))</div></pre></td></tr></table></figure>
+	  
 	</div>
 
 	<div>
@@ -144,12 +190,12 @@ var _hmt = _hmt || [];
     
     
     <a href="/2016/12/08/朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> Anterior</a>
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2016/12/04/震惊了！msc2安卓解题全记录，不看马上删了！！！/" type="button" class="btn btn-default ">Próximo<i
+    <a href="/2016/12/04/震惊了！msc2安卓解题全记录，不看马上删了！！！/" type="button" class="btn btn-default ">Next<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -162,7 +208,7 @@ var _hmt = _hmt || [];
 	<!-- comment -->
 	
 <section id="comment">
-    <h2 class="title">Comentários</h2>
+    <h2 class="title">Comments</h2>
 
     
 </section>
