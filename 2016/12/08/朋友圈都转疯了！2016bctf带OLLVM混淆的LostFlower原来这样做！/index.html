@@ -6,13 +6,15 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>Rve</title>
+  <title>朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！ | Rve</title>
   <meta name="author" content="李南均">
+  
+  <meta name="description" content="前言第一次分析so层混淆的程序，ollvm真的是个神器。最先我还天真地看了半天汇编，ollvm可以让你分析时间翻几十倍。我并没有找到任何方法来抵抗这种混淆的方法，所以要分析只有硬刚。我先整理了一下网上关于ollvm的描述，然后根据我自己分析过程给出一些自己的理解。最后写了一下2016bctf的Los">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！"/>
   <meta property="og:site_name" content="Rve"/>
 
   
@@ -105,46 +107,29 @@ var _hmt = _hmt || [];
 
   <div class="container">
   	<div class="content">
-    	 <div class="page-header logo">
-  <h1>Rve<span class="blink-fast">∎</span></h1>
-</div>
+    	 
 
-<div class="row page">
 
 	
+		<div class="page-header">
+			<h1> 朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
 	<div class="col-md-9">
 	
 
-		<div class="slogan">
-      <i class="fa fa-heart blink-slow"></i>
-      Keep and carry on.
-</div>    
-		<div id="top_search"></div>
-		<div class="mypage">
-		
-		<!-- title and entry -->
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2016/12/08/朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！/" >朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2016-12-08  </div>
-		</div>
-	</div>
-	
+	<!-- content -->
+	<div class="mypage">		
+	  		
 
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>第一次分析so层混淆的程序，ollvm真的是个神器。最先我还天真地看了半天汇编，ollvm可以让你分析时间翻几十倍。我并没有找到任何方法来抵抗这种混淆的方法，所以要分析只有硬刚。我先整理了一下网上关于ollvm的描述，然后根据我自己分析过程给出一些自己的理解。最后写了一下2016bctf的LostFlower的题解。</p>
+	  <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>第一次分析so层混淆的程序，ollvm真的是个神器。最先我还天真地看了半天汇编，ollvm可以让你分析时间翻几十倍。我并没有找到任何方法来抵抗这种混淆的方法，所以要分析只有硬刚。我先整理了一下网上关于ollvm的描述，然后根据我自己分析过程给出一些自己的理解。最后写了一下2016bctf的LostFlower的题解。</p>
 <h2 id="ollvm简介"><a href="#ollvm简介" class="headerlink" title="ollvm简介"></a>ollvm简介</h2><p>ollvm是对于so层函数，c语言函数混淆的方法。之前在java层遇到过诸如proguard的一些混淆，但是大家对于他们的评价都是这种混淆只是混乱了一下逻辑，并没有什么作用，让分析时间增多，也只是略微增多一点。但是我想说ollvm是让人绝望地增多，当然也可能是我第一次接触这个东西。原本好好的代码经过ollvm处理后的结果就是这样的</p>
 <p><img src="F:\Blog\public\pic\20161208\1.png" alt="1"></p>
 <p>具体原理（网上找的）：正常的求和代码</p>
@@ -186,162 +171,94 @@ var _hmt = _hmt || [];
 <p>解密代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	int pow_table[] = &#123;0, 1, 0x400, 0xe6a9, 0x100000, 0x9502f9, 0x39aa400, 0x10d63af1, 0x40000000, 0xcfd41b91&#125;;</div><div class="line">	int i;</div><div class="line"></div><div class="line">	for (i = 1000000000; i &lt;= 0x80000000; ++i) &#123;</div><div class="line">		int a0 = i % 10;</div><div class="line">		int a1 = (i % 100) / 10;</div><div class="line">		int a2 = (i % 1000) / 100;</div><div class="line">		int a3 = (i % 10000) / 1000;</div><div class="line">		int a4 = (i % 100000) / 10000;</div><div class="line">		int a5 = (i % 1000000) / 100000;</div><div class="line">		int a6 = (i % 10000000) / 1000000;</div><div class="line">		int a7 = (i % 100000000) / 10000000;</div><div class="line">		int a8 = (i % 1000000000) / 100000000;</div><div class="line">		int a9 = i / 1000000000;</div><div class="line">		</div><div class="line">		int sum = pow_table[a0] + pow_table[a1] + pow_table[a2] + pow_table[a3] + pow_table[a4] + pow_table[a5] + pow_table[a6] + pow_table[a7] + pow_table[a8] + pow_table[a9];</div><div class="line">		if (((i - sum) &amp; 0xffffffff) == 0x80000000) </div><div class="line">		&#123;</div><div class="line">			printf(&quot;ok, %d\n&quot;, i);</div><div class="line">			break;</div><div class="line">		&#125;</div><div class="line">		if(i % 1000000 == 0)</div><div class="line">		&#123;</div><div class="line">			printf(&quot;%d\n&quot;,i);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>输入为<code>1422445956</code>，Flag为<code>BCTF{wrhav3f4nwxo}</code>。</p>
-
-	
-	</div>
-  <a type="button" href="/2016/12/08/朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！/#more" class="btn btn-default more">閱讀本文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2016/12/05/机器学习实战（一）k-邻近算法/" >机器学习实战（一）k-邻近算法</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2016-12-05  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近开始看机器学习实战这本书，所以专门定期写一点自己的学习笔记以及分析上来</p>
-<p>机器学习的用途，我从书上找了一段话描述的很生动：</p>
-<p>“现今，机器学习已经用于多个领域，远超出大多数人的想象，下面就是假想的一日，其中很多场景都会碰到机器学习：假设你想起今天是某位朋友的生日，打算通过邮局给她寄一张生日贺卡。你打开浏览器搜索趣味卡片，搜索引擎将记录这次点击，并从中学习以优化下次搜索结果。然后，你检查电子邮件系统，此时垃圾邮件过滤器已经在后台自动过滤垃圾广告邮件，并将其放在垃圾箱内。接着你去购买这张生日卡片，并给你朋友的孩子挑选了一些尿布。结账时，收银员给了你一张1美元的优惠券，可以用于购买6罐装啤酒。之所以你会得到这张优惠券，是因为款台收费软件基于之前的统计知识，认为买尿布的人往往也会买啤酒。然后你去邮局邮递这张贺卡，手写识别软件识别出邮寄地址，并将贺卡发送给正确的邮车。当天你还去了贷款申请机构，查看自己是否能够申请贷款，办事员并不是直接给出结果，而是将你最近的金融活动信息输入计算机，有软件来判断你是否合格。最后，你还去赌场找些乐子，当你不如前门时，尾随你进来的一个家伙被突然出现的保安给拦了下来。“对不起，索普先生，我们不得不请你离开。我们不欢迎老千”。“</p>
-<h2 id="k-近邻算法"><a href="#k-近邻算法" class="headerlink" title="k-近邻算法"></a>k-近邻算法</h2>
-	
-	</div>
-  <a type="button" href="/2016/12/05/机器学习实战（一）k-邻近算法/#more" class="btn btn-default more">閱讀本文</a>
-</div>
-
-		
-
-		</div>
-
-		<!-- pagination -->
-		<div>
-  		<center>
-		<div class="pagination">
-
-   
-    
-           <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a>
-        
-
-        <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
- 
-       <a href="/page/2/" type="button" class="btn btn-default ">下一頁<i class="fa fa-arrow-circle-o-right"></i></a>     
-        
-
-  
-</div>
-
-  		</center>
-		</div>
-
-		
-		
-	</div> <!-- col-md-9 -->
-
-	
-		<div class="col-md-3">
-	<div id="sidebar">
-	
-			
-  <div id="site_search">
-   <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="搜尋" class="st-search-input st-default-search-input form-control"/>
-   </div>  
-  <div id="local-search-result"></div>
-  </div>
-
-
-		
-			
-	<div class="widget">
-		<h4>分類</h4>
-		<ul class="tag_box inline list-unstyled">
-		
-			<li><a href="/categories/安全技术/">安全技术<span>2</span></a></li>
-		
-			<li><a href="/categories/机器学习/">机器学习<span>1</span></a></li>
-		
-		</ul>
+	  
 	</div>
 
-		
-			
-	<div class="widget">
-		<h4>標籤雲</h4>
-		<ul class="tag_box inline list-unstyled">		
-		
-			<li><a href="/tags/机器学习实战笔记/">机器学习实战笔记<span>1</span></a></li>
-		
-			<li><a href="/tags/第一篇博客/">第一篇博客<span>1</span></a></li>
-		
-			<li><a href="/tags/移动安全/">移动安全<span>2</span></a></li>
-		
-		 
-		</ul>
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一頁</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2016/12/05/机器学习实战（一）k-邻近算法/" type="button" class="btn btn-default ">下一頁<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
 	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">留言</h2>
+
+    
+</section>
 
 
+	</div> <!-- col-md-9/col-md-12 -->
 		
-			
-<div class="widget">
-  <h4>最新文章</h4>
-  <ul class="entry list-unstyled">
-    
-      <li>
-        <a href="/2016/12/08/朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！/" ><i class="fa fa-file-o"></i>朋友圈都转疯了！2016bctf带OLLVM混淆的Lo...</a>
-      </li>
-    
-      <li>
-        <a href="/2016/12/05/机器学习实战（一）k-邻近算法/" ><i class="fa fa-file-o"></i>机器学习实战（一）k-邻近算法</a>
-      </li>
-    
-      <li>
-        <a href="/2016/12/04/震惊了！msc2安卓解题全记录，不看马上删了！！！/" ><i class="fa fa-file-o"></i>震惊了！！msc2安卓题全记录，不看马上就删了！！！</a>
-      </li>
-    
-      <li>
-        <a href="/2016/11/25/github博客搭建全记录/" ><i class="fa fa-file-o"></i>hexo+github博客搭建全记录</a>
-      </li>
-    
-  </ul>
-</div>
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
 
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-12-08 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/安全技术/">安全技术<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/移动安全/">移动安全<span>2</span></a></li>
+    </ul>
+	</div>
 		
-			
-<div class="widget">
-	<h4>鏈接</h4>
-	<ul class="blogroll list-unstyled">
-	
-		<li><i class="fa fa-github"></i><a href="https://g479173199.github.io/" title="Freemind's Github repository." target="_blank"]);">Jieming&#39;s Blog</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="" title="BOOTSTRA.386's Github repository." target="_blank"]);">BOOTSTRA.386</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="" title="Freemind.386's Github repository." target="_blank"]);">Freemind.386</a></li>
-	
-	</ul>
-</div>
 
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
 
+	</div>
 		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
 
-	
-	
-</div> <!-- row-fluid -->
+</div><!-- row -->
+
+
+
 	</div>
   </div>
   <div class="container-narrow">
