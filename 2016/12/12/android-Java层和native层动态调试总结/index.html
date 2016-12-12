@@ -6,13 +6,15 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>Rve</title>
+  <title>android Java层和native层动态调试总结 | Rve</title>
   <meta name="author" content="李南均">
+  
+  <meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x603B;&amp;#x7ED3;&amp;#x4E00;&amp;#x4E0B;android&amp;#x52A8;&amp;#x6001;&amp;#x8C03;&amp;#x8BD5;&amp;#x7684;&amp;#x65B9;&amp;#x6CD5;&amp;#xFF0C;&amp;#x5206;&amp;#x522B;&amp;#x662F;java&amp;#x">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="android Java层和native层动态调试总结"/>
   <meta property="og:site_name" content="Rve"/>
 
   
@@ -105,46 +107,29 @@ var _hmt = _hmt || [];
 
   <div class="container">
   	<div class="content">
-    	 <div class="page-header logo">
-  <h1>Rve<span class="blink-fast">∎</span></h1>
-</div>
+    	 
 
-<div class="row page">
 
 	
+		<div class="page-header">
+			<h1> android Java层和native层动态调试总结</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
 	<div class="col-md-9">
 	
 
-		<div class="slogan">
-      <i class="fa fa-heart blink-slow"></i>
-      Keep and carry on.
-</div>    
-		<div id="top_search"></div>
-		<div class="mypage">
-		
-		<!-- title and entry -->
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2016/12/12/android-Java层和native层动态调试总结/" >android Java层和native层动态调试总结</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2016-12-12  </div>
-		</div>
-	</div>
-	
+	<!-- content -->
+	<div class="mypage">		
+	  		
 
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x603B;&#x7ED3;&#x4E00;&#x4E0B;android&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5206;&#x522B;&#x662F;java&#x5C42;&#x548C;native&#x5C42;&#xFF0C;java&#x5C42;&#x4E3B;&#x8981;&#x7528;&#x5230;&#x7684;&#x5DE5;&#x5177;&#x662F;android studio&#xFF0C;&#x800C;native&#x5C42;&#x7528;ida&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x3002;</p>
+	  <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x603B;&#x7ED3;&#x4E00;&#x4E0B;android&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x5206;&#x522B;&#x662F;java&#x5C42;&#x548C;native&#x5C42;&#xFF0C;java&#x5C42;&#x4E3B;&#x8981;&#x7528;&#x5230;&#x7684;&#x5DE5;&#x5177;&#x662F;android studio&#xFF0C;&#x800C;native&#x5C42;&#x7528;ida&#x8FDB;&#x884C;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x3002;</p>
 <h2 id="&#x5B89;&#x5353;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;&#x603B;&#x7ED3;"><a href="#&#x5B89;&#x5353;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;&#x603B;&#x7ED3;" class="headerlink" title="&#x5B89;&#x5353;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;&#x603B;&#x7ED3;"></a>&#x5B89;&#x5353;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;&#x603B;&#x7ED3;</h2><h3 id="Java&#x5C42;&#x52A8;&#x6001;&#x8C03;&#x8BD5;"><a href="#Java&#x5C42;&#x52A8;&#x6001;&#x8C03;&#x8BD5;" class="headerlink" title="Java&#x5C42;&#x52A8;&#x6001;&#x8C03;&#x8BD5;"></a>Java&#x5C42;&#x52A8;&#x6001;&#x8C03;&#x8BD5;</h3><p>&#x4F7F;&#x7528;baksmali.jar&#xFF08;&#x53EF;&#x4EE5;&#x5728;&#x7F51;&#x4E0A;&#x627E;&#x5230;&#xFF09;&#x53CD;&#x7F16;&#x8BD1;apk</p>
 <p><img src="/2016/12/12/android-Java&#x5C42;&#x548C;native&#x5C42;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x603B;&#x7ED3;/lip_image001.png" alt="lip_image001"></p>
 <p>Android studio&#x6253;&#x5F00;&#x751F;&#x6210;&#x7684;smali&#x6587;&#x4EF6;</p>
@@ -190,136 +175,94 @@ var _hmt = _hmt || [];
 <p>&#x9009;&#x62E9;attach process</p>
 <p><img src="/2016/12/12/android-Java&#x5C42;&#x548C;native&#x5C42;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x603B;&#x7ED3;/QQ&#x622A;&#x56FE;20161102210530.png" alt="QQ&#x622A;&#x56FE;20161102210530"></p>
 <p>ida&#x5C31;&#x6302;&#x8F7D;&#x4E0A;&#x53BB;&#xFF0C;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x641C;&#x7D22;module.list&#x627E;&#x5230;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7F16;&#x5199;&#x7684;so&#x51FD;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x53EF;&#x4EE5;&#x4E0B;&#x65AD;&#x70B9;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;</p>
-
-	
-	</div>
-  <a type="button" href="/2016/12/12/android-Java层和native层动态调试总结/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-
-		</div>
-
-		<!-- pagination -->
-		<div>
-  		<center>
-		<div class="pagination">
-
-   
-    
-           <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
-        
-
-        <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
- 
-       <a href="/page/2/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>     
-        
-
-  
-</div>
-
-  		</center>
-		</div>
-
-		
-		
-	</div> <!-- col-md-9 -->
-
-	
-		<div class="col-md-3">
-	<div id="sidebar">
-	
-			
-  <div id="site_search">
-   <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
-   </div>  
-  <div id="local-search-result"></div>
-  </div>
-
-
-		
-			
-	<div class="widget">
-		<h4>Categories</h4>
-		<ul class="tag_box inline list-unstyled">
-		
-			<li><a href="/categories/安全技术/">安全技术<span>3</span></a></li>
-		
-			<li><a href="/categories/机器学习/">机器学习<span>1</span></a></li>
-		
-		</ul>
+	  
 	</div>
 
-		
-			
-	<div class="widget">
-		<h4>Tag Cloud</h4>
-		<ul class="tag_box inline list-unstyled">		
-		
-			<li><a href="/tags/机器学习实战笔记/">机器学习实战笔记<span>1</span></a></li>
-		
-			<li><a href="/tags/移动安全/">移动安全<span>3</span></a></li>
-		
-			<li><a href="/tags/第一篇博客/">第一篇博客<span>1</span></a></li>
-		
-		 
-		</ul>
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2016/12/08/朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
 	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
 
 
+	</div> <!-- col-md-9/col-md-12 -->
 		
-			
-<div class="widget">
-  <h4>Recent Posts</h4>
-  <ul class="entry list-unstyled">
-    
-      <li>
-        <a href="/2016/12/12/android-Java层和native层动态调试总结/" ><i class="fa fa-file-o"></i>android Java层和native层动态调试总结</a>
-      </li>
-    
-      <li>
-        <a href="/2016/12/08/朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！/" ><i class="fa fa-file-o"></i>朋友圈都转疯了！2016bctf带OLLVM混淆的Lo...</a>
-      </li>
-    
-      <li>
-        <a href="/2016/12/05/机器学习实战（一）k-邻近算法/" ><i class="fa fa-file-o"></i>机器学习实战（一）k-邻近算法</a>
-      </li>
-    
-      <li>
-        <a href="/2016/12/04/震惊了！msc2安卓解题全记录，不看马上删了！！！/" ><i class="fa fa-file-o"></i>震惊了！！msc2安卓题全记录，不看马上就删了！！！</a>
-      </li>
-    
-      <li>
-        <a href="/2016/11/25/github博客搭建全记录/" ><i class="fa fa-file-o"></i>hexo+github博客搭建全记录</a>
-      </li>
-    
-  </ul>
-</div>
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
 
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-12-12 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/安全技术/">安全技术<span>3</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/移动安全/">移动安全<span>3</span></a></li>
+    </ul>
+	</div>
 		
-			
-<div class="widget">
-	<h4>Links</h4>
-	<ul class="blogroll list-unstyled">
-	
-		<li><i class="fa fa-github"></i><a href="https://g479173199.github.io/" title="Freemind's Github repository." target="_blank"]);">Jieming&#39;s Blog</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="" title="BOOTSTRA.386's Github repository." target="_blank"]);">BOOTSTRA.386</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="" title="Freemind.386's Github repository." target="_blank"]);">Freemind.386</a></li>
-	
-	</ul>
-</div>
 
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
 
+	</div>
 		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
 
-	
-	
-</div> <!-- row-fluid -->
+</div><!-- row -->
+
+
+
 	</div>
   </div>
   <div class="container-narrow">
