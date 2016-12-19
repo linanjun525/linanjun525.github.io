@@ -6,13 +6,15 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>Rve</title>
+  <title>机器学习实战（二）决策树 | Rve</title>
   <meta name="author" content="李南均">
+  
+  <meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x5982;&amp;#x679C;&amp;#x8BF4;k-&amp;#x90BB;&amp;#x8FD1;&amp;#x7B97;&amp;#x6CD5;&amp;#x8FD8;&amp;#x6BD4;&amp;#x8F83;&amp;#x7B80;&amp;#x5355;&amp;#xFF0C;&amp;#x90A3;&amp;#x4E48;&amp;#x51B3;&amp;#x7">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="机器学习实战（二）决策树"/>
   <meta property="og:site_name" content="Rve"/>
 
   
@@ -105,46 +107,29 @@ var _hmt = _hmt || [];
 
   <div class="container">
   	<div class="content">
-    	 <div class="page-header logo">
-  <h1>Rve<span class="blink-fast">∎</span></h1>
-</div>
+    	 
 
-<div class="row page">
 
 	
+		<div class="page-header">
+			<h1> 机器学习实战（二）决策树</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
 	<div class="col-md-9">
 	
 
-		<div class="slogan">
-      <i class="fa fa-heart blink-slow"></i>
-      Keep and carry on.
-</div>    
-		<div id="top_search"></div>
-		<div class="mypage">
-		
-		<!-- title and entry -->
-		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2016/12/19/机器学习实战（二）决策树/" >机器学习实战（二）决策树</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2016-12-19  </div>
-		</div>
-	</div>
-	
+	<!-- content -->
+	<div class="mypage">		
+	  		
 
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x5982;&#x679C;&#x8BF4;k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;&#x8FD8;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x90A3;&#x4E48;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x6784;&#x9020;&#x5C31;&#x6D89;&#x53CA;&#x5230;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x81EA;&#x5DF1;&#x5C06;&#x6D41;&#x7A0B;&#x753B;&#x51FA;&#x6765;&#xFF0C;&#x9632;&#x6B62;&#x81EA;&#x5DF1;&#x5728;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x8C03;&#x7528;&#x4E2D;&#x6655;&#x5934;&#x8F6C;&#x5411;</p>
+	  <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x5982;&#x679C;&#x8BF4;k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;&#x8FD8;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x90A3;&#x4E48;&#x51B3;&#x7B56;&#x6811;&#x7684;&#x6784;&#x9020;&#x5C31;&#x6D89;&#x53CA;&#x5230;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x81EA;&#x5DF1;&#x5C06;&#x6D41;&#x7A0B;&#x753B;&#x51FA;&#x6765;&#xFF0C;&#x9632;&#x6B62;&#x81EA;&#x5DF1;&#x5728;&#x5404;&#x79CD;&#x5404;&#x6837;&#x7684;&#x8C03;&#x7528;&#x4E2D;&#x6655;&#x5934;&#x8F6C;&#x5411;</p>
 <h2 id="&#x51B3;&#x7B56;&#x6811;"><a href="#&#x51B3;&#x7B56;&#x6811;" class="headerlink" title="&#x51B3;&#x7B56;&#x6811;"></a>&#x51B3;&#x7B56;&#x6811;</h2><p>k-&#x90BB;&#x8FD1;&#x7B97;&#x6CD5;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x5F88;&#x591A;&#x5206;&#x7C7B;&#x4EFB;&#x52A1;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x5B58;&#x5728;&#x6700;&#x5927;&#x7684;&#x7F3A;&#x70B9;&#x5728;&#x4E8E;&#x65E0;&#x6CD5;&#x7ED9;&#x51FA;&#x6570;&#x636E;&#x7684;&#x5185;&#x5728;&#x542B;&#x4E49;</p>
 <p>&#x51B3;&#x7B56;&#x6811;&#x7684;&#x4E3B;&#x8981;&#x4F18;&#x52BF;&#x5728;&#x4E8E;&#x6570;&#x636E;&#x5F62;&#x5F0F;&#x975E;&#x5E38;&#x5BB9;&#x6613;&#x7406;&#x89E3;</p>
 <p>&#x51B3;&#x7B56;&#x6811;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x4EFB;&#x52A1;&#x662F;&#x4E3A;&#x4E86;&#x7406;&#x89E3;&#x6570;&#x636E;&#x4E2D;&#x6240;&#x8574;&#x542B;&#x7684;&#x77E5;&#x8BC6;&#x4FE1;&#x606F;&#xFF0C;&#x56E0;&#x6B64;&#x51B3;&#x7B56;&#x6811;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E0D;&#x719F;&#x6089;&#x7684;&#x6570;&#x636E;&#x96C6;&#x5408;&#xFF0C;&#x5E76;&#x4ECE;&#x4E2D;&#x63D0;&#x53D6;&#x51FA;&#x4E00;&#x7CFB;&#x5217;&#x89C4;&#x5219;&#xFF0C;&#x8FD9;&#x4E9B;&#x673A;&#x5668;&#x6839;&#x636E;&#x6570;&#x636E;&#x96C6;&#x521B;&#x5EFA;&#x89C4;&#x5219;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x5C31;&#x662F;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
@@ -173,136 +158,94 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span>  <span class="title">createTree</span><span class="params">(dataSet,labels)</span>:</span></div><div class="line">    classList=[example[<span class="number">-1</span>] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</div><div class="line">    <span class="keyword">if</span> classList.count(classList[<span class="number">0</span>])==len(classList):</div><div class="line">        <span class="keyword">return</span> classList[<span class="number">0</span>]</div><div class="line">    <span class="keyword">if</span> len(dataSet[<span class="number">0</span>])==<span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> majorityCnt(classList)</div><div class="line">    bestFeat=chooseBestFeatureToSplit(dataSet)</div><div class="line">    <span class="keyword">print</span> bestFeat</div><div class="line">    bestFeatLabel=labels[bestFeat]</div><div class="line">    myTree={bestFeatLabel:{}}</div><div class="line">    <span class="keyword">del</span>(labels[bestFeat])</div><div class="line">    featValues=[example[bestFeat] <span class="keyword">for</span> example <span class="keyword">in</span> dataSet]</div><div class="line">    uniqueVals=set(featValues)        <span class="comment">#&#x5F97;&#x5230;&#x5217;&#x8868;&#x5305;&#x542B;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;</span></div><div class="line">    <span class="keyword">for</span> value <span class="keyword">in</span> uniqueVals:</div><div class="line">        subLabels=labels[:]</div><div class="line">        <span class="comment">#&#x5BF9;&#x6BCF;&#x4E2A;&#x5C5E;&#x6027;&#x4E0B;&#x7684;&#x6570;&#x636E;&#x7EE7;&#x7EED;&#x6784;&#x9020;&#x6811;</span></div><div class="line">        myTree[bestFeatLabel][value]=createTree(splitDataSet(dataSet,bestFeat,value),subLabels)</div><div class="line">    <span class="keyword">return</span> myTree</div></pre></td></tr></table></figure>
 <p>&#x8FD9;&#x4E2A;&#x9012;&#x5F52;&#x6709;&#x70B9;&#x7ED5;&#x9700;&#x8981;&#x4ED4;&#x7EC6;&#x9605;&#x8BFB;&#xFF0C;&#x6211;&#x8868;&#x8FBE;&#x80FD;&#x529B;&#x6709;&#x9650;&#x4E5F;&#x8BF4;&#x4E0D;&#x6E05;&#x695A;&#x3002;&#x603B;&#x4E4B;&#x6211;&#x4EEC;&#x5C31;&#x662F;&#x5EFA;&#x7ACB;&#x4E86;&#x4E00;&#x4E2A;&#x51B3;&#x7B56;&#x6811;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x51B3;&#x7B56;&#x6811;&#x6765;&#x5B8C;&#x6210;&#x5206;&#x7C7B;&#x5566;&#x3002;</p>
 <p>&#x5206;&#x7C7B;&#x51FD;&#x6570;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x9012;&#x5F52;&#x51FD;&#x6570;&#xFF0C;&#x5728;&#x5B58;&#x50A8;&#x5E26;&#x6709;&#x7279;&#x5F81;&#x7684;&#x6570;&#x636E;&#x4F1A;&#x9762;&#x4E34;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF1A;&#x7A0B;&#x5E8F;&#x65E0;&#x6CD5;&#x786E;&#x5B9A;&#x7279;&#x5F81;&#x5728;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4F8B;&#x5982;&#x524D;&#x9762;&#x4F8B;&#x5B50;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x5212;&#x5206;&#x6570;&#x636E;&#x96C6;&#x7684;&#x7279;&#x5F81;&#x662F;no surfacing&#x5C5E;&#x6027;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x5B9E;&#x9645;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x8BE5;&#x5C5E;&#x6027;&#x5B58;&#x50A8;&#x5728;&#x54EA;&#x4E2A;&#x4F4D;&#x7F6E;&#xFF1F;&#x7B2C;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x8FD8;&#x662F;&#x7B2C;&#x4E8C;&#x4E2A;&#x5C5E;&#x6027;&#xFF1F;&#x7279;&#x5F81;&#x6807;&#x7B7E;&#x5217;&#x8868;&#x5C06;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5904;&#x7406;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x4F7F;&#x7528;index&#x65B9;&#x6CD5;&#x67E5;&#x627E;&#x5F53;&#x524D;&#x5217;&#x8868;&#x4E2D;&#x7B2C;&#x4E00;&#x4E2A;&#x5339;&#x914D;firstStr&#x53D8;&#x91CF;&#x7684;&#x5143;&#x7D20;&#x3002;&#x7136;&#x540E;&#x4EE3;&#x7801;&#x9012;&#x5F52;&#x904D;&#x5386;&#x6574;&#x68F5;&#x6811;&#xFF0C;&#x6BD4;&#x8F83;testVec&#x53D8;&#x91CF;&#x4E2D;&#x7684;&#x503C;&#x4E0E;&#x6811;&#x8282;&#x70B9;&#x7684;&#x503C;&#xFF0C;&#x5982;&#x679C;&#x8FBE;&#x5230;&#x53F6;&#x5B50;&#x8282;&#x70B9;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x8282;&#x70B9;&#x7684;&#x5206;&#x7C7B;&#x6807;&#x7B7E;&#x3002;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify</span><span class="params">(inputTree,featLabels,testVec)</span>:</span></div><div class="line">    firstStr=inputTree.keys()[<span class="number">0</span>]</div><div class="line">    secondDict=inputTree[firstStr]</div><div class="line">    featIndex=featLabels.index(firstStr) <span class="comment">#&#x7531;&#x4E8E;&#x4E0D;&#x77E5;&#x9053;&#x51B3;&#x7B56;&#x6811;&#x7B2C;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#x5728;label&#x4E2D;&#x4E3A;&#x7B2C;&#x51E0;&#x4E2A;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;index&#x5B9A;&#x4F4D;&#x7279;&#x5F81;&#x7684;&#x4F4D;&#x7F6E;</span></div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> secondDict.keys():</div><div class="line">        <span class="keyword">if</span> testVec[featIndex]==key:</div><div class="line">            <span class="keyword">if</span> type(secondDict[key]).__name__==<span class="string">&apos;dict&apos;</span>:</div><div class="line">                classLabel=classify(secondDict[key],featLabels,testVec)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                classLabel=secondDict[key]</div><div class="line">    <span class="keyword">return</span> classLabel</div></pre></td></tr></table></figure>
-	
-	</div>
-  <a type="button" href="/2016/12/19/机器学习实战（二）决策树/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
-
-		</div>
-
-		<!-- pagination -->
-		<div>
-  		<center>
-		<div class="pagination">
-
-   
-    
-           <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
-        
-
-        <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
- 
-       <a href="/page/2/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>     
-        
-
-  
-</div>
-
-  		</center>
-		</div>
-
-		
-		
-	</div> <!-- col-md-9 -->
-
-	
-		<div class="col-md-3">
-	<div id="sidebar">
-	
-			
-  <div id="site_search">
-   <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
-   </div>  
-  <div id="local-search-result"></div>
-  </div>
-
-
-		
-			
-	<div class="widget">
-		<h4>Categories</h4>
-		<ul class="tag_box inline list-unstyled">
-		
-			<li><a href="/categories/安全技术/">安全技术<span>4</span></a></li>
-		
-			<li><a href="/categories/机器学习/">机器学习<span>2</span></a></li>
-		
-		</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">classify</span><span class="params">(inputTree,featLabels,testVec)</span>:</span></div><div class="line">    firstStr=inputTree.keys()[<span class="number">0</span>]</div><div class="line">    secondDict=inputTree[firstStr]</div><div class="line">    featIndex=featLabels.index(firstStr) <span class="comment">#&#x7531;&#x4E8E;&#x4E0D;&#x77E5;&#x9053;&#x51B3;&#x7B56;&#x6811;&#x7B2C;&#x4E00;&#x4E2A;&#x7279;&#x5F81;&#x5728;label&#x4E2D;&#x4E3A;&#x7B2C;&#x51E0;&#x4E2A;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;index&#x5B9A;&#x4F4D;&#x7279;&#x5F81;&#x7684;&#x4F4D;&#x7F6E;</span></div><div class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> secondDict.keys():</div><div class="line">        <span class="keyword">if</span> testVec[featIndex]==key:</div><div class="line">            <span class="keyword">if</span> type(secondDict[key]).__name__==<span class="string">&apos;dict&apos;</span>:</div><div class="line">                classLabel=classify(secondDict[key],featLabels,testVec)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                classLabel=secondDict[key]</div><div class="line">    <span class="keyword">return</span> classLabel</div></pre></td></tr></table></figure>	  
 	</div>
 
-		
-			
-	<div class="widget">
-		<h4>Tag Cloud</h4>
-		<ul class="tag_box inline list-unstyled">		
-		
-			<li><a href="/tags/移动安全/">移动安全<span>4</span></a></li>
-		
-			<li><a href="/tags/第一篇博客/">第一篇博客<span>1</span></a></li>
-		
-			<li><a href="/tags/机器学习实战笔记/">机器学习实战笔记<span>2</span></a></li>
-		
-		 
-		</ul>
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2016/12/18/android加密技术——dex加密/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
 	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
 
 
+	</div> <!-- col-md-9/col-md-12 -->
 		
-			
-<div class="widget">
-  <h4>Recent Posts</h4>
-  <ul class="entry list-unstyled">
-    
-      <li>
-        <a href="/2016/12/19/机器学习实战（二）决策树/" ><i class="fa fa-file-o"></i>机器学习实战（二）决策树</a>
-      </li>
-    
-      <li>
-        <a href="/2016/12/18/android加密技术——dex加密/" ><i class="fa fa-file-o"></i>android加密技术——dex加密</a>
-      </li>
-    
-      <li>
-        <a href="/2016/12/12/android-Java层和native层动态调试总结/" ><i class="fa fa-file-o"></i>android Java层和native层动态调试总结</a>
-      </li>
-    
-      <li>
-        <a href="/2016/12/08/朋友圈都转疯了！2016bctf带OLLVM混淆的LostFlower原来这样做！/" ><i class="fa fa-file-o"></i>朋友圈都转疯了！2016bctf带OLLVM混淆的Lo...</a>
-      </li>
-    
-      <li>
-        <a href="/2016/12/05/机器学习实战（一）k-邻近算法/" ><i class="fa fa-file-o"></i>机器学习实战（一）k-邻近算法</a>
-      </li>
-    
-  </ul>
-</div>
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
 
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-12-19 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/机器学习/">机器学习<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/机器学习实战笔记/">机器学习实战笔记<span>2</span></a></li>
+    </ul>
+	</div>
 		
-			
-<div class="widget">
-	<h4>Links</h4>
-	<ul class="blogroll list-unstyled">
-	
-		<li><i class="fa fa-github"></i><a href="https://g479173199.github.io/" title="Freemind's Github repository." target="_blank"]);">Jieming&#39;s Blog</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="" title="BOOTSTRA.386's Github repository." target="_blank"]);">BOOTSTRA.386</a></li>
-	
-		<li><i class="fa fa-github"></i><a href="" title="Freemind.386's Github repository." target="_blank"]);">Freemind.386</a></li>
-	
-	</ul>
-</div>
 
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
 
+	</div>
 		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
 
-	
-	
-</div> <!-- row-fluid -->
+</div><!-- row -->
+
+
+
 	</div>
   </div>
   <div class="container-narrow">
