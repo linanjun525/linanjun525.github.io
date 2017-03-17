@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>应用分析（1）gewarav8.1网络协议分析 | Rve</title>
+  <meta name="author" content="李南均">
+  
+  <meta name="description" content="&amp;#x524D;&amp;#x8A00;&amp;#x672C;&amp;#x6587;&amp;#x4E3B;&amp;#x8981;&amp;#x662F;&amp;#x5BF9;&amp;#x7F51;&amp;#x7EDC;&amp;#x534F;&amp;#x8BAE;&amp;#x8FDB;&amp;#x884C;&amp;#x5206;&amp;#x6790;&amp;#xFF0C;&amp;#x5373;&amp;#x520">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="应用分析（1）gewarav8.1网络协议分析"/>
+  <meta property="og:site_name" content="Rve"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Rve</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>关于我
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 应用分析（1）gewarav8.1网络协议分析</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x662F;&#x5BF9;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;&#x5373;&#x5206;&#x6790;&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x5305;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x4EE5;&#x53CA;&#x6BCF;&#x4E00;&#x5B57;&#x6BB5;&#x7684;&#x751F;&#x6210;&#x65B9;&#x5F0F;&#x3002;&#x5206;&#x6790;&#x5E94;&#x7528;&#x662F;&#x683C;&#x74E6;&#x62C9;v8.1.1&#x7248;&#x672C;&#xFF0C;&#x4E3B;&#x8981;&#x5206;&#x6790;&#x4E86;&#x6570;&#x636E;&#x5305;&#x4E2D;&#x7B7E;&#x540D;sign&#x503C;&#x7684;&#x751F;&#x6210;&#x8FC7;&#x7A0B;&#x53CA;&#x65B9;&#x5F0F;&#xFF0C;sign&#x662F;&#x628A;&#x6570;&#x636E;&#x5305;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x7528;&#x201D;&amp;&#x201D;&#x8FDE;&#x63A5;&#x540E;&#xFF0C;&#x518D;&#x8FDB;&#x884C;md5&#x5F97;&#x5230;&#x7684;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x5B8C;&#x6574;&#x6027;&#x8FDB;&#x884C;&#x6821;&#x9A8C;&#x3002;</p>
+<h2 id="&#x5206;&#x6790;&#x8FC7;&#x7A0B;"><a href="#&#x5206;&#x6790;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x5206;&#x6790;&#x8FC7;&#x7A0B;"></a>&#x5206;&#x6790;&#x8FC7;&#x7A0B;</h2><p>&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x5305;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/1.png" alt="1"></p>
+<p>&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x5DF2;&#x7ECF;&#x628A;signmethod&#x90FD;&#x544A;&#x8BC9;&#x4E86;&#x6211;&#x4EEC;&#x662F;md5&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6570;&#x636E;&#x5305;&#x4E2D;&#x7684;&#x5B57;&#x6BB5;&#x8FD8;&#x662F;&#x975E;&#x5E38;&#x591A;&#x7684;&#xFF0C;&#x4ED6;&#x4F7F;&#x7528;&#x8FD9;&#x4E48;&#x591A;&#x7684;&#x4E1C;&#x897F;&#x6700;&#x5927;&#x7684;&#x76EE;&#x7684;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x6700;&#x540E;&#x8FDB;&#x884C;md5&#x7684;hash&#xFF0C;&#x7528;&#x6765;&#x9632;&#x6B62;&#x5176;&#x4ED6;&#x4EBA;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x8FDB;&#x884C;&#x7BE1;&#x6539;&#xFF0C;&#x4F46;&#x662F;&#x4ED6;&#x7684;&#x52A0;&#x5BC6;&#x65B9;&#x5F0F;&#x8FC7;&#x4E8E;&#x7B80;&#x5355;&#xFF0C;&#x751A;&#x81F3;&#x8FDE;md5&#x90FD;&#x6CA1;&#x6709;&#x7ECF;&#x8FC7;&#x4EFB;&#x4F55;&#x53D8;&#x6362;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x6E90;&#x7801;&#x5206;&#x6790;&#x6765;&#x627E;&#x5230;&#x8FDB;&#x884C;md5&#x7684;&#x503C;&#x3002;</p>
+<p>&#x6E90;&#x7801;&#x5206;&#x6790;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x9488;&#x5BF9;&#x767B;&#x9646;&#x65F6;&#x6570;&#x636E;&#x5305;&#x7684;logintoken&#xFF0C;&#x5168;&#x5C40;&#x641C;&#x7D22;logintoken&#xFF0C;&#x627E;&#x5230;sign&#x503C;&#x7684;&#x5165;&#x53E3;</p>
+<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/2.png" alt="2"></p>
+<p>&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x786E;&#x5B9A;&#x6B64;&#x5904;&#x5C31;&#x662F;&#x767B;&#x9646;&#x65F6;&#x8BA1;&#x7B97;sign&#x503C;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6211;&#x4EEC;&#x91CD;&#x70B9;&#x5173;&#x6CE8;hashmap v6&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x627E;&#x5230;&#x4E86;&#x8BA1;&#x7B97;sign&#x503C;&#x7684;&#x5165;&#x53E3;awb&#x51FD;&#x6570;</p>
+<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/3.png" alt="3"></p>
+<p>&#x4ECD;&#x7136;&#x662F;&#x5173;&#x6CE8;&#x54EA;&#x91CC;&#x8C03;&#x7528;&#x4E86;&#x4E4B;&#x524D;&#x751F;&#x6210;&#x7684;hashmap&#xFF0C;&#x53D1;&#x73B0;awi.a&#x51FD;&#x6570;&#x4F1A;&#x8BA1;&#x7B97;sign&#x503C;</p>
+<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/4.png" alt="4"></p>
+<p>&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x5DF2;&#x7ECF;&#x5F88;&#x660E;&#x663E;&#x7684;&#x770B;&#x5230;v0_3&#x4E3A;&#x6211;&#x4EEC;&#x8981;&#x7684;sign&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x627E;&#x5230;&#x4E4B;&#x524D;&#x5BF9;&#x4ED6;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;azl.a&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;hashmap&#xFF0C;&#x548C;azs.a&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x8DDF;&#x8FDB;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;</p>
+<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/azs-a&#x51FD;&#x6570;.png" alt="azs-a&#x51FD;&#x6570;"></p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5148;&#x5224;&#x65AD;androiddramainmove&#x548C;appkey&#x7684;&#x503C;&#x662F;&#x5426;&#x76F8;&#x7B49;&#xFF0C;&#x5E76;&#x628A;&#x662F;&#x5426;&#x76F8;&#x7B49;&#x7684;bool&#x578B;&#x53D8;&#x91CF;&#x4F20;&#x5165;&#x51FD;&#x6570;azs.a&#x4E2D;&#x53BB;&#xFF0C;&#x5982;&#x679C;&#x4E3A;false&#x5219;&#x8FD4;&#x56DE;prikey-android&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;&#x4E00;&#x4E32;hash&#x503C;&#xFF0C;&#x7531;&#x4E8E;&#x8FD9;&#x91CC;appkey&#x4E3A;android2009&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5224;&#x65AD;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;prikey-android&#x3002;</p>
+<p>&#x7EE7;&#x7EED;&#x5206;&#x6790;&#x51FD;&#x6570;azl.a</p>
+<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/azl-a&#x51FD;&#x6570;.png" alt="azl-a&#x51FD;&#x6570;"></p>
+<p>&#x8FD9;&#x91CC;&#x5C31;&#x5F88;&#x660E;&#x663E;&#x4E86;&#xFF0C;&#x51FD;&#x6570;&#x5148;&#x662F;&#x5C06;hashmap&#x4E2D;&#x7684;&#x6570;&#x503C;&#x4F7F;&#x7528;&#x201C;key=value&#x201D;&#x7684;&#x5F62;&#x5F0F;&#x901A;&#x8FC7;&#x201D;&amp;&#x201C;&#x8FDB;&#x884C;&#x62FC;&#x63A5;&#xFF0C;&#x901A;&#x8FC7;bax.a&#x53BB;&#x6389;&#x6700;&#x672B;&#x5C3E;&#x7684;&amp;&#x540E;&#xFF0C;&#x518D;&#x4E0E;prikey-android&#x8FDB;&#x884C;&#x62FC;&#x63A5;&#xFF0C;&#x5BF9;&#x6700;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x8FDB;&#x884C;md5&#x8FD4;&#x56DE;&#x5E76;&#x4E14;&#x5B58;&#x5165;sign&#x4E2D;&#x3002;&#x627E;&#x5230;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x65AD;&#x5728;&#x8BA1;&#x7B97;md5&#x4E4B;&#x524D;&#xFF0C;&#x5F97;&#x5230;&#x8FD9;&#x4E2A;sign&#x503C;&#xFF0C;&#x7136;&#x540E;&#x4FEE;&#x6539;&#x5176;&#x4E2D;&#x7684;&#x67D0;&#x4E00;&#x5B57;&#x6BB5;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;md5&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x7ED5;&#x8FC7;&#x670D;&#x52A1;&#x5668;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x7684;&#x6821;&#x9A8C;&#x3002;&#x6211;&#x4EEC;&#x65AD;&#x4E0B;&#x6765;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;md5&#x4E5F;&#x9A8C;&#x8BC1;&#x4E86;&#x6211;&#x4EEC;&#x7684;&#x63A8;&#x8BBA;:</p>
+<p>&#x83B7;&#x53D6;&#x9A8C;&#x8BC1;&#x7801;&#x65F6;&#x751F;&#x6210;&#x7684;sign&#x503C;&#x7684;&#x539F;&#x59CB;&#x6570;&#x636E;</p>
+<p>appSource=AS01&amp;appVersion=8.1.1&amp;appkey=android2009&amp;apptype=cinema&amp;citycode=110000&amp;deviceId=020000000000&amp;format=xml&amp;imei=354360070244405&amp;method=com.gewara.mobile.login.getMobileCodeByFindpass&amp;mnet=WIFI&amp;mobile=18310455273&amp;mobileType=Nexus5X&amp;mprovider=&amp;osType=ANDROID&amp;osVersion=7.0&amp;pageName=com.gewara.activity.usercenter.fragment.UserForgetFragment&amp;pointx=116.365237&amp;pointy=39.969854&#xD7;tamp=2017-03-1615:42:41&amp;v=1.0&amp;version=1.0prikey-android</p>
+<h2 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h2><p>&#x4E4B;&#x524D;&#x90FD;&#x662F;&#x5BF9;&#x4E00;&#x4E9B;ctf&#x9898;&#x76EE;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;&#x540E;&#x8FB9;&#x4F1A;&#x66F4;&#x591A;&#x5730;&#x6CE8;&#x91CD;&#x5B9E;&#x6218;&#xFF0C;&#x6CE8;&#x91CD;&#x5BF9;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7684;&#x5206;&#x6790;&#x548C;&#x7834;&#x89E3;&#x3002;&#x5B9E;&#x6218;&#x5206;&#x6790;&#x4E3B;&#x8981;&#x7684;&#x96BE;&#x70B9;&#x5728;&#x4E8E;&#x4EE3;&#x7801;&#x7684;&#x5B9A;&#x4F4D;&#xFF0C;&#x4EE5;&#x53CA;java&#x6216;&#x8005;android&#x7F16;&#x7A0B;&#x4E2D;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x3002;&#x6240;&#x4EE5;&#x5BF9;&#x5F00;&#x53D1;&#x80FD;&#x529B;&#x4E5F;&#x6709;&#x6BD4;&#x8F83;&#x9AD8;&#x7684;&#x8981;&#x6C42;&#x3002;</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一页</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2017/01/10/机器学习实战四：Logisitic回归/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">留言</h2>
+
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-03-17 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/移动安全/">移动安全<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/应用分析-安全技术/">应用分析 安全技术<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2017 李南均
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
