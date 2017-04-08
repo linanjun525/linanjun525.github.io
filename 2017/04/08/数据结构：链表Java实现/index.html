@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>数据结构：链表Java实现 | Rve</title>
+  <meta name="author" content="李南均">
+  
+  <meta name="description" content="&amp;#x7528;java&amp;#x5BF9;&amp;#x6570;&amp;#x636E;&amp;#x7ED3;&amp;#x6784;&amp;#x5355;&amp;#x5411;&amp;#x94FE;&amp;#x8868;&amp;#x7684;&amp;#x5B9E;&amp;#x73B0;&amp;#xFF0C;&amp;#x5176;&amp;#x4E2D;&amp;#x5B9A;&amp;#x4E49;&amp;#">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="数据结构：链表Java实现"/>
+  <meta property="og:site_name" content="Rve"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-70812759-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?cb5448498d7169c668b07c2b255d62c1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">Rve</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>关于我
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 数据结构：链表Java实现</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>&#x7528;java&#x5BF9;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x5355;&#x5411;&#x94FE;&#x8868;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5176;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x4E24;&#x4E2A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x94FE;&#x8868;Link&#x548C;&#x8282;&#x70B9;ListNode</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">ListNode head=<span class="keyword">null</span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Link</span><span class="params">(ListNode n)</span></span>{</div><div class="line">		head=n;</div><div class="line">	}</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>{</div><div class="line">	ListNode next=<span class="keyword">null</span>;</div><div class="line">	<span class="keyword">int</span> data;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> data)</span></span>{</div><div class="line">		<span class="keyword">this</span>.data=data;</div><div class="line">	}</div><div class="line">}</div></pre></td></tr></table></figure>
+<p>&#x5BF9;&#x94FE;&#x8868;&#x6709;&#x5982;&#x4E0B;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<p>1&#x3001;&#x94FE;&#x8868;&#x672B;&#x5C3E;&#x63D2;&#x5165;&#x6570;&#x636E;</p>
+<p>2&#x3001;&#x5220;&#x9664;&#x7B2C;index&#x4E2A;&#x8282;&#x70B9;</p>
+<p>3&#x3001;&#x8FD4;&#x56DE;&#x8282;&#x70B9;&#x957F;&#x5EA6;</p>
+<p>4&#x3001;&#x5728;&#x4E0D;&#x77E5;&#x9053;&#x5934;&#x6307;&#x9488;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x8282;&#x70B9;</p>
+<p>5&#x3001;&#x6253;&#x5370;&#x8282;&#x70B9;</p>
+<p>6&#x3001;&#x94FE;&#x8868;&#x53CD;&#x8F6C;</p>
+<p>7&#x3001;&#x67E5;&#x627E;&#x5355;&#x94FE;&#x8868;&#x7684;&#x4E2D;&#x95F4;&#x7ED3;&#x70B9;</p>
+<p>8&#x3001;&#x67E5;&#x627E;&#x5012;&#x6570;&#x7B2C;k&#x4E2A;&#x8282;&#x70B9;</p>
+<p>9&#x3001;&#x5BF9;&#x5217;&#x8868;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</p>
+<p>10&#x3001;&#x5220;&#x9664;&#x91CD;&#x590D;&#x8282;&#x70B9;</p>
+<p>11&#x3001;&#x4ECE;&#x5C3E;&#x5230;&#x5934;&#x8F93;&#x51FA;&#x5355;&#x94FE;&#x8868;</p>
+<p>&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">	 * &#x94FE;&#x8868;&#x672B;&#x5C3E;&#x63D2;&#x5165;&#x6570;&#x636E;</div><div class="line">	 * <span class="doctag">@param</span> d</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNode</span><span class="params">(<span class="keyword">int</span> d)</span></span>{</div><div class="line">		ListNode n=<span class="keyword">new</span> ListNode(d);</div><div class="line">		<span class="keyword">if</span>(<span class="keyword">this</span>.head==<span class="keyword">null</span>){</div><div class="line">			<span class="keyword">this</span>.head=n;</div><div class="line">		}</div><div class="line">		<span class="keyword">else</span>{</div><div class="line">			ListNode tmp=<span class="keyword">this</span>.head;</div><div class="line">			<span class="keyword">while</span>(tmp.next!=<span class="keyword">null</span>){</div><div class="line">				tmp=tmp.next;</div><div class="line">			}</div><div class="line">			tmp.next=n;</div><div class="line">		}</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNode</span><span class="params">(ListNode n)</span></span>{</div><div class="line">		<span class="keyword">if</span>(<span class="keyword">this</span>.head==<span class="keyword">null</span>)<span class="keyword">this</span>.head=n;</div><div class="line">		<span class="keyword">else</span>{</div><div class="line">			ListNode tmp=<span class="keyword">this</span>.head;</div><div class="line">			<span class="keyword">while</span>(tmp.next!=<span class="keyword">null</span>){</div><div class="line">				tmp=tmp.next;</div><div class="line">			}</div><div class="line">			tmp.next=n;</div><div class="line">		}		</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x5220;&#x9664;&#x7B2C;index&#x4E2A;&#x8282;&#x70B9;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">deleteNode</span><span class="params">(<span class="keyword">int</span> index)</span></span>{</div><div class="line">		<span class="keyword">int</span> i=<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(index&lt;<span class="number">1</span>||index&gt;length())<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		<span class="keyword">if</span>(index==<span class="number">1</span>){</div><div class="line">			<span class="keyword">this</span>.head=<span class="keyword">this</span>.head.next;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">		}		</div><div class="line">		ListNode preNode=<span class="keyword">this</span>.head;</div><div class="line">		ListNode curNode=preNode.next;</div><div class="line">		<span class="keyword">while</span>(curNode!=<span class="keyword">null</span>){</div><div class="line">			<span class="keyword">if</span>(i==index-<span class="number">1</span>){</div><div class="line">				preNode.next=curNode.next;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">			}</div><div class="line">			preNode=curNode;</div><div class="line">			curNode=curNode.next;</div><div class="line">			i++;</div><div class="line">		}</div><div class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x8FD4;&#x56DE;&#x8282;&#x70B9;&#x957F;&#x5EA6;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>{</div><div class="line">		<span class="keyword">int</span> length=<span class="number">0</span>;</div><div class="line">		ListNode tmp=<span class="keyword">this</span>.head;</div><div class="line">		<span class="keyword">while</span>(tmp!=<span class="keyword">null</span>){</div><div class="line">			length++;</div><div class="line">			tmp=tmp.next;</div><div class="line">		}</div><div class="line">		<span class="keyword">return</span> length;		</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x5728;&#x4E0D;&#x77E5;&#x9053;&#x5934;&#x6307;&#x9488;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x8282;&#x70B9;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">deleteNode1</span><span class="params">(ListNode n)</span></span>{</div><div class="line">		<span class="keyword">if</span>(n==<span class="keyword">null</span>||n.next==<span class="keyword">null</span>)<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">		n.data=n.next.data;</div><div class="line">		n.next=n.next.next;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x6253;&#x5370;&#x8282;&#x70B9;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printList</span><span class="params">()</span></span>{</div><div class="line">		ListNode tmp=<span class="keyword">this</span>.head;</div><div class="line">		<span class="keyword">while</span>(tmp!=<span class="keyword">null</span>){</div><div class="line">			System.out.print(tmp.data+<span class="string">&quot; &quot;</span>);</div><div class="line">			tmp=tmp.next;</div><div class="line">		}</div><div class="line">		System.out.println();</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x94FE;&#x8868;&#x53CD;&#x8F6C;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> Link <span class="title">ReverseIteratively</span><span class="params">()</span></span>{</div><div class="line">		ListNode pNode=<span class="keyword">this</span>.head;</div><div class="line">		ListNode pPrev=<span class="keyword">null</span>;</div><div class="line">		Link newLink = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">while</span>(pNode!=<span class="keyword">null</span>){</div><div class="line">			ListNode pNext=pNode.next;</div><div class="line">			<span class="keyword">if</span>(pNext==<span class="keyword">null</span>){</div><div class="line">				newLink=<span class="keyword">new</span> Link(pNode);</div><div class="line">			}</div><div class="line">			pNode.next=pPrev;</div><div class="line">			pPrev=pNode;</div><div class="line">			pNode=pNext;</div><div class="line">		}</div><div class="line">		<span class="keyword">return</span> newLink;</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x67E5;&#x627E;&#x5355;&#x94FE;&#x8868;&#x7684;&#x4E2D;&#x95F4;&#x7ED3;&#x70B9;</div><div class="line">	 * &#x91C7;&#x7528;&#x5FEB;&#x6162;&#x6307;&#x9488;&#x7684;&#x65B9;&#x5F0F;&#x67E5;&#x627E;&#x5355;&#x94FE;&#x8868;&#x7684;&#x4E2D;&#x95F4;&#x8282;&#x70B9;&#xFF0C;&#x5FEB;&#x6307;&#x9488;&#x4E00;&#x6B21;&#x8D70;&#x4E24;&#x6B65;&#xFF0C;&#x6162;&#x6307;&#x9488;&#x4E00;&#x6B21;&#x8D70;&#x4E00;&#x6B65;&#xFF0C;&#x5F53;&#x5FEB;&#x6307;&#x9488;&#x8D70;&#x5B8C;&#x65F6;&#xFF0C;&#x6162;&#x6307;&#x9488;&#x521A;&#x597D;&#x5230;&#x8FBE;&#x4E2D;&#x95F4;&#x8282;&#x70B9;&#x3002;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> ListNode <span class="title">SearchMid</span><span class="params">()</span></span>{</div><div class="line">		ListNode fast=<span class="keyword">this</span>.head;</div><div class="line">		ListNode low=<span class="keyword">this</span>.head;</div><div class="line">		<span class="keyword">while</span>(fast!=<span class="keyword">null</span>&amp;&amp;fast.next!=<span class="keyword">null</span>&amp;&amp;fast.next.next!=<span class="keyword">null</span>){</div><div class="line">			fast=fast.next.next;</div><div class="line">			low=low.next;</div><div class="line">		}</div><div class="line">		System.out.println(low.data);</div><div class="line">		<span class="keyword">return</span> low;		</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x67E5;&#x627E;&#x5012;&#x6570;&#x7B2C;k&#x4E2A;&#x8282;&#x70B9;</div><div class="line">	 * &#x91C7;&#x7528;&#x4E24;&#x4E2A;&#x6307;&#x9488;P1,P2&#xFF0C;P1&#x5148;&#x524D;&#x79FB;K&#x6B65;&#xFF0C;&#x7136;&#x540E;P1&#x3001;P2&#x540C;&#x65F6;&#x79FB;&#x52A8;&#xFF0C;&#x5F53;p1&#x79FB;&#x52A8;&#x5230;&#x5C3E;&#x90E8;&#x65F6;&#xFF0C;P2&#x6240;&#x6307;&#x4F4D;&#x7F6E;&#x7684;&#x5143;&#x7D20;&#x5373;&#x5012;&#x6570;&#x7B2C;k&#x4E2A;&#x5143;&#x7D20; &#x3002;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> ListNode <span class="title">findElem</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span></span>{</div><div class="line">		<span class="keyword">if</span>(k&lt;<span class="number">1</span>||k&gt;<span class="keyword">this</span>.length())<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">int</span> index=<span class="number">0</span>;</div><div class="line">		ListNode p=head;</div><div class="line">		ListNode q=head;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;k;i++){</div><div class="line">			q=q.next;</div><div class="line">		}</div><div class="line">		<span class="keyword">while</span>(q!=<span class="keyword">null</span>){</div><div class="line">			p=p.next;</div><div class="line">			q=q.next;</div><div class="line">		}</div><div class="line">		System.out.println(p.data);</div><div class="line">		<span class="keyword">return</span> p;		</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x5BF9;&#x5217;&#x8868;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SortList</span><span class="params">()</span></span>{</div><div class="line">		ListNode curNode=<span class="keyword">this</span>.head;</div><div class="line">		ListNode nextNode=<span class="keyword">null</span>;</div><div class="line">		<span class="keyword">int</span> tmp=<span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(curNode.next!=<span class="keyword">null</span>){</div><div class="line">			nextNode=curNode.next;</div><div class="line">			<span class="keyword">while</span>(nextNode!=<span class="keyword">null</span>){</div><div class="line">				<span class="keyword">if</span>(curNode.data&gt;nextNode.data){</div><div class="line">					tmp=curNode.data;</div><div class="line">					curNode.data=nextNode.data;</div><div class="line">					nextNode.data=tmp;</div><div class="line">				}</div><div class="line">				nextNode=nextNode.next;</div><div class="line">			}</div><div class="line">			curNode=curNode.next;</div><div class="line">		}</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x5220;&#x9664;&#x91CD;&#x590D;&#x8282;&#x70B9;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteDuplecate</span><span class="params">()</span></span>{</div><div class="line">		ListNode curNode=<span class="keyword">this</span>.head;</div><div class="line">		ListNode nextNode=<span class="keyword">null</span>;</div><div class="line">		<span class="keyword">while</span>(curNode.next!=<span class="keyword">null</span>){</div><div class="line">			nextNode=curNode;</div><div class="line">			<span class="keyword">while</span>(nextNode.next!=<span class="keyword">null</span>){</div><div class="line">				<span class="keyword">if</span>(curNode.data==nextNode.next.data){</div><div class="line">					nextNode.next=nextNode.next.next;</div><div class="line">				}<span class="keyword">else</span></div><div class="line">					nextNode=nextNode.next;</div><div class="line">			}</div><div class="line">			curNode=curNode.next;</div><div class="line">		}</div><div class="line">	}</div><div class="line">	</div><div class="line">	<span class="comment">/*</span></div><div class="line">	 * &#x4ECE;&#x5C3E;&#x5230;&#x5934;&#x8F93;&#x51FA;&#x5355;&#x94FE;&#x8868;&#xFF0C;&#x91C7;&#x7528;&#x9012;&#x5F52;&#x65B9;&#x5F0F;</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">printListReversely</span><span class="params">(ListNode node)</span></span>{</div><div class="line">		<span class="keyword">if</span>(node.next!=<span class="keyword">null</span>){</div><div class="line">			printListReversely(node.next);</div><div class="line">		}</div><div class="line">		System.out.println(node.data);</div><div class="line">	}</div></pre></td></tr></table></figure>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2017/04/08/应用分析（4）到家美食会数据加密分析/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2017-04-08 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/数据结构与算法/">数据结构与算法<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/数据结构/">数据结构<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2017 李南均
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
+     <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
