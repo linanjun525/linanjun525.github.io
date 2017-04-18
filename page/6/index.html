@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>第 6 頁 | Rve</title>
+  <title>Page 6 | Rve</title>
   <meta name="author" content="李南均">
   
   
@@ -130,11 +130,11 @@ var _hmt = _hmt || [];
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
-			<a href="/2017/03/17/gewarav8-1网络协议分析/" >应用分析（1）gewarav8.1网络协议分析</a>
+			<a href="/2017/03/18/Xposed学习：原理篇/" >Xposed学习：原理篇</a>
 		</h3>
 		</div>
 	<div class="col-md-4">
-		<div class="date">post @ 2017-03-17  </div>
+		<div class="date">post @ 2017-03-18  </div>
 		</div>
 	</div>
 	
@@ -144,30 +144,36 @@ var _hmt = _hmt || [];
   <div class="row">
 	
 	
-		<h2 id="&#x524D;&#x8A00;"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</h2><p>&#x672C;&#x6587;&#x4E3B;&#x8981;&#x662F;&#x5BF9;&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;&#x5373;&#x5206;&#x6790;&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x5305;&#x7684;&#x5B57;&#x6BB5;&#xFF0C;&#x4EE5;&#x53CA;&#x6BCF;&#x4E00;&#x5B57;&#x6BB5;&#x7684;&#x751F;&#x6210;&#x65B9;&#x5F0F;&#x3002;&#x5206;&#x6790;&#x5E94;&#x7528;&#x662F;&#x683C;&#x74E6;&#x62C9;v8.1.1&#x7248;&#x672C;&#xFF0C;&#x4E3B;&#x8981;&#x5206;&#x6790;&#x4E86;&#x6570;&#x636E;&#x5305;&#x4E2D;&#x7B7E;&#x540D;sign&#x503C;&#x7684;&#x751F;&#x6210;&#x8FC7;&#x7A0B;&#x53CA;&#x65B9;&#x5F0F;&#xFF0C;sign&#x662F;&#x628A;&#x6570;&#x636E;&#x5305;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;&#x7528;&#x201D;&amp;&#x201D;&#x8FDE;&#x63A5;&#x540E;&#xFF0C;&#x518D;&#x8FDB;&#x884C;md5&#x5F97;&#x5230;&#x7684;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4F1A;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x5B8C;&#x6574;&#x6027;&#x8FDB;&#x884C;&#x6821;&#x9A8C;&#x3002;</p>
-<h2 id="&#x5206;&#x6790;&#x8FC7;&#x7A0B;"><a href="#&#x5206;&#x6790;&#x8FC7;&#x7A0B;" class="headerlink" title="&#x5206;&#x6790;&#x8FC7;&#x7A0B;"></a>&#x5206;&#x6790;&#x8FC7;&#x7A0B;</h2><p>&#x7F51;&#x7EDC;&#x6570;&#x636E;&#x5305;&#x5982;&#x4E0B;&#xFF1A;</p>
-<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/1.png" alt="1"></p>
-<p>&#x8FD9;&#x4E2A;&#x5E94;&#x7528;&#x5DF2;&#x7ECF;&#x628A;signmethod&#x90FD;&#x544A;&#x8BC9;&#x4E86;&#x6211;&#x4EEC;&#x662F;md5&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6570;&#x636E;&#x5305;&#x4E2D;&#x7684;&#x5B57;&#x6BB5;&#x8FD8;&#x662F;&#x975E;&#x5E38;&#x591A;&#x7684;&#xFF0C;&#x4ED6;&#x4F7F;&#x7528;&#x8FD9;&#x4E48;&#x591A;&#x7684;&#x4E1C;&#x897F;&#x6700;&#x5927;&#x7684;&#x76EE;&#x7684;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x6700;&#x540E;&#x8FDB;&#x884C;md5&#x7684;hash&#xFF0C;&#x7528;&#x6765;&#x9632;&#x6B62;&#x5176;&#x4ED6;&#x4EBA;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x8FDB;&#x884C;&#x7BE1;&#x6539;&#xFF0C;&#x4F46;&#x662F;&#x4ED6;&#x7684;&#x52A0;&#x5BC6;&#x65B9;&#x5F0F;&#x8FC7;&#x4E8E;&#x7B80;&#x5355;&#xFF0C;&#x751A;&#x81F3;&#x8FDE;md5&#x90FD;&#x6CA1;&#x6709;&#x7ECF;&#x8FC7;&#x4EFB;&#x4F55;&#x53D8;&#x6362;&#xFF0C;&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x6E90;&#x7801;&#x5206;&#x6790;&#x6765;&#x627E;&#x5230;&#x8FDB;&#x884C;md5&#x7684;&#x503C;&#x3002;</p>
-<p>&#x6E90;&#x7801;&#x5206;&#x6790;&#x5982;&#x4E0B;&#xFF1A;</p>
-<p>&#x9488;&#x5BF9;&#x767B;&#x9646;&#x65F6;&#x6570;&#x636E;&#x5305;&#x7684;logintoken&#xFF0C;&#x5168;&#x5C40;&#x641C;&#x7D22;logintoken&#xFF0C;&#x627E;&#x5230;sign&#x503C;&#x7684;&#x5165;&#x53E3;</p>
-<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/2.png" alt="2"></p>
-<p>&#x53EF;&#x4EE5;&#x975E;&#x5E38;&#x786E;&#x5B9A;&#x6B64;&#x5904;&#x5C31;&#x662F;&#x767B;&#x9646;&#x65F6;&#x8BA1;&#x7B97;sign&#x503C;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x6211;&#x4EEC;&#x91CD;&#x70B9;&#x5173;&#x6CE8;hashmap v6&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x627E;&#x5230;&#x4E86;&#x8BA1;&#x7B97;sign&#x503C;&#x7684;&#x5165;&#x53E3;awb&#x51FD;&#x6570;</p>
-<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/3.png" alt="3"></p>
-<p>&#x4ECD;&#x7136;&#x662F;&#x5173;&#x6CE8;&#x54EA;&#x91CC;&#x8C03;&#x7528;&#x4E86;&#x4E4B;&#x524D;&#x751F;&#x6210;&#x7684;hashmap&#xFF0C;&#x53D1;&#x73B0;awi.a&#x51FD;&#x6570;&#x4F1A;&#x8BA1;&#x7B97;sign&#x503C;</p>
-<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/4.png" alt="4"></p>
-<p>&#x770B;&#x5230;&#x8FD9;&#x91CC;&#x5DF2;&#x7ECF;&#x5F88;&#x660E;&#x663E;&#x7684;&#x770B;&#x5230;v0_3&#x4E3A;&#x6211;&#x4EEC;&#x8981;&#x7684;sign&#x503C;&#xFF0C;&#x90A3;&#x4E48;&#x627E;&#x5230;&#x4E4B;&#x524D;&#x5BF9;&#x4ED6;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;azl.a&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x4E24;&#x4E2A;&#x53C2;&#x6570;&#x4E3A;hashmap&#xFF0C;&#x548C;azs.a&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x8DDF;&#x8FDB;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;</p>
-<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/azs-a&#x51FD;&#x6570;.png" alt="azs-a&#x51FD;&#x6570;"></p>
-<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5148;&#x5224;&#x65AD;androiddramainmove&#x548C;appkey&#x7684;&#x503C;&#x662F;&#x5426;&#x76F8;&#x7B49;&#xFF0C;&#x5E76;&#x628A;&#x662F;&#x5426;&#x76F8;&#x7B49;&#x7684;bool&#x578B;&#x53D8;&#x91CF;&#x4F20;&#x5165;&#x51FD;&#x6570;azs.a&#x4E2D;&#x53BB;&#xFF0C;&#x5982;&#x679C;&#x4E3A;false&#x5219;&#x8FD4;&#x56DE;prikey-android&#xFF0C;&#x5426;&#x5219;&#x8FD4;&#x56DE;&#x4E00;&#x4E32;hash&#x503C;&#xFF0C;&#x7531;&#x4E8E;&#x8FD9;&#x91CC;appkey&#x4E3A;android2009&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5224;&#x65AD;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;prikey-android&#x3002;</p>
-<p>&#x7EE7;&#x7EED;&#x5206;&#x6790;&#x51FD;&#x6570;azl.a</p>
-<p><img src="/2017/03/17/gewarav8-1&#x7F51;&#x7EDC;&#x534F;&#x8BAE;&#x5206;&#x6790;/azl-a&#x51FD;&#x6570;.png" alt="azl-a&#x51FD;&#x6570;"></p>
-<p>&#x8FD9;&#x91CC;&#x5C31;&#x5F88;&#x660E;&#x663E;&#x4E86;&#xFF0C;&#x51FD;&#x6570;&#x5148;&#x662F;&#x5C06;hashmap&#x4E2D;&#x7684;&#x6570;&#x503C;&#x4F7F;&#x7528;&#x201C;key=value&#x201D;&#x7684;&#x5F62;&#x5F0F;&#x901A;&#x8FC7;&#x201D;&amp;&#x201C;&#x8FDB;&#x884C;&#x62FC;&#x63A5;&#xFF0C;&#x901A;&#x8FC7;bax.a&#x53BB;&#x6389;&#x6700;&#x672B;&#x5C3E;&#x7684;&amp;&#x540E;&#xFF0C;&#x518D;&#x4E0E;prikey-android&#x8FDB;&#x884C;&#x62FC;&#x63A5;&#xFF0C;&#x5BF9;&#x6700;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x8FDB;&#x884C;md5&#x8FD4;&#x56DE;&#x5E76;&#x4E14;&#x5B58;&#x5165;sign&#x4E2D;&#x3002;&#x627E;&#x5230;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x52A8;&#x6001;&#x8C03;&#x8BD5;&#x65AD;&#x5728;&#x8BA1;&#x7B97;md5&#x4E4B;&#x524D;&#xFF0C;&#x5F97;&#x5230;&#x8FD9;&#x4E2A;sign&#x503C;&#xFF0C;&#x7136;&#x540E;&#x4FEE;&#x6539;&#x5176;&#x4E2D;&#x7684;&#x67D0;&#x4E00;&#x5B57;&#x6BB5;&#x91CD;&#x65B0;&#x8BA1;&#x7B97;md5&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x7ED5;&#x8FC7;&#x670D;&#x52A1;&#x5668;&#x5BF9;&#x6570;&#x636E;&#x5305;&#x7684;&#x6821;&#x9A8C;&#x3002;&#x6211;&#x4EEC;&#x65AD;&#x4E0B;&#x6765;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;md5&#x4E5F;&#x9A8C;&#x8BC1;&#x4E86;&#x6211;&#x4EEC;&#x7684;&#x63A8;&#x8BBA;:</p>
-<p>&#x83B7;&#x53D6;&#x9A8C;&#x8BC1;&#x7801;&#x65F6;&#x751F;&#x6210;&#x7684;sign&#x503C;&#x7684;&#x539F;&#x59CB;&#x6570;&#x636E;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">appSource=AS01&amp;appVersion=8.1.1&amp;appkey=android2009&amp;apptype=cinema&amp;citycode=110000&amp;deviceId=020000000000&amp;format=xml&amp;imei=354360070244405</div><div class="line"></div><div class="line">&amp;method=com.gewara.mobile.login.getMobileCodeByFindpass&amp;mnet=WIFI&amp;mobile=18310455273&amp;mobileType=Nexus5X&amp;mprovider=&amp;osType=ANDROID</div><div class="line"></div><div class="line">&amp;osVersion=7.0&amp;pageName=com.gewara.activity.usercenter.fragment.UserForgetFragment&amp;pointx=116.365237&amp;pointy=39.969854&#xD7;tamp=2017-03-1615:42:41&amp;v=1.0&amp;version=1.0prikey-android</div></pre></td></tr></table></figure>
-<h2 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h2><p>&#x4E4B;&#x524D;&#x90FD;&#x662F;&#x5BF9;&#x4E00;&#x4E9B;ctf&#x9898;&#x76EE;&#x8FDB;&#x884C;&#x5206;&#x6790;&#xFF0C;&#x540E;&#x8FB9;&#x4F1A;&#x66F4;&#x591A;&#x5730;&#x6CE8;&#x91CD;&#x5B9E;&#x6218;&#xFF0C;&#x6CE8;&#x91CD;&#x5BF9;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7684;&#x5206;&#x6790;&#x548C;&#x7834;&#x89E3;&#x3002;&#x5B9E;&#x6218;&#x5206;&#x6790;&#x4E3B;&#x8981;&#x7684;&#x96BE;&#x70B9;&#x5728;&#x4E8E;&#x4EE3;&#x7801;&#x7684;&#x5B9A;&#x4F4D;&#xFF0C;&#x4EE5;&#x53CA;java&#x6216;&#x8005;android&#x7F16;&#x7A0B;&#x4E2D;&#x7684;&#x673A;&#x5236;&#xFF0C;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x3002;&#x6240;&#x4EE5;&#x5BF9;&#x5F00;&#x53D1;&#x80FD;&#x529B;&#x4E5F;&#x6709;&#x6BD4;&#x8F83;&#x9AD8;&#x7684;&#x8981;&#x6C42;&#x3002;</p>
+		<h2 id="android&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#xFF1A;Zygote"><a href="#android&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#xFF1A;Zygote" class="headerlink" title="android&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#xFF1A;Zygote"></a>android&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#xFF1A;Zygote</h2><p>&#x200B;    android&#x7CFB;&#x7EDF;&#x4E2D;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x90FD;&#x662F;&#x7531;zygote&#x5B75;&#x5316;&#x51FA;&#x6765;&#x7684;&#xFF0C;zygote&#x7531;init&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#xFF0C;zygote&#x5728;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x65F6;&#x90FD;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;dalvik&#x865A;&#x62DF;&#x673A;&#x5B9E;&#x4F8B;&#xFF0C;&#x6BCF;&#x5F53;&#x4ED6;&#x5B75;&#x5316;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x65F6;&#x90FD;&#x4F1A;&#x5C06;&#x8FD9;&#x4E2A;dalvik&#x865A;&#x62DF;&#x673A;&#x5B9E;&#x4F8B;&#x590D;&#x5236;&#x5230;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x91CC;&#x9762;&#x53BB;&#xFF0C;&#x4ECE;&#x800C;&#x4F7F;&#x6BCF;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x8FDB;&#x7A0B;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;dalvik&#x865A;&#x62DF;&#x673A;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x200B;    zygote&#x9664;&#x4E86;&#x4F1A;&#x5728;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x673A;&#x5B9E;&#x4F8B;&#xFF0C;&#x8FD8;&#x4F1A;&#x5C06;Java&#x8FD0;&#x884C;&#x65F6;&#x5E93;&#x52A0;&#x8F7D;&#x5230;&#x8FDB;&#x7A0B;&#x4E2D;&#x53BB;&#xFF0C;&#x4EE5;&#x53CA;&#x6CE8;&#x518C;&#x4E00;&#x4E9B;Android&#x6838;&#x5FC3;&#x7C7B;JNI&#x65B9;&#x6CD5;&#x5230;&#x521B;&#x5EFA;&#x7684;dalvik&#x865A;&#x62DF;&#x673A;&#x5B9E;&#x4F8B;&#x4E2D;&#x53BB;&#x3002;&#x4E00;&#x4E2A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x88AB;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x65F6;&#xFF0C;&#x4E0D;&#x4EC5;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;dalvik&#x865A;&#x62DF;&#x673A;&#x5B9E;&#x4F8B;&#xFF0C;&#x8FD8;&#x4F1A;&#x4E0E;zygote&#x5171;&#x4EAB;&#x4E00;&#x4E2A;Java&#x8FD0;&#x884C;&#x65F6;&#x5E93;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x6211;&#x4EEC;&#x628A;XposedBridge&#x52A0;&#x8F7D;&#x5230;&#x6BCF;&#x4E00;&#x4E2A;android&#x8FDB;&#x7A0B;&#x4E2D;&#x53BB;&#x7684;&#x539F;&#x56E0;&#xFF0C;XposedBridge&#x6709;&#x4E00;&#x4E2A;&#x79C1;&#x6709;&#x7684;Native&#x65B9;&#x6CD5;HookMethodNative&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5728;app_process&#x4E2D;&#x4F7F;&#x7528;&#x3002;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5BF9;&#x8C61;&#x5229;&#x7528;Java&#x7684;Reflection&#x673A;&#x5236;&#x6765;&#x5BF9;&#x5185;&#x7F6E;&#x65B9;&#x6CD5;&#x8986;&#x5199;&#x3002;</p>
+<h2 id="Xposed&#x539F;&#x7406;"><a href="#Xposed&#x539F;&#x7406;" class="headerlink" title="Xposed&#x539F;&#x7406;"></a>Xposed&#x539F;&#x7406;</h2><p>Xposed&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x662F;&#x5C06;Java&#x5C42;&#x65B9;&#x6CD5;&#x6CE8;&#x518C;&#x4E3A;&#x672C;&#x5730;Native&#x65B9;&#x6CD5;&#xFF0C;&#x4EE5;&#x6B64;&#x6765;&#x5B9E;&#x73B0;hook&#x673A;&#x5236;</p>
+<h3 id="hook-replace"><a href="#hook-replace" class="headerlink" title="hook/replace"></a>hook/replace</h3><p>&#x200B;    &#x5728;android&#x542F;&#x52A8;&#x65F6;&#xFF0C;zygote&#x4F1A;&#x52A0;&#x8F7D;XposedBridge&#x5C06;&#x6240;&#x6709;&#x9700;&#x8981;&#x66FF;&#x6362;&#x7684;Method&#x901A;&#x8FC7;JNI&#x65B9;&#x6CD5;hookMethodNative&#x6307;&#x5411;Native&#x65B9;&#x6CD5;xposedCallHandler&#xFF0C;xposedCallHandler&#x518D;&#x8F6C;&#x5165;handleHookedMethod&#x8FD9;&#x4E2A;Java&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x7528;&#x6237;&#x89C4;&#x5B9A;&#x7684;HookFunc&#x3002;</p>
+<p><img src="/2017/03/18/Xposed&#x5B66;&#x4E60;&#xFF1A;&#x539F;&#x7406;&#x7BC7;/1.png" alt="1"></p>
+<p>&#x200B;    XposedBridge&#x8FD9;&#x4E2A;jar&#x5305;&#x542B;&#x6709;&#x4E00;&#x4E2A;&#x79C1;&#x6709;&#x7684;&#x672C;&#x5730;&#x65B9;&#x6CD5;&#xFF1A;<strong>hookMethodNative</strong>&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x5728;&#x9644;&#x52A0;&#x7684;app_process&#x7A0B;&#x5E8F;&#x4E2D;&#x4E5F;&#x5F97;&#x5230;&#x4E86;&#x5B9E;&#x73B0;&#x3002;&#x5B83;&#x5C06;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;&#x53C2;&#x6570;&#xFF08;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Java&#x7684;&#x53CD;&#x5C04;&#x673A;&#x5236;&#x6765;&#x83B7;&#x53D6;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF09;&#x5E76;&#x4E14;&#x6539;&#x53D8;Dalvik&#x865A;&#x62DF;&#x673A;&#x4E2D;&#x5BF9;&#x4E8E;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x5B9A;&#x4E49;&#x3002;&#x5B83;&#x5C06;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x7C7B;&#x578B;&#x6539;&#x53D8;&#x4E3A;<strong>native</strong>&#x5E76;&#x4E14;<strong>&#x5C06;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x94FE;&#x63A5;&#x5230;&#x5B83;&#x7684;&#x672C;&#x5730;&#x7684;&#x901A;&#x7528;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;</strong>&#x3002;&#x6362;&#x8A00;&#x4E4B;&#xFF0C;&#x5F53;&#x8C03;&#x7528;&#x90A3;&#x4E2A;&#x88AB;hook&#x7684;&#x65B9;&#x6CD5;&#x65F6;&#x5019;&#xFF0C;&#x901A;&#x7528;&#x7684;&#x7C7B;&#x65B9;&#x6CD5;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x800C;&#x4E0D;&#x4F1A;&#x5BF9;&#x8C03;&#x7528;&#x8005;&#x6709;&#x4EFB;&#x4F55;&#x7684;&#x5F71;&#x54CD;&#x3002;&#x5728;hookMethodNative&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x4F1A;&#x8C03;&#x7528;XposedBridge&#x4E2D;&#x7684;handleHookedMethod&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x3002;handleHookedMethod&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7C7B;&#x4F3C;&#x4E8E;&#x4E00;&#x4E2A;&#x7EDF;&#x4E00;&#x8C03;&#x5EA6;&#x7684;Dispatch&#x4F8B;&#x7A0B;&#xFF0C;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x5E95;&#x5C42;&#x7684;C++&#x51FD;&#x6570;&#x662F;xposedCallHandler&#x3002;&#x800C;<strong>handleHookedMethod&#x5B9E;&#x73B0;&#x91CC;&#x9762;&#x4F1A;&#x6839;&#x636E;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x7ED3;&#x6784;hookedMethodCallbacks&#x6765;&#x9009;&#x62E9;&#x76F8;&#x5E94;&#x7684;hook&#x51FD;&#x6570;</strong>&#x3002;</p>
+<h3 id="Dalvik&#x8BC6;&#x522B;JNI&#x65B9;&#x6CD5;"><a href="#Dalvik&#x8BC6;&#x522B;JNI&#x65B9;&#x6CD5;" class="headerlink" title="Dalvik&#x8BC6;&#x522B;JNI&#x65B9;&#x6CD5;"></a>Dalvik&#x8BC6;&#x522B;JNI&#x65B9;&#x6CD5;</h3><p><strong>&#x7C7B;&#x7684;&#x52A0;&#x8F7D;&#x8FC7;&#x7A0B;</strong>&#xFF1A;&#x5F53;&#x4E00;&#x4E2A;&#x7C7B;&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x4F7F;&#x7528;&#x5230;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x7684;&#x5B57;&#x8282;&#x7801;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x4F1A;&#x56DE;&#x8F7D;&#x4E00;&#x6B21;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x88AB;&#x52A0;&#x8F7D;&#x7684;&#x5B57;&#x8282;&#x7801;&#x7684;&#x5165;&#x53E3;&#x7EF4;&#x6301;&#x7740;&#x4E00;&#x4E2A;&#x8BE5;&#x7C7B;&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x63CF;&#x8FF0;&#x7B26;&#x7684;list&#xFF0C;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x63CF;&#x8FF0;&#x7B26;&#x5305;&#x542B;&#x8FD9;&#x6837;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#xFF1A;</p>
+<p>&#xFF08;1&#xFF09;&#x65B9;&#x6CD5;&#x4EE3;&#x7801;&#x5B58;&#x4E8E;&#x4F55;&#x5904;&#xFF0C;</p>
+<p>&#xFF08;2&#xFF09;&#x5B83;&#x6709;&#x54EA;&#x4E9B;&#x53C2;&#x6570;&#xFF0C;</p>
+<p>&#xFF08;3&#xFF09;&#x65B9;&#x6CD5;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#xFF08;public&#x3001;native&#x4E4B;&#x7C7B;&#xFF09;&#xFF0C;etc&#x2026;       </p>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x63CF;&#x8FF0;&#x7B26;&#x5185;&#x6709;native&#xFF0C;&#x8FD9;&#x4E2A;&#x63CF;&#x8FF0;&#x7B26;&#x5757;&#x5C06;&#x6709;&#x4E00;&#x4E2A;&#x6307;&#x5411;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x5B9E;&#x73B0;&#x7684;&#x6307;&#x9488;&#x3002;&#x4E0B;&#x9762;&#x6765;&#x770B;&#x770B;&#x65B9;&#x6CD5;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x6837;&#x5B50;&#x3002;</p>
+<p>&#x65B9;&#x6CD5;&#x63CF;&#x8FF0;&#x7B26;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#xFF1A;</p>
+<p><img src="/2017/03/18/Xposed&#x5B66;&#x4E60;&#xFF1A;&#x539F;&#x7406;&#x7BC7;/2.png" alt="2"></p>
+<p>accessFlags&#x6807;&#x8BB0;&#x4E86;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x7C7B;&#x578B;&#xFF1A;public&#x3001;native&#x7B49;</p>
+<p><strong>Dalvik&#x865A;&#x62DF;&#x673A;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x57FA;&#x672C;&#x8FC7;&#x7A0B;&#xFF1A;</strong>&#x4E00;&#x4E2A;&#x7C7B;&#x5728;&#x6267;&#x884C;&#x4E4B;&#x524D;&#x5148;&#x4F1A;&#x88AB;&#x88C5;&#x8F7D;&#xFF0C;&#x4E4B;&#x540E;&#x8981;&#x8FDB;&#x884C;&#x5B57;&#x8282;&#x7801;&#x9A8C;&#x8BC1;&#xFF0C;&#x68C0;&#x9A8C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x865A;&#x62DF;&#x673A;&#x4F1A;&#x7D27;&#x63A5;&#x7740;&#x8C03;&#x7528;FindClass()&#x6765;&#x67E5;&#x627E;&#x5E76;&#x88C5;&#x8F7D;main&#x7684;&#x65B9;&#x6CD5;&#x7C7B;&#x3002;&#x6B64;&#x540E;JNIEnv&#x7C7B;&#x8C03;&#x7528;&#x6210;&#x5458;&#x51FD;&#x6570;CallStaticVoidMethod&#x6267;&#x884C;main&#x65B9;&#x6CD5;&#xFF0C;&#x7A0B;&#x5E8F;&#x5F00;&#x59CB;&#x8FD0;&#x884C;&#x3002;</p>
+<p>&#x627E;&#x5230;&#x5E94;&#x7528;&#x7684;&#x5165;&#x53E3;&#x51FD;&#x6570;&#xFF08;main&#xFF09;&#xFF0C;&#x4F9D;&#x6B21;&#x8C03;&#x7528;&#x6267;&#x884C;&#x3002;</p>
+<p><img src="/2017/03/18/Xposed&#x5B66;&#x4E60;&#xFF1A;&#x539F;&#x7406;&#x7BC7;/3.png" alt="3"></p>
+<p>dvmCallMethodV&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x5173;&#x952E;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x6E90;&#x7801;&#xFF1A;</p>
+<p><img src="/2017/03/18/Xposed&#x5B66;&#x4E60;&#xFF1A;&#x539F;&#x7406;&#x7BC7;/4.png" alt="4"></p>
+<p>&#x5173;&#x952E;&#x7684;&#x51FD;&#x6570;<strong>dvmIsNativeMethod</strong>&#xFF0C;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x5224;&#x65AD;&#x51FD;&#x6570;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x901A;&#x8FC7;&#x6BD4;&#x5BF9;&#x65B9;&#x6CD5;&#x63CF;&#x8FF0;&#x7B26;&#x4E2D;&#x7684;accessFlags&#x4E0E;ACC_NATIVE&#xFF08;&#x5E38;&#x91CF;&#xFF09;&#x662F;&#x5426;&#x76F8;&#x7B49;&#x6765;&#x8BC6;&#x522B;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x662F;NATIVE&#x65B9;&#x6CD5;&#x3002;&#x6E90;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="/2017/03/18/Xposed&#x5B66;&#x4E60;&#xFF1A;&#x539F;&#x7406;&#x7BC7;/5.png" alt="5"></p>
+<p>&#x4EE5;&#x4E0A;&#x662F;&#x5982;&#x4F55;&#x8BC6;&#x522B;native&#x65B9;&#x6CD5;&#xFF0C;Xposed&#x5728;&#x8FD9;&#x4E2A;&#x6D41;&#x7A0B;&#x4E2D;&#x6539;&#x53D8;method&#x63CF;&#x8FF0;&#x7B26;&#x4E2D;&#x7684;accessFlags&#x4E3A;NATIVE&#x65B9;&#x6CD5;FLAG.</p>
+<p><img src="/2017/03/18/Xposed&#x5B66;&#x4E60;&#xFF1A;&#x539F;&#x7406;&#x7BC7;/6.png" alt="6"></p>
+<p>&#x7EE7;&#x7EED;&#x5206;&#x6790;&#x4E0A;&#x56FE;&#xFF0C;&#x5176;&#x4E2D;nativeFunc&#x5B58;&#x50A8;&#x8BE5;&#x65B9;&#x6CD5;&#x5B9E;&#x9645;&#x8C03;&#x7528;&#x7684;&#x672C;&#x5730;&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x4F4D;&#x7F6E;&#xFF0C;&#x5C06;&#x8981;hook&#x7684;java&#x5C42;&#x65B9;&#x6CD5;&#x6CE8;&#x518C;&#x6210;&#x672C;&#x5730;&#x65B9;&#x6CD5;&#xFF0C;Native&#x5C42;&#x65B9;&#x6CD5;&#x7EDF;&#x4E00;&#x7684;&#x5165;&#x53E3;&#x70B9;&#x8BBE;&#x7F6E;&#x4E3A;xposedCallHander&#x3002;</p>
+<p>insns&#x5B58;&#x50A8;&#x8BE5;&#x65B9;&#x6CD5;&#x771F;&#x5B9E;&#x6267;&#x884C;&#x5730;&#x5740;&#xFF08;&#x6CA1;&#x6709;&#x6CE8;&#x518C;&#x6210;Native&#x65B9;&#x6CD5;&#x524D;&#x7684;&#x6267;&#x884C;&#x4F4D;&#x7F6E;&#xFF09;&#x3002;</p>
+<h2 id="&#x603B;&#x7ED3;"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</h2><p>&#x4EE5;&#x4E0A;&#x5185;&#x5BB9;&#x4E3A;xposed&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x7684;&#x7B80;&#x4ECB;&#xFF0C;&#x7531;&#x4E8E;&#x6CA1;&#x6709;&#x7ED3;&#x5408;&#x6E90;&#x7801;&#x6240;&#x4EE5;&#x7406;&#x89E3;&#x4E0D;&#x591F;&#x4E48;&#x6DF1;&#x523B;&#xFF0C;&#x603B;&#x7ED3;&#x8D77;&#x6765;&#x7684;&#x6D41;&#x7A0B;&#x5C31;&#x662F;&#xFF0C;xposed&#x901A;&#x8FC7;&#x66FF;&#x6362;zygote&#x5C06;java&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x4FEE;&#x6539;&#x4E3A;xposed&#x4E2D;&#x7684;native&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x628A;&#x539F;&#x6765;&#x65B9;&#x6CD5;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x8FDB;&#x53BB;&#xFF0C;&#x8FD9;&#x5C31;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;&#x8FD9;&#x4E2A;&#x88AB;hook&#x7684;&#x65B9;&#x6CD5;&#x5C06;&#x88AB;&#x8C03;&#x7528;&#x4E4B;&#x524D;&#x5C31;&#x4F1A;&#x88AB;&#x53D6;&#x800C;&#x4EE3;&#x4E4B;&#x5730;&#x8C03;&#x7528;&#xFF0C;&#x540C;&#x65F6;&#x8C03;&#x7528;&#x8005;&#x5E76;&#x4E0D;&#x77E5;&#x60C5;&#x3002;&#x5E76;&#x4E14;&#x5C06;&#x4F20;&#x8F93;&#x53C2;&#x6570;&#x5230;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5F15;&#x7528;&#x7B49;&#x5F53;&#x4E2D;&#x3002; &#x800C;&#x4E14;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4F1A;&#x68C0;&#x6D4B;&#x5230;&#x5DF2;&#x7ECF;&#x5728;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x91CC;&#x9762;&#x6CE8;&#x518C;&#x8FC7;&#x7684;&#x5524;&#x9192;&#x56DE;&#x8C03;&#x4FE1;&#x53F7;&#x3002; &#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C; &#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x4FEE;&#x6539;&#x5F53;&#x524D;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4FEE;&#x6539;&#x5B9E;&#x4F8B;&#x5316;&#x7684;&#x6216;&#x8005;&#x9759;&#x6001;&#x7684;&#x53D8;&#x91CF;&#xFF0C; &#x5524;&#x9192;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#xFF0C; &#x6839;&#x636E;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x53BB;&#x5E72;&#x4E00;&#x4E9B;&#x4E8B;&#x60C5;&#x2026;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x8DF3;&#x8FC7;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;.&#xFF0C;&#x4E00;&#x5207;&#x90FD;&#x663E;&#x5F97;&#x975E;&#x5E38;&#x7075;&#x6D3B;&#x3002;</p>
 
 	
 	</div>
-  <a type="button" href="/2017/03/17/gewarav8-1网络协议分析/#more" class="btn btn-default more">閱讀本文</a>
+  <a type="button" href="/2017/03/18/Xposed学习：原理篇/#more" class="btn btn-default more">Read More</a>
 </div>
 
 		
@@ -181,12 +187,12 @@ var _hmt = _hmt || [];
 
    
     
-     <a href="/page/5/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> 上一頁</a>
+     <a href="/page/5/" type="button" class="btn btn-default"><i class="fa fa-arrow-circle-o-left"></i> Prev</a>
       
 
         <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
  
-       <a href="/page/7/" type="button" class="btn btn-default ">下一頁<i class="fa fa-arrow-circle-o-right"></i></a>     
+       <a href="/page/7/" type="button" class="btn btn-default ">Next<i class="fa fa-arrow-circle-o-right"></i></a>     
         
 
   
@@ -206,7 +212,7 @@ var _hmt = _hmt || [];
 			
   <div id="site_search">
    <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="搜尋" class="st-search-input st-default-search-input form-control"/>
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
    </div>  
   <div id="local-search-result"></div>
   </div>
@@ -215,12 +221,12 @@ var _hmt = _hmt || [];
 		
 			
 	<div class="widget">
-		<h4>分類</h4>
+		<h4>Categories</h4>
 		<ul class="tag_box inline list-unstyled">
 		
 			<li><a href="/categories/安全技术/">安全技术<span>6</span></a></li>
 		
-			<li><a href="/categories/数据结构与算法/">数据结构与算法<span>1</span></a></li>
+			<li><a href="/categories/数据结构与算法/">数据结构与算法<span>2</span></a></li>
 		
 			<li><a href="/categories/机器学习/">机器学习<span>4</span></a></li>
 		
@@ -232,18 +238,18 @@ var _hmt = _hmt || [];
 		
 			
 	<div class="widget">
-		<h4>標籤雲</h4>
+		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
 			<li><a href="/tags/第一篇博客/">第一篇博客<span>1</span></a></li>
 		
 			<li><a href="/tags/机器学习实战笔记/">机器学习实战笔记<span>4</span></a></li>
 		
-			<li><a href="/tags/数据结构/">数据结构<span>1</span></a></li>
+			<li><a href="/tags/应用分析/">应用分析<span>4</span></a></li>
 		
 			<li><a href="/tags/移动安全/">移动安全<span>6</span></a></li>
 		
-			<li><a href="/tags/应用分析/">应用分析<span>4</span></a></li>
+			<li><a href="/tags/数据结构/">数据结构<span>2</span></a></li>
 		
 		 
 		</ul>
@@ -253,8 +259,12 @@ var _hmt = _hmt || [];
 		
 			
 <div class="widget">
-  <h4>最新文章</h4>
+  <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2017/04/18/数据结构：哈希表-散列表/" ><i class="fa fa-file-o"></i>数据结构：哈希表/散列表</a>
+      </li>
     
       <li>
         <a href="/2017/04/08/数据结构：链表Java实现/" ><i class="fa fa-file-o"></i>数据结构：链表Java实现</a>
@@ -272,17 +282,13 @@ var _hmt = _hmt || [];
         <a href="/2017/03/24/应用分析（2）4399游戏盒网络协议分析/" ><i class="fa fa-file-o"></i>应用分析（2）4399游戏盒网络协议分析</a>
       </li>
     
-      <li>
-        <a href="/2017/03/18/Xposed学习：原理篇/" ><i class="fa fa-file-o"></i>Xposed学习：原理篇</a>
-      </li>
-    
   </ul>
 </div>
 
 		
 			
 <div class="widget">
-	<h4>鏈接</h4>
+	<h4>Links</h4>
 	<ul class="blogroll list-unstyled">
 	
 		<li><i class="fa fa-github"></i><a href="https://g479173199.github.io/" title="Freemind's Github repository." target="_blank"]);">Jieming&#39;s Blog</a></li>
